@@ -10,7 +10,6 @@ import {routes} from 'AdminPanel/routes';
 import {Group} from 'AdminPanel/types';
 import {handlerFactory} from 'AdminPanel/utils/handlerFactory';
 
-
 const BlueButtonWithMargin = styled(BlueButton)`
   margin-left: 10px;
 `;
@@ -24,8 +23,8 @@ export default () => {
   const prevLocation = routes.players;
 
   const handleCreate = handlerFactory(
-      () => createPlayer(username, password, groupId),
-      () => history.push(prevLocation)
+    () => createPlayer(username, password, groupId),
+    () => history.push(prevLocation)
   );
 
   const fetchGroups = async () => {
@@ -45,10 +44,9 @@ export default () => {
     fetchGroups();
   }, []);
 
-
   return (
     <EditPage
-      pageName='Создать'
+      pageName="Создать"
       inputRows={[
         {
           name: 'Логин  ',
@@ -60,21 +58,24 @@ export default () => {
         },
         {
           name: 'Группа',
-          innerElement: <select>
-            {
-              groups.map((group, key) => <option key={key} value={group.id}>{group.name}</option>)
-            }
-          </select>,
-
+          innerElement: (
+            <select>
+              {groups.map((group, key) => (
+                <option key={key} value={group.id}>
+                  {group.name}
+                </option>
+              ))}
+            </select>
+          ),
         },
       ]}
       buttons={
         <>
           <BlueButton as={NavLink} to={prevLocation}>
-              Отмена
+            Отмена
           </BlueButton>
           <BlueButtonWithMargin onClick={handleCreate}>
-              Создать
+            Создать
           </BlueButtonWithMargin>
         </>
       }

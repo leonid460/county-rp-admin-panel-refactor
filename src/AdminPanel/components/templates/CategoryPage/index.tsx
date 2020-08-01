@@ -8,7 +8,6 @@ import HorizontalRule from 'AdminPanel/components/atoms/HorizontalRule';
 import {Table as SearchResultsTable} from './__styled/Table';
 import Base from 'AdminPanel/components/templates/Base';
 
-
 type CategoryPageProps = {
   topButtons?: React.ReactNode;
   inputRows: {
@@ -21,17 +20,12 @@ type CategoryPageProps = {
     searchResultsItems: string[][];
     editRoute: string;
     maxPage: number;
-    pageNumber: number
-  }
-}
+    pageNumber: number;
+  };
+};
 
 function CategoryPage(props: CategoryPageProps) {
-  const {
-    topButtons,
-    inputRows,
-    handleSearch,
-    searchTableProps,
-  } = props;
+  const {topButtons, inputRows, handleSearch, searchTableProps} = props;
 
   const handleForwardButton = () => {
     const pageNumber = searchTableProps.pageNumber;
@@ -62,24 +56,22 @@ function CategoryPage(props: CategoryPageProps) {
         {topButtons}
         <Header3>Фильтр</Header3>
         <FormContainer>
-          {
-            inputRows.map(({name, innerComponent}, key) => (
-              <FormRow name={name} key={key}>
-                {innerComponent}
-              </FormRow>
-            ))
-          }
+          {inputRows.map(({name, innerComponent}, key) => (
+            <FormRow name={name} key={key}>
+              {innerComponent}
+            </FormRow>
+          ))}
         </FormContainer>
         <SearchButton onClick={() => handleSearch(searchTableProps.pageNumber)}>
           Найти
         </SearchButton>
         <HorizontalRule />
-        <SearchResultsTable
-          {...searchTableProps}
-        />
+        <SearchResultsTable {...searchTableProps} />
         <ButtonsContainer>
           <BackButton onClick={handleBackButton} />
-          <span>{searchTableProps.pageNumber}..{searchTableProps.maxPage}</span>
+          <span>
+            {searchTableProps.pageNumber}..{searchTableProps.maxPage}
+          </span>
           <ForwardButton onClick={handleForwardButton} />
         </ButtonsContainer>
       </Container>
@@ -132,6 +124,5 @@ const ForwardButton = styled.button`
 const BackButton = styled(ForwardButton)`
   transform: rotate(-135deg);
 `;
-
 
 export default CategoryPage;

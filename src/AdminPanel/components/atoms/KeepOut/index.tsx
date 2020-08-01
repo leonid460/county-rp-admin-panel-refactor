@@ -11,8 +11,7 @@ const Img = styled.div`
   background-repeat: no-repeat;
   background-position-x: center;
 
-  animation: slide-up .4s ease;
+  animation: slide-up 0.4s ease;
 `;
-
 
 export default () => <Img />;

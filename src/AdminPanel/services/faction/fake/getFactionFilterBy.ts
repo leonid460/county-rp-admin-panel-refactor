@@ -1,15 +1,18 @@
 import {Faction} from 'AdminPanel/types';
 
-
 type SearchResult = {
   items: Faction[];
 
   allAmount: number;
   page: number;
   maxPage: number;
-}
+};
 
-export async function getFactionFilterBy(page: number = 1, id: string = '', name: string = ''): Promise<SearchResult> {
+export async function getFactionFilterBy(
+  page: number = 1,
+  id: string = '',
+  name: string = ''
+): Promise<SearchResult> {
   const apiUrl = process.env.REACT_APP_API_URL;
   let url = `${apiUrl}Faction/?page=${page}`;
   url += id ? `&id=${id}` : '';

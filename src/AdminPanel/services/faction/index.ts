@@ -10,7 +10,6 @@ import {getFactionFilterBy as devGetFactionFilterBy} from './fake/getFactionFilt
 import {editFaction as devEditFaction} from './fake/editFaction';
 import {getFaction as devGetFaction} from './fake/getFaction';
 
-
 export const {
   createFaction,
   deleteFaction,

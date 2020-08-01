@@ -6,7 +6,6 @@ import 'jest-styled-components';
 import {shallow} from 'enzyme';
 import renderer from 'react-test-renderer';
 
-
 describe('testing <Avatar />', () => {
   it('renders without crashing', () => {
     shallow(<Avatar>Test</Avatar>);

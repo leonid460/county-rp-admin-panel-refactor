@@ -9,7 +9,7 @@ type SearchPlayersResult = {
   allAmount: number;
   page: number;
   maxPage: number;
-}
+};
 
 export async function getPlayersFilterBy(page: number = 1, name: string = '') {
   const apiUrl = process.env.REACT_APP_API_URL;

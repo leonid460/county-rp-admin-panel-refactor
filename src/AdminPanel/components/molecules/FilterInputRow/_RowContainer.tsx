@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const RowContainer = styled.label`
   display: flex;
   flex-direction: row;
@@ -9,7 +8,7 @@ const RowContainer = styled.label`
 
   width: 320px;
   margin-right: 80px;
-  
+
   color: #4a4a4a;
 
   &:last-child {

@@ -9,7 +9,6 @@ import {createFaction} from 'AdminPanel/services';
 import {routes} from 'AdminPanel/routes';
 import {handlerFactory} from 'AdminPanel/utils/handlerFactory';
 
-
 const BlueButtonWithMargin = styled(BlueButton)`
   margin-left: 10px;
 `;
@@ -25,19 +24,20 @@ export default () => {
   const prevLocation = routes.faction;
 
   const handleCreate = handlerFactory(
-      () => createFaction({
+    () =>
+      createFaction({
         id: factionId,
         name: factionName,
         color: factionColor,
         ranks: factionRanks.split(','),
         type: factionType,
       }),
-      () => history.push(prevLocation)
+    () => history.push(prevLocation)
   );
 
   return (
     <EditPage
-      pageName='Создать'
+      pageName="Создать"
       inputRows={[
         {
           name: 'ID',
@@ -49,7 +49,9 @@ export default () => {
         },
         {
           name: 'Ранги',
-          innerElement: <Input value={factionRanks} setValue={setFactionRanks} />,
+          innerElement: (
+            <Input value={factionRanks} setValue={setFactionRanks} />
+          ),
         },
         {
           name: 'Тип',
@@ -57,19 +59,21 @@ export default () => {
         },
         {
           name: 'Цвет',
-          innerElement: <>
-            <Input value={factionColor} setValue={setFactionColor} />
-            <ColorPalette setColor={setFactionColor} />
-          </>,
+          innerElement: (
+            <>
+              <Input value={factionColor} setValue={setFactionColor} />
+              <ColorPalette setColor={setFactionColor} />
+            </>
+          ),
         },
       ]}
       buttons={
         <>
           <BlueButton as={NavLink} to={prevLocation}>
-              Отмена
+            Отмена
           </BlueButton>
           <BlueButtonWithMargin onClick={handleCreate}>
-              Создать
+            Создать
           </BlueButtonWithMargin>
         </>
       }

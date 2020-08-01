@@ -1,9 +1,5 @@
 import React, {useEffect} from 'react';
-import {
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
 import {observer} from 'mobx-react';
 import GlobalStyle from './GlobalStyle';
@@ -35,41 +31,71 @@ import {routes} from 'AdminPanel/routes';
 const App = observer(() => {
   useAuthCheck();
 
-  return <>
-    <GlobalStyle />
-    <Switch>
-      <Route exact path={routes.root}><Home /></Route>
-      <Route path={routes.auth} component={AuthForm} />
-      <Route path={routes.profile} component={Profile} />
-      <Route path={routes.forum} component={Forum} />
+  return (
+    <>
+      <GlobalStyle />
+      <Switch>
+        <Route exact path={routes.root}>
+          <Home />
+        </Route>
+        <Route path={routes.auth} component={AuthForm} />
+        <Route path={routes.profile} component={Profile} />
+        <Route path={routes.forum} component={Forum} />
 
-      <Route exact path={routes.group} component={Group} />
-      <Route path={routes.createGroup}><CreateGroup /></Route>
-      <Route path={routes.editGroup + '/:id'}><EditGroup /></Route>
+        <Route exact path={routes.group} component={Group} />
+        <Route path={routes.createGroup}>
+          <CreateGroup />
+        </Route>
+        <Route path={routes.editGroup + '/:id'}>
+          <EditGroup />
+        </Route>
 
-      <Route exact path={routes.players} component={Players} />
-      <Route path={routes.editPlayer + '/:id'}><EditPlayer /></Route>
-      <Route path={routes.createPlayer}><CreatePlayer /></Route>
+        <Route exact path={routes.players} component={Players} />
+        <Route path={routes.editPlayer + '/:id'}>
+          <EditPlayer />
+        </Route>
+        <Route path={routes.createPlayer}>
+          <CreatePlayer />
+        </Route>
 
-      <Route exact path={routes.person} component={Person} />
-      <Route path={routes.editPerson + '/:id'}><EditPerson /></Route>
+        <Route exact path={routes.person} component={Person} />
+        <Route path={routes.editPerson + '/:id'}>
+          <EditPerson />
+        </Route>
 
-      <Route exact path={routes.faction} ><Faction /></Route>
-      <Route path={routes.createFaction}><CreateFaction /></Route>
-      <Route path={routes.editFaction + '/:id'}><EditFaction /></Route>
+        <Route exact path={routes.faction}>
+          <Faction />
+        </Route>
+        <Route path={routes.createFaction}>
+          <CreateFaction />
+        </Route>
+        <Route path={routes.editFaction + '/:id'}>
+          <EditFaction />
+        </Route>
 
-      <Route exact path={routes.adminLevel} ><AdminLevel /></Route>
-      <Route path={routes.createAdminLevel}><CreateAdminLevel /></Route>
-      <Route path={routes.editAdminLevel + '/:id'}><EditAdminLevel /></Route>
+        <Route exact path={routes.adminLevel}>
+          <AdminLevel />
+        </Route>
+        <Route path={routes.createAdminLevel}>
+          <CreateAdminLevel />
+        </Route>
+        <Route path={routes.editAdminLevel + '/:id'}>
+          <EditAdminLevel />
+        </Route>
 
-      <Route exact path={routes.log}><LogPage /></Route>
+        <Route exact path={routes.log}>
+          <LogPage />
+        </Route>
 
-      <Route path={routes.testRoom}><TestRoom/></Route>
+        <Route path={routes.testRoom}>
+          <TestRoom />
+        </Route>
 
-      <Redirect to={routes.root} />
-    </Switch>
-    <NotificationTray />
-  </>;
+        <Redirect to={routes.root} />
+      </Switch>
+      <NotificationTray />
+    </>
+  );
 });
 
 function useAuthCheck() {
@@ -84,4 +110,8 @@ function useAuthCheck() {
   }, [history, isAuthorized]);
 }
 
-export default () => <StoreProvider><App /></StoreProvider>;
+export default () => (
+  <StoreProvider>
+    <App />
+  </StoreProvider>
+);

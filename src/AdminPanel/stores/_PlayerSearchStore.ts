@@ -2,7 +2,6 @@ import {Player, SearchStore} from 'AdminPanel/types';
 import {getPlayersFilterBy} from 'AdminPanel/services';
 import {handlerFetchError} from 'AdminPanel/utils/handlerFactory';
 
-
 export const createPlayersSearchStore = (): SearchStore<Player> => ({
   searchResult: [],
   maxPage: 1,
@@ -32,5 +31,4 @@ export const createPlayersSearchStore = (): SearchStore<Player> => ({
   },
 });
 
-
-export type TPlayerSearchStore = ReturnType<typeof createPlayersSearchStore>
+export type TPlayerSearchStore = ReturnType<typeof createPlayersSearchStore>;

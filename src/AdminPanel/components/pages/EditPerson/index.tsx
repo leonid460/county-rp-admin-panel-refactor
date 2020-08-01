@@ -15,8 +15,10 @@ import {Faction} from 'AdminPanel/types';
 import {AdminLevel} from 'AdminPanel/types';
 import {getFactionFilterBy} from 'AdminPanel/services';
 import {getAdminLevelFilterBy} from 'AdminPanel/services';
-import {handlerFactory, handlerFetchError} from 'AdminPanel/utils/handlerFactory';
-
+import {
+  handlerFactory,
+  handlerFetchError,
+} from 'AdminPanel/utils/handlerFactory';
 
 const BlueButtonWithMargin = styled(BlueButton)`
   margin-left: 10px;
@@ -47,7 +49,9 @@ export default () => {
   const history = useHistory();
   const prevLocation = routes.person;
 
-  const onChangeIdFactory = (setId: React.Dispatch<React.SetStateAction<string>>) => {
+  const onChangeIdFactory = (
+    setId: React.Dispatch<React.SetStateAction<string>>
+  ) => {
     return (event: React.ChangeEvent<HTMLSelectElement>) => {
       setId(event.target.value);
     };
@@ -58,14 +62,15 @@ export default () => {
   const onAdminLevelIdChange = onChangeIdFactory(setAdminLevelId);
 
   const handleEdit = handlerFactory(
-      () => editPerson({
+    () =>
+      editPerson({
         ...person,
         groupId,
         name: personName,
         factionId,
         adminLevelId,
       }),
-      () => history.push(prevLocation)
+    () => history.push(prevLocation)
   );
 
   useEffect(() => {
@@ -76,9 +81,15 @@ export default () => {
         const levelsSearchResult = await getAdminLevelFilterBy();
         const groupsSearchResult = await getGroupsFilterBy();
 
-        const group = groupsSearchResult.items.find(item => item.id === person.groupId);
-        const faction = factionsSearchResult.items.find(item => item.id === person.factionId);
-        const adminLevel = levelsSearchResult.items.find(item => item.id === person.adminLevelId);
+        const group = groupsSearchResult.items.find(
+          (item) => item.id === person.groupId
+        );
+        const faction = factionsSearchResult.items.find(
+          (item) => item.id === person.factionId
+        );
+        const adminLevel = levelsSearchResult.items.find(
+          (item) => item.id === person.adminLevelId
+        );
 
         setPerson(person);
         setPersonName(person.name);
@@ -98,7 +109,7 @@ export default () => {
 
   return (
     <EditPage
-      pageName='Редактировать'
+      pageName="Редактировать"
       inputRows={[
         {
           name: 'Имя',
@@ -106,46 +117,64 @@ export default () => {
         },
         {
           name: 'Группа',
-          innerElement: <select value={groupId} onChange={onGroupIdChange} onBlur={onGroupIdChange}>
-            <option value={'-'}>-</option>
-            {
-              groups.map((group, key) => (
+          innerElement: (
+            <select
+              value={groupId}
+              onChange={onGroupIdChange}
+              onBlur={onGroupIdChange}
+            >
+              <option value={'-'}>-</option>
+              {groups.map((group, key) => (
                 <option key={key} value={group.id}>
                   {`${group.id} : ${group.name}`}
                 </option>
-              ))
-            }
-          </select>,
+              ))}
+            </select>
+          ),
         },
         {
           name: 'Фракция',
-          innerElement: <select value={factionId} onChange={onFactionIdChange} onBlur={onFactionIdChange}>
-            <option value={'-'}>-</option>
-            {
-              factions.map((faction, key) => (
+          innerElement: (
+            <select
+              value={factionId}
+              onChange={onFactionIdChange}
+              onBlur={onFactionIdChange}
+            >
+              <option value={'-'}>-</option>
+              {factions.map((faction, key) => (
                 <option key={key} value={faction.id}>
                   {`${faction.id} : ${faction.name}`}
                 </option>
-              ))
-            }
-          </select>,
+              ))}
+            </select>
+          ),
         },
         {
           name: 'Админ уровень',
-          innerElement: <select value={adminLevelId} onChange={onAdminLevelIdChange} onBlur={onAdminLevelIdChange}>
-            <option value={'-'}>-</option>
-            {
-              adminLevels.map((level, key) => (
+          innerElement: (
+            <select
+              value={adminLevelId}
+              onChange={onAdminLevelIdChange}
+              onBlur={onAdminLevelIdChange}
+            >
+              <option value={'-'}>-</option>
+              {adminLevels.map((level, key) => (
                 <option key={key} value={level.id}>
                   {`${level.id} : ${level.name}`}
                 </option>
-              ))
-            }
-          </select>,
+              ))}
+            </select>
+          ),
         },
         {
           name: 'Лидер',
-          innerElement: <Checkbox checked={isLeader} id='rights' handleCheck={() => setIsLeader(!isLeader)} />,
+          innerElement: (
+            <Checkbox
+              checked={isLeader}
+              id="rights"
+              handleCheck={() => setIsLeader(!isLeader)}
+            />
+          ),
         },
       ]}
       buttons={

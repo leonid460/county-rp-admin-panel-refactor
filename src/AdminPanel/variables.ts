@@ -6,8 +6,6 @@ export const colors = {
   blue: '#0653c0',
 };
 
-export const zIndex = {
-
-};
+export const zIndex = {};
 
 export const pagePadding = '50px';

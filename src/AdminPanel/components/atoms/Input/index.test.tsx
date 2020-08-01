@@ -2,7 +2,6 @@ import React from 'react';
 import Input, {InputProps} from 'AdminPanel/components/atoms/Input';
 import {mount} from 'enzyme';
 
-
 const inputProps: InputProps = {
   type: 'text',
   value: 'test',
@@ -11,7 +10,6 @@ const inputProps: InputProps = {
   },
   color: '#000000',
 };
-
 
 describe('Input', () => {
   it('accepts input props', () => {

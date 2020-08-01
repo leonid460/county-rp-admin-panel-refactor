@@ -8,8 +8,10 @@ import Checkbox from 'AdminPanel/components/molecules/Checkbox';
 import {editAdminLevel} from 'AdminPanel/services';
 import {getAdminLevel} from 'AdminPanel/services';
 import {routes} from 'AdminPanel/routes';
-import {handlerFactory, handlerFetchError} from 'AdminPanel/utils/handlerFactory';
-
+import {
+  handlerFactory,
+  handlerFetchError,
+} from 'AdminPanel/utils/handlerFactory';
 
 const BlueButtonWithMargin = styled(BlueButton)`
   margin-left: 10px;
@@ -26,12 +28,13 @@ export default () => {
   const prevLocation = routes.adminLevel;
 
   const handleEdit = handlerFactory(
-      () => editAdminLevel(id, {
+    () =>
+      editAdminLevel(id, {
         id: adminLevelId,
         name: adminLevelName,
         ban,
       }),
-      () => history.push(prevLocation)
+    () => history.push(prevLocation)
   );
 
   useEffect(() => {
@@ -52,28 +55,38 @@ export default () => {
 
   return (
     <EditPage
-      pageName='Редактировать'
+      pageName="Редактировать"
       inputRows={[
         {
           name: 'ID',
-          innerElement: <Input value={adminLevelId} setValue={setAdminLevelId} />,
+          innerElement: (
+            <Input value={adminLevelId} setValue={setAdminLevelId} />
+          ),
         },
         {
           name: 'Название',
-          innerElement: <Input value={adminLevelName} setValue={setAdminLevelName} />,
+          innerElement: (
+            <Input value={adminLevelName} setValue={setAdminLevelName} />
+          ),
         },
         {
           name: 'Бан',
-          innerElement: <Checkbox checked={ban} id='rights' handleCheck={() => setBan(!ban)} />,
+          innerElement: (
+            <Checkbox
+              checked={ban}
+              id="rights"
+              handleCheck={() => setBan(!ban)}
+            />
+          ),
         },
       ]}
       buttons={
         <>
           <BlueButton as={NavLink} to={prevLocation}>
-              Отмена
+            Отмена
           </BlueButton>
           <BlueButtonWithMargin onClick={handleEdit}>
-              Сохранить
+            Сохранить
           </BlueButtonWithMargin>
         </>
       }

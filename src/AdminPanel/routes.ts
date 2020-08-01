@@ -20,7 +20,6 @@ const log = `${root}/log`;
 
 const testRoom = `${root}/testRoom`;
 
-
 export const routes = {
   root,
   auth,

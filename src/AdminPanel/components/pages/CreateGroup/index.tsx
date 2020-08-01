@@ -10,7 +10,6 @@ import {createGroup} from 'AdminPanel/services/group/createGroup';
 import {routes} from 'AdminPanel/routes';
 import {handlerFactory} from 'AdminPanel/utils/handlerFactory';
 
-
 const BlueButtonWithMargin = styled(BlueButton)`
   margin-left: 10px;
 `;
@@ -24,13 +23,13 @@ export default () => {
   const prevLocation = routes.group;
 
   const handleCreate = handlerFactory(
-      () => createGroup(groupId, groupName, color),
-      () => history.push(prevLocation)
+    () => createGroup(groupId, groupName, color),
+    () => history.push(prevLocation)
   );
 
   return (
     <EditPage
-      pageName='Создать'
+      pageName="Создать"
       inputRows={[
         {
           name: 'ID',
@@ -42,23 +41,31 @@ export default () => {
         },
         {
           name: 'Цвет',
-          innerElement: <>
-            <Input value={color} setValue={setColor} color={color} />
-            <ColorPalette setColor={setColor} />
-          </>,
+          innerElement: (
+            <>
+              <Input value={color} setValue={setColor} color={color} />
+              <ColorPalette setColor={setColor} />
+            </>
+          ),
         },
         {
           name: 'Права На АдминПанель',
-          innerElement: <Checkbox checked={rights} id='rights' handleCheck={() => setRights(!rights)} />,
+          innerElement: (
+            <Checkbox
+              checked={rights}
+              id="rights"
+              handleCheck={() => setRights(!rights)}
+            />
+          ),
         },
       ]}
       buttons={
         <>
           <BlueButton as={NavLink} to={prevLocation}>
-              Отмена
+            Отмена
           </BlueButton>
           <BlueButtonWithMargin onClick={handleCreate}>
-              Создать
+            Создать
           </BlueButtonWithMargin>
         </>
       }

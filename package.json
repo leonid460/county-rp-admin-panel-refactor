@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server --mode=development --config webpack.config.js --hot --open",
+    "start": "webpack-dev-server --mode=development --config webpack.config.js --hot",
     "build": "webpack --config webpack.config.js --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -51,11 +51,13 @@
     "eslint": "^7.6.0",
     "eslint-config-google": "^0.14.0",
     "eslint-loader": "^4.0.2",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.5",
     "file-loader": "^6.0.0",
     "fork-ts-checker-webpack-plugin": "^5.0.13",
     "html-webpack-plugin": "^4.3.0",
     "jest-styled-components": "^7.0.2",
+    "prettier": "2.0.5",
     "react-dev-utils": "^10.2.1",
     "react-test-renderer": "^16.13.1",
     "source-map-loader": "^1.0.1",

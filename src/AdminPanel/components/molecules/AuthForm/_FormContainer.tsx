@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
-
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  
+
   width: 500px;
   height: 500px;
   border-radius: 1%;
@@ -18,6 +17,5 @@ const FormContainer = styled.form`
 
   animation: slide-up 0.4s ease;
 `;
-
 
 export default FormContainer;

@@ -5,16 +5,15 @@ import {mount} from 'enzyme';
 import 'jest-styled-components';
 import {colors} from 'AdminPanel/variables';
 
-
 describe('Testing <Checkbox />', () => {
   const checkedProps = {
-    handleCheck: () => { },
+    handleCheck: () => {},
     id: 'test',
     checked: true,
   };
 
   const uncheckedProps = {
-    handleCheck: () => { },
+    handleCheck: () => {},
     id: 'test',
     checked: false,
   };

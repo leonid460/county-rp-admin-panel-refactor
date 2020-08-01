@@ -1,6 +1,5 @@
 import {AdminLevel} from 'AdminPanel/types';
 
-
 export async function getAdminLevel(id: string = ''): Promise<AdminLevel> {
   const apiUrl = process.env.REACT_APP_API_URL;
   const url = `${apiUrl}AdminLevel/${id}`;

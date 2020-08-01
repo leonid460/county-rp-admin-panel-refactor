@@ -11,8 +11,10 @@ import {editGroup} from 'AdminPanel/services';
 import {getGroup} from 'AdminPanel/services';
 import {deleteGroup} from 'AdminPanel/services';
 import {routes} from 'AdminPanel/routes';
-import {handlerFactory, handlerFetchError} from 'AdminPanel/utils/handlerFactory';
-
+import {
+  handlerFactory,
+  handlerFetchError,
+} from 'AdminPanel/utils/handlerFactory';
 
 const StyledBlueButton = styled(BlueButton)`
   margin-left: 10px;
@@ -32,13 +34,13 @@ export default () => {
   const prevLocation = routes.group;
 
   const editHandler = handlerFactory(
-      () => editGroup(oldId, groupId, groupName, color),
-      () => history.push(prevLocation)
+    () => editGroup(oldId, groupId, groupName, color),
+    () => history.push(prevLocation)
   );
 
   const deleteHandler = handlerFactory(
-      () => deleteGroup(oldId),
-      () => history.push(prevLocation)
+    () => deleteGroup(oldId),
+    () => history.push(prevLocation)
   );
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export default () => {
 
         setGroupId(fetchResult.id);
         setGroupName(fetchResult.name);
-        setColor('#'+fetchResult.color);
+        setColor('#' + fetchResult.color);
       } catch (error) {
         console.log(error);
         handlerFetchError(error);
@@ -58,7 +60,7 @@ export default () => {
 
   return (
     <EditPage
-      pageName='Редактировать'
+      pageName="Редактировать"
       inputRows={[
         {
           name: 'ID',
@@ -70,14 +72,22 @@ export default () => {
         },
         {
           name: 'Цвет',
-          innerElement: <>
-            <Input value={color} setValue={setColor} color={color}/>
-            <ColorPalette setColor={setColor} />
-          </>,
+          innerElement: (
+            <>
+              <Input value={color} setValue={setColor} color={color} />
+              <ColorPalette setColor={setColor} />
+            </>
+          ),
         },
         {
           name: 'Права На АдминПанель',
-          innerElement: <Checkbox checked={rights} id='rights' handleCheck={() => setRights(!rights)} />,
+          innerElement: (
+            <Checkbox
+              checked={rights}
+              id="rights"
+              handleCheck={() => setRights(!rights)}
+            />
+          ),
         },
       ]}
       buttons={
@@ -86,13 +96,9 @@ export default () => {
             Отмена
           </BlueButton>
 
-          <StyledWhiteButton onClick={deleteHandler}>
-            Удалить
-          </StyledWhiteButton>
+          <StyledWhiteButton onClick={deleteHandler}>Удалить</StyledWhiteButton>
 
-          <StyledBlueButton onClick={editHandler}>
-            Сохранить
-          </StyledBlueButton>
+          <StyledBlueButton onClick={editHandler}>Сохранить</StyledBlueButton>
         </>
       }
     />

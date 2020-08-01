@@ -84,5 +84,4 @@ export const createPlayerInfoStore = () => ({
   },
 });
 
-
-export type TPlayerInfoStore = ReturnType<typeof createPlayerInfoStore>
+export type TPlayerInfoStore = ReturnType<typeof createPlayerInfoStore>;

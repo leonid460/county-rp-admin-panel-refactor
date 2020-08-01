@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const TableRow = styled.tr`
   height: 65px;
 
@@ -10,6 +9,5 @@ const TableRow = styled.tr`
 
   animation: slide-down 0.4s ease;
 `;
-
 
 export default TableRow;

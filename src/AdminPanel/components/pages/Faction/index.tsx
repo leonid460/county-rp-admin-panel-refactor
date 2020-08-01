@@ -8,7 +8,6 @@ import {routes} from 'AdminPanel/routes';
 import {Faction} from 'AdminPanel/types';
 import {handlerFetchError} from 'AdminPanel/utils/handlerFactory';
 
-
 const FactionPage = () => {
   const [factionId, setFactionId] = useState('');
   const [factionName, setFactionName] = useState('');
@@ -18,7 +17,11 @@ const FactionPage = () => {
 
   const handleSearch = async (numberOfPage: number) => {
     try {
-      const response = await getFactionFilterBy(numberOfPage, factionId, factionName);
+      const response = await getFactionFilterBy(
+        numberOfPage,
+        factionId,
+        factionName
+      );
 
       setFactions(response.items);
       setMaxPage(response.maxPage);
@@ -31,7 +34,9 @@ const FactionPage = () => {
   return (
     <CategoryPage
       topButtons={
-        <BlueButton as={NavLink} to={routes.createFaction}>Создать</BlueButton>
+        <BlueButton as={NavLink} to={routes.createFaction}>
+          Создать
+        </BlueButton>
       }
       inputRows={[
         {
@@ -40,15 +45,19 @@ const FactionPage = () => {
         },
         {
           name: 'Имя',
-          innerComponent: <Input value={factionName} setValue={setFactionName} />,
+          innerComponent: (
+            <Input value={factionName} setValue={setFactionName} />
+          ),
         },
       ]}
       handleSearch={handleSearch}
       searchTableProps={{
         headers: ['ID', 'Имя', 'Тип'],
-        searchResultsItems: factions.map((faction) => (
-          [faction.id, faction.name, faction.type.toString()]
-        )),
+        searchResultsItems: factions.map((faction) => [
+          faction.id,
+          faction.name,
+          faction.type.toString(),
+        ]),
         editRoute: routes.editFaction,
         maxPage,
         pageNumber,
@@ -56,6 +65,5 @@ const FactionPage = () => {
     />
   );
 };
-
 
 export default FactionPage;

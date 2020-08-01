@@ -7,13 +7,10 @@ function hashCode(str: string) {
 }
 
 function intToRGB(integerNum: number) {
-  const c = (integerNum & 0x00FFFFFF)
-      .toString(16)
-      .toUpperCase();
+  const c = (integerNum & 0x00ffffff).toString(16).toUpperCase();
 
   return '00000'.substring(0, 6 - c.length) + c;
 }
-
 
 export function makeColorFromString(str: string) {
   return intToRGB(hashCode(str));

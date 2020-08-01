@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -11,6 +10,5 @@ const Container = styled.div`
   box-sizing: border-box;
   padding: 50px;
 `;
-
 
 export default Container;

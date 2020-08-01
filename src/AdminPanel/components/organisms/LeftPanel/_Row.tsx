@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
 
-
 const activeClassName = 'nav-item-active';
 
 const SidePanelRow = styled(NavLink).attrs({
@@ -15,7 +14,7 @@ const SidePanelRow = styled(NavLink).attrs({
   color: white;
   height: 45px;
 
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -26,10 +25,10 @@ const SidePanelRow = styled(NavLink).attrs({
   cursor: pointer;
 
   &.${activeClassName} {
-    border-left: 5px solid #FFFFFF;
-    background:  rgb(73, 92, 172);
+    border-left: 5px solid #ffffff;
+    background: rgb(73, 92, 172);
 
-    animation: fade-in .3s ease;
+    animation: fade-in 0.3s ease;
 
     &:hover {
       background: #41539e;
@@ -37,10 +36,9 @@ const SidePanelRow = styled(NavLink).attrs({
   }
 
   &:hover {
-    background: #2A3799;
+    background: #2a3799;
   }
 `;
-
 
 // type SidePanelRowProps = {
 //   path: string

@@ -9,7 +9,6 @@ import {createAdminLevel} from 'AdminPanel/services';
 import {routes} from 'AdminPanel/routes';
 import {handlerFactory} from 'AdminPanel/utils/handlerFactory';
 
-
 const BlueButtonWithMargin = styled(BlueButton)`
   margin-left: 10px;
 `;
@@ -23,41 +22,51 @@ export default () => {
   const prevLocation = routes.adminLevel;
 
   const handleCreate = handlerFactory(
-      () => createAdminLevel({
+    () =>
+      createAdminLevel({
         id: adminLevelId,
         name: adminLevelName,
         ban,
       }),
-      () => {
-        history.push(prevLocation);
-      }
+    () => {
+      history.push(prevLocation);
+    }
   );
-
 
   return (
     <EditPage
-      pageName='Создать'
+      pageName="Создать"
       inputRows={[
         {
           name: 'ID',
-          innerElement: <Input value={adminLevelId} setValue={setAdminLevelId} />,
+          innerElement: (
+            <Input value={adminLevelId} setValue={setAdminLevelId} />
+          ),
         },
         {
           name: 'Название',
-          innerElement: <Input value={adminLevelName} setValue={setAdminLevel} />,
+          innerElement: (
+            <Input value={adminLevelName} setValue={setAdminLevel} />
+          ),
         },
         {
           name: 'Бан',
-          innerElement: <Checkbox checked={ban} id='rights' handleCheck={() => setBan(!ban)} />,
+          innerElement: (
+            <Checkbox
+              checked={ban}
+              id="rights"
+              handleCheck={() => setBan(!ban)}
+            />
+          ),
         },
       ]}
       buttons={
         <>
           <BlueButton as={NavLink} to={prevLocation}>
-              Отмена
+            Отмена
           </BlueButton>
           <BlueButtonWithMargin onClick={handleCreate}>
-              Создать
+            Создать
           </BlueButtonWithMargin>
         </>
       }

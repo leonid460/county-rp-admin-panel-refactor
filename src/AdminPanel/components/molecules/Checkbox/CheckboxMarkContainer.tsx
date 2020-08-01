@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {colors} from 'AdminPanel/variables';
 
-
 const CheckboxMarkContainer = styled.label`
   display: inline-block;
 
@@ -19,6 +18,5 @@ const CheckboxMarkContainer = styled.label`
 
   cursor: pointer;
 `;
-
 
 export default CheckboxMarkContainer;

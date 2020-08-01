@@ -48,12 +48,8 @@ module.exports = {
         use: jsLoaders(),
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
+        test: /\.(png|jpeg|jpg|gif)$/i,
+        loader: 'file-loader'
       },
     ],
   },
@@ -66,6 +62,7 @@ module.exports = {
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/'
   },
   devtool: isDev ? 'source-map' : false,
   devServer: {
@@ -80,7 +77,6 @@ module.exports = {
       console.log('Listening on: http://localhost:'+port);
     },
     overlay: {
-      warnings: true,
       errors: true
     },
     watchOptions:{

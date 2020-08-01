@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const Header3 = styled.h1`
   color: #4a4a4a;
   font-size: 18px;
@@ -8,6 +7,5 @@ const Header3 = styled.h1`
   margin-bottom: 20px;
   padding-left: 30px;
 `;
-
 
 export default Header3;

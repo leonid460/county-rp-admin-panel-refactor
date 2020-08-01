@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 
-
 const Portal = ({children}: { children: React.ReactNode }) => {
   const container = document.createElement('div');
 
@@ -14,11 +13,7 @@ const Portal = ({children}: { children: React.ReactNode }) => {
     };
   }, [container]);
 
-  return ReactDOM.createPortal(
-      children,
-      container
-  );
+  return ReactDOM.createPortal(children, container);
 };
-
 
 export default Portal;

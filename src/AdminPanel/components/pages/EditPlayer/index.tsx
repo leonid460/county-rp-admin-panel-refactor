@@ -9,8 +9,10 @@ import {editPlayer} from 'AdminPanel/services';
 import {getGroupsFilterBy} from 'AdminPanel/services';
 import {routes} from 'AdminPanel/routes';
 import {Group} from 'AdminPanel/types';
-import {handlerFactory, handlerFetchError} from 'AdminPanel/utils/handlerFactory';
-
+import {
+  handlerFactory,
+  handlerFetchError,
+} from 'AdminPanel/utils/handlerFactory';
 
 const BlueButtonWithMargin = styled(BlueButton)`
   margin-left: 10px;
@@ -26,8 +28,8 @@ export default () => {
   const prevLocation = routes.players;
 
   const handleEdit = handlerFactory(
-      () => editPlayer(id, username, password, groupId),
-      () => history.push(prevLocation)
+    () => editPlayer(id, username, password, groupId),
+    () => history.push(prevLocation)
   );
 
   const fetchGroups = async () => {
@@ -60,10 +62,9 @@ export default () => {
     })();
   }, [id]);
 
-
   return (
     <EditPage
-      pageName='Редактировать'
+      pageName="Редактировать"
       inputRows={[
         {
           name: 'Логин  ',
@@ -75,14 +76,19 @@ export default () => {
         },
         {
           name: 'Группа',
-          innerElement: <select onBlur={(event) => {
-            setGroupId(event.target.value);
-          }}>
-            {
-              groups.map((group, key) => <option key={key} value={group.id}>{group.name}</option>)
-            }
-          </select>,
-
+          innerElement: (
+            <select
+              onBlur={(event) => {
+                setGroupId(event.target.value);
+              }}
+            >
+              {groups.map((group, key) => (
+                <option key={key} value={group.id}>
+                  {group.name}
+                </option>
+              ))}
+            </select>
+          ),
         },
       ]}
       buttons={

@@ -2,7 +2,6 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import styled from 'styled-components';
 
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -10,7 +9,6 @@ const Wrapper = styled.div`
   align-items: center;
   height: 100vh;
 `;
-
 
 const Background = styled.div`
   position: fixed;
@@ -32,11 +30,10 @@ const Window = styled.div`
   animation: slide-up 0.4s ease;
 `;
 
-
 type ModalProps = {
-  children: React.ReactNode
-  prevLocation: string
-}
+  children: React.ReactNode;
+  prevLocation: string;
+};
 
 export default ({children, prevLocation}: ModalProps) => {
   const body = document.getElementsByTagName('BODY')[0] as HTMLElement;
@@ -50,11 +47,8 @@ export default ({children, prevLocation}: ModalProps) => {
 
   return (
     <Wrapper>
-      <Background onClick={closeHandler}>
-      </Background>
-      <Window>
-        {children}
-      </Window>
+      <Background onClick={closeHandler}></Background>
+      <Window>{children}</Window>
     </Wrapper>
   );
 };

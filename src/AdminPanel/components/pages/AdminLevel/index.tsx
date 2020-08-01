@@ -8,7 +8,6 @@ import {routes} from 'AdminPanel/routes';
 import {AdminLevel} from 'AdminPanel/types';
 import {handlerFetchError} from 'AdminPanel/utils/handlerFactory';
 
-
 const AdminLevelPage = () => {
   const [adminLevelId, setAdminLevelId] = useState('');
   const [adminLevelName, setAdminLevelName] = useState('');
@@ -18,7 +17,11 @@ const AdminLevelPage = () => {
 
   const handleSearch = async (numberOfPage: number) => {
     try {
-      const response = await getAdminLevelFilterBy(numberOfPage, adminLevelId, adminLevelName);
+      const response = await getAdminLevelFilterBy(
+        numberOfPage,
+        adminLevelId,
+        adminLevelName
+      );
 
       setAdminLevels(response.items);
       setMaxPage(response.maxPage);
@@ -31,24 +34,32 @@ const AdminLevelPage = () => {
   return (
     <CategoryPage
       topButtons={
-        <BlueButton as={NavLink} to={routes.createAdminLevel}>Создать</BlueButton>
+        <BlueButton as={NavLink} to={routes.createAdminLevel}>
+          Создать
+        </BlueButton>
       }
       inputRows={[
         {
           name: 'ID',
-          innerComponent: <Input value={adminLevelId} setValue={setAdminLevelId} />,
+          innerComponent: (
+            <Input value={adminLevelId} setValue={setAdminLevelId} />
+          ),
         },
         {
           name: 'Имя',
-          innerComponent: <Input value={adminLevelName} setValue={setAdminLevelName} />,
+          innerComponent: (
+            <Input value={adminLevelName} setValue={setAdminLevelName} />
+          ),
         },
       ]}
       handleSearch={handleSearch}
       searchTableProps={{
         headers: ['ID', 'Имя', 'Бан'],
-        searchResultsItems: adminLevels.map((level) => (
-          [level.id, level.name, level.ban.toString()]
-        )),
+        searchResultsItems: adminLevels.map((level) => [
+          level.id,
+          level.name,
+          level.ban.toString(),
+        ]),
         editRoute: routes.editAdminLevel,
         maxPage,
         pageNumber,
@@ -56,6 +67,5 @@ const AdminLevelPage = () => {
     />
   );
 };
-
 
 export default AdminLevelPage;

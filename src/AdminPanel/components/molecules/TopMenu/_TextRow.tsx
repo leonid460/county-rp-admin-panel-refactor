@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {colors} from 'AdminPanel/variables';
 
-
 const TextRow = styled.div`
   color: ${colors.blue};
   font-size: 16px;
@@ -11,6 +10,5 @@ const TextRow = styled.div`
 
   text-decoration: none;
 `;
-
 
 export default TextRow;

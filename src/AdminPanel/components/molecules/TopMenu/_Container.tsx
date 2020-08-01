@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const TopMenuContainer = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -13,6 +12,5 @@ const TopMenuContainer = styled.div`
 
   background-color: white;
 `;
-
 
 export default TopMenuContainer;

@@ -3,4 +3,4 @@ export type Player = {
   login: string;
   password: string;
   groupId: string;
-}
+};

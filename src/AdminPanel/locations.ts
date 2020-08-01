@@ -1,10 +1,10 @@
 import {routes} from 'AdminPanel/routes';
 
 type Location = {
-  description: string
-  name: string
-  route: string
-}
+  description: string;
+  name: string;
+  route: string;
+};
 
 export const locations: Location[] = [
   {

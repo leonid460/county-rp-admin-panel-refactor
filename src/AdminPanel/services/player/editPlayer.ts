@@ -1,4 +1,9 @@
-export async function editPlayer(id: string, login: string, password: string, groupId: string) {
+export async function editPlayer(
+  id: string,
+  login: string,
+  password: string,
+  groupId: string
+) {
   const apiUrl = process.env.REACT_APP_API_URL;
   const url = `${apiUrl}api/Admin/Player/${id}`;
 

@@ -1,7 +1,6 @@
 type EventsStorage = {
   [key: string]: Function[];
-}
-
+};
 
 class EventEmitter {
   events: EventsStorage;
@@ -11,14 +10,16 @@ class EventEmitter {
   }
 
   subscribe<T>(eventName: string, fn: (data: T) => void) {
-    if (!this.events[eventName] ) {
+    if (!this.events[eventName]) {
       this.events[eventName] = [];
     }
 
     this.events[eventName].push(fn);
 
     return () => {
-      this.events[eventName] = this.events[eventName].filter(eventFn => fn !== eventFn);
+      this.events[eventName] = this.events[eventName].filter(
+        (eventFn) => fn !== eventFn
+      );
     };
   }
 
@@ -26,12 +27,11 @@ class EventEmitter {
     const event = this.events[eventName];
 
     if (event) {
-      event.forEach(fn => {
+      event.forEach((fn) => {
         fn.call(null, data);
       });
     }
   }
 }
-
 
 export const eventEmitter = new EventEmitter();

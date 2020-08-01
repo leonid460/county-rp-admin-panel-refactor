@@ -10,7 +10,6 @@ import HorizontalRule from 'AdminPanel/components/atoms/HorizontalRule';
 import {Table as SearchResultsTable} from './__styled/Table';
 import Base from 'AdminPanel/components/templates/Base';
 
-
 type CategoryPageProps = {
   topButtons?: React.ReactNode;
   inputRows: {
@@ -26,15 +25,11 @@ type CategoryPageProps = {
     goToNextPage: () => void;
     goToPrevPage: () => void;
     search: () => void;
-  }
-}
+  };
+};
 
 function CategoryPage(props: CategoryPageProps) {
-  const {
-    topButtons,
-    inputRows,
-    searchTableProps,
-  } = props;
+  const {topButtons, inputRows, searchTableProps} = props;
 
   return (
     <Base>
@@ -42,30 +37,33 @@ function CategoryPage(props: CategoryPageProps) {
         {topButtons}
         <Header3>Фильтр</Header3>
         <FormContainer>
-          {
-            inputRows.map(({name, innerComponent}, key) => (
-              <FormRow name={name} key={key}>
-                {innerComponent}
-              </FormRow>
-            ))
-          }
+          {inputRows.map(({name, innerComponent}, key) => (
+            <FormRow name={name} key={key}>
+              {innerComponent}
+            </FormRow>
+          ))}
         </FormContainer>
         <SearchButton onClick={() => searchTableProps.search()}>
           Найти
         </SearchButton>
         <HorizontalRule />
-        <SearchResultsTable
-          {...searchTableProps}
-        />
+        <SearchResultsTable {...searchTableProps} />
         <ButtonsContainer>
-          <ArrowButton direction='back' onClick={searchTableProps.goToPrevPage} />
-          <span>{searchTableProps.currentPage}..{searchTableProps.maxPage}</span>
-          <ArrowButton direction='forward' onClick={searchTableProps.goToNextPage} />
+          <ArrowButton
+            direction="back"
+            onClick={searchTableProps.goToPrevPage}
+          />
+          <span>
+            {searchTableProps.currentPage}..{searchTableProps.maxPage}
+          </span>
+          <ArrowButton
+            direction="forward"
+            onClick={searchTableProps.goToNextPage}
+          />
         </ButtonsContainer>
       </Container>
     </Base>
   );
 }
-
 
 export default CategoryPage;

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const TableWrapper = styled.div`
   border-radius: 10px;
   width: 100%;

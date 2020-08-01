@@ -2,14 +2,17 @@ import {createAdminLevel as prodCreateAdminLevel} from './createAdminLevel';
 import {deleteAdminLevel as prodDeleteAdminLevel} from './deleteAdminLevel';
 import {editAdminLevel as prodEditAdminLevel} from './editAdminLevel';
 import {getAdminLevel as prodGetAdminLevel} from './getAdminLevel';
-import {getAdminLevelFilterBy as prodGetAdminLevelFilterBy} from './getAdminLevelFilterBy';
+import {
+  getAdminLevelFilterBy as prodGetAdminLevelFilterBy,
+} from './getAdminLevelFilterBy';
 
 import {createAdminLevel as devCreateAdminLevel} from './fake/createAdminLevel';
 import {deleteAdminLevel as devDeleteAdminLevel} from './fake/deleteAdminLevel';
 import {editAdminLevel as devEditAdminLevel} from './fake/editAdminLevel';
 import {getAdminLevel as devGetAdminLevel} from './fake/getAdminLevel';
-import {getAdminLevelFilterBy as devGetAdminLevelFilterBy} from './fake/getAdminLevelFilterBy';
-
+import {
+  getAdminLevelFilterBy as devGetAdminLevelFilterBy,
+} from './fake/getAdminLevelFilterBy';
 
 export const {
   createAdminLevel,

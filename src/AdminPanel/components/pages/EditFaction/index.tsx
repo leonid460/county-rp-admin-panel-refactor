@@ -10,8 +10,10 @@ import {getFaction} from 'AdminPanel/services';
 import {editFaction} from 'AdminPanel/services';
 import {deleteFaction} from 'AdminPanel/services';
 import {routes} from 'AdminPanel/routes';
-import {handlerFactory, handlerFetchError} from 'AdminPanel/utils/handlerFactory';
-
+import {
+  handlerFactory,
+  handlerFetchError,
+} from 'AdminPanel/utils/handlerFactory';
 
 const BlueButtonWithMargin = styled(BlueButton)`
   margin-left: 10px;
@@ -34,19 +36,20 @@ export default () => {
   const prevLocation = routes.faction;
 
   const handleEdit = handlerFactory(
-      () => editFaction(id, {
+    () =>
+      editFaction(id, {
         id: factionId,
         name: factionName,
         color: factionColor,
         ranks: factionRanks.split(','),
         type: factionType,
       }),
-      () => history.push(prevLocation)
+    () => history.push(prevLocation)
   );
 
   const handleDelete = handlerFactory(
-      () => deleteFaction(id),
-      () => history.push(prevLocation)
+    () => deleteFaction(id),
+    () => history.push(prevLocation)
   );
 
   useEffect(() => {
@@ -68,7 +71,7 @@ export default () => {
 
   return (
     <EditPage
-      pageName='Редактировать'
+      pageName="Редактировать"
       inputRows={[
         {
           name: 'ID',
@@ -80,7 +83,9 @@ export default () => {
         },
         {
           name: 'Ранги',
-          innerElement: <Input value={factionRanks} setValue={setFactionRanks} />,
+          innerElement: (
+            <Input value={factionRanks} setValue={setFactionRanks} />
+          ),
         },
         {
           name: 'Тип',
@@ -88,10 +93,16 @@ export default () => {
         },
         {
           name: 'Цвет',
-          innerElement: <>
-            <Input value={factionColor} setValue={setFactionColor} color={factionColor} />
-            <ColorPalette setColor={setFactionColor} />
-          </>,
+          innerElement: (
+            <>
+              <Input
+                value={factionColor}
+                setValue={setFactionColor}
+                color={factionColor}
+              />
+              <ColorPalette setColor={setFactionColor} />
+            </>
+          ),
         },
       ]}
       buttons={
@@ -100,9 +111,7 @@ export default () => {
             Отмена
           </BlueButton>
 
-          <StyledWhiteButton onClick={handleDelete}>
-            Удалить
-          </StyledWhiteButton>
+          <StyledWhiteButton onClick={handleDelete}>Удалить</StyledWhiteButton>
 
           <BlueButtonWithMargin onClick={handleEdit}>
             Сохранить

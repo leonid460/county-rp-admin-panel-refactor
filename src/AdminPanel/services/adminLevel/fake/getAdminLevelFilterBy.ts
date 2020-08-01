@@ -1,14 +1,17 @@
 import {AdminLevel} from 'AdminPanel/types';
 
-
 type SearchResult = {
   items: AdminLevel[];
   allAmount: number;
   page: number;
   maxPage: number;
-}
+};
 
-export async function getAdminLevelFilterBy(page: number = 1, id: string = '', name: string = ''): Promise<SearchResult> {
+export async function getAdminLevelFilterBy(
+  page: number = 1,
+  id: string = '',
+  name: string = ''
+): Promise<SearchResult> {
   const apiUrl = process.env.REACT_APP_API_URL;
   let url = `${apiUrl}AdminLevel?page=${page}`;
   url += id ? `&id=${id}` : '';

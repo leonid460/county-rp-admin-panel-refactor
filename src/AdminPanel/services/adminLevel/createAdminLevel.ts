@@ -1,6 +1,5 @@
 import {AdminLevel} from 'AdminPanel/types';
 
-
 export async function createAdminLevel(adminLevel: AdminLevel) {
   const apiUrl = process.env.REACT_APP_API_URL;
   const url = `${apiUrl}api/Admin/AdminLevel`;

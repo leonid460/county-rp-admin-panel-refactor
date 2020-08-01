@@ -7,7 +7,6 @@ import {getPlayersFilterBy} from 'AdminPanel/services';
 import {routes} from 'AdminPanel/routes';
 import {Player} from 'AdminPanel/types';
 
-
 const PlayersPage = () => {
   const [username, setUsername] = useState('');
   const [players, setPlayers] = useState<Player[]>([]);
@@ -29,7 +28,9 @@ const PlayersPage = () => {
   return (
     <CategoryPage
       topButtons={
-        <BlueButton as={NavLink} to={routes.createPlayer}>Создать</BlueButton>
+        <BlueButton as={NavLink} to={routes.createPlayer}>
+          Создать
+        </BlueButton>
       }
       inputRows={[
         {
@@ -40,7 +41,11 @@ const PlayersPage = () => {
       handleSearch={handleSearch}
       searchTableProps={{
         headers: ['ID', 'Логин', 'Группа'],
-        searchResultsItems: players.map((player) => [player.id.toString(), player.login, player.groupId]),
+        searchResultsItems: players.map((player) => [
+          player.id.toString(),
+          player.login,
+          player.groupId,
+        ]),
         editRoute: routes.editPlayer,
         maxPage,
         pageNumber,
@@ -48,6 +53,5 @@ const PlayersPage = () => {
     />
   );
 };
-
 
 export default PlayersPage;

@@ -1,6 +1,5 @@
 import {Person} from 'AdminPanel/types';
 
-
 export async function getPerson(id: string = '') {
   const apiUrl = process.env.REACT_APP_API_URL;
   const url = `${apiUrl}Person/${id}`;

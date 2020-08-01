@@ -18,14 +18,13 @@ type Person = {
   }[];
 };
 
-
 export const createProfileStore = () => ({
   isLoading: false,
   player: {
     id: NaN,
     login: '',
   },
-  persons: ([] as Person[]),
+  persons: [] as Person[],
 
   getProfile(login: string) {
     this.isLoading = true;
@@ -46,11 +45,13 @@ export const createProfileStore = () => ({
           this.player.id = profile.player.id;
           this.player.login = profile.player.login;
 
-          profile.persons.map((personItem: Person) => this.persons.push({
-            person: personItem.person,
-            faction: personItem.faction,
-            vehicles: personItem.vehicles,
-          }));
+          profile.persons.map((personItem: Person) =>
+            this.persons.push({
+              person: personItem.person,
+              faction: personItem.faction,
+              vehicles: personItem.vehicles,
+            })
+          );
         }
 
         this.isLoading = false;
@@ -61,5 +62,4 @@ export const createProfileStore = () => ({
   },
 });
 
-
-export type TProfileStore = ReturnType<typeof createProfileStore>
+export type TProfileStore = ReturnType<typeof createProfileStore>;

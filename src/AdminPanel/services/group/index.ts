@@ -10,7 +10,6 @@ import {getGroupsFilterBy as devGetGroupsFilterBy} from './fake/getGroupsFilterB
 import {editGroup as devEditGroup} from './fake/editGroup';
 import {getGroup as devGetGroup} from './fake/getGroup';
 
-
 export const {
   createGroup,
   deleteGroup,

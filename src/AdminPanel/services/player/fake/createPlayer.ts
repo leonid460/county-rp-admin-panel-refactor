@@ -1,4 +1,8 @@
-export async function createPlayer(login: string, password: string, groupId: string): Promise<number> {
+export async function createPlayer(
+  login: string,
+  password: string,
+  groupId: string
+): Promise<number> {
   const apiUrl = process.env.REACT_APP_API_URL;
   const url = `${apiUrl}Player`;
   const response = await fetch(url, {

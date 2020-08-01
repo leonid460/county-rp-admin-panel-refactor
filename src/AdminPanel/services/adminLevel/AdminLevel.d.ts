@@ -1,5 +1,5 @@
 export type AdminLevel = {
-  id: string
-  name: string
-  ban: boolean
-}
+  id: string;
+  name: string;
+  ban: boolean;
+};

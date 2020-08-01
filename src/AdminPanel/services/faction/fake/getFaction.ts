@@ -1,6 +1,5 @@
 import {Faction} from 'AdminPanel/types';
 
-
 export async function getFaction(id: string = '') {
   const apiUrl = process.env.REACT_APP_API_URL;
   const url = `${apiUrl}Faction/${id}`;

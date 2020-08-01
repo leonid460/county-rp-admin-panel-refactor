@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 import {colors} from 'AdminPanel/variables';
 
-
 const BlueButton = styled.button`
   padding: 13px 26px;
-  
+
   border: none;
   border-radius: 7px;
 
-  background: ${colors.blue};  
+  background: ${colors.blue};
   color: white;
   font-size: 15px;
   font-weight: bold;
@@ -20,6 +19,5 @@ const BlueButton = styled.button`
     background: ${colors.blueGradient};
   }
 `;
-
 
 export default BlueButton;

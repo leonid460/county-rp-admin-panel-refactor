@@ -3,11 +3,10 @@ import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import {colors} from 'AdminPanel/variables';
 
-
 const TileContainer = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   width: 435px;
   height: 221px;
 
@@ -27,9 +26,7 @@ const TileHeader = styled.h3`
   margin-bottom: 10px;
 `;
 
-const TileDescription = styled.span`
-
-`;
+const TileDescription = styled.span``;
 
 const TileButton = styled(NavLink)`
   margin-top: auto;
@@ -38,12 +35,11 @@ const TileButton = styled(NavLink)`
   color: ${colors.blue};
 `;
 
-
 type TileProps = {
-  name: string
-  description: string
-  to: string
-}
+  name: string;
+  description: string;
+  to: string;
+};
 
 export default ({name, description, to}: TileProps) => (
   <TileContainer>

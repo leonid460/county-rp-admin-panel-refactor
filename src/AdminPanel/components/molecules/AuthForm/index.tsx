@@ -9,7 +9,6 @@ import {useStore} from 'AdminPanel/stores';
 import {routes} from 'AdminPanel/routes';
 import {handlerFetchError} from 'AdminPanel/utils/handlerFactory';
 
-
 const AuthForm = observer(() => {
   const {playerInfoStore} = useStore();
   const [userName, setUserName] = useState('');
@@ -35,10 +34,9 @@ const AuthForm = observer(() => {
       <Header>Добро пожаловать!</Header>
       <Input value={userName} setValue={setUserName} />
       <Input type="password" value={password} setValue={setPassword} />
-      <Button as={'input'} type='submit' value='Войти'/>
-    </FormContainer >
+      <Button as={'input'} type="submit" value="Войти" />
+    </FormContainer>
   );
 });
-
 
 export default AuthForm;

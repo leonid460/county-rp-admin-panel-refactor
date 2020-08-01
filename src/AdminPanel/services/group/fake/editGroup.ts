@@ -1,4 +1,9 @@
-export async function editGroup(oldId: string, id: string, name: string, color: string) {
+export async function editGroup(
+  oldId: string,
+  id: string,
+  name: string,
+  color: string
+) {
   const apiUrl = process.env.REACT_APP_API_URL;
   const url = `${apiUrl}Group/${oldId}`;
 

@@ -1,6 +1,5 @@
 import {fromRGBtoHEX} from 'AdminPanel/utils/fromRGBtoHEX';
 
-
 describe('utils: test "fromRGBtoHEX"', () => {
   it('convert from RGB to HEX successfully', () => {
     expect(fromRGBtoHEX(127, 255, 212)).toBe('#7fffd4');

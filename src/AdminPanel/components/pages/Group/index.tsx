@@ -7,7 +7,6 @@ import {routes} from 'AdminPanel/routes';
 import {useStore} from 'AdminPanel/stores';
 import {observer} from 'mobx-react';
 
-
 const GroupPage = observer(() => {
   const [groupId, setGroupId] = useState('');
   const [groupName, setGroupName] = useState('');
@@ -16,7 +15,7 @@ const GroupPage = observer(() => {
   return (
     <CategoryPage
       topButtons={
-        <BlueButton as={NavLink} to='/admin/group/create' >
+        <BlueButton as={NavLink} to="/admin/group/create">
           Создать
         </BlueButton>
       }
@@ -32,7 +31,10 @@ const GroupPage = observer(() => {
       ]}
       searchTableProps={{
         headers: ['ID', 'Название'],
-        searchResultsItems: groupsSearchStore.searchResult.map(group => [group.id, group.name]),
+        searchResultsItems: groupsSearchStore.searchResult.map((group) => [
+          group.id,
+          group.name,
+        ]),
         editRoute: routes.editGroup,
         maxPage: groupsSearchStore.maxPage,
         currentPage: groupsSearchStore.currentPage,
@@ -45,6 +47,5 @@ const GroupPage = observer(() => {
     />
   );
 });
-
 
 export default GroupPage;

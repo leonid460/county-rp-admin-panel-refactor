@@ -12,9 +12,7 @@ const TableRow = styled.div`
   animation: slide-down 0.4s ease;
 `;
 
-const TableCell = styled.div`
-  
-`;
+const TableCell = styled.div``;
 
 const HeaderCell = styled(TableCell)`
   text-align: left;
@@ -24,7 +22,7 @@ const HeaderCell = styled(TableCell)`
 
 interface TableWrapperProps {
   columnsCount: number;
-  withEdit: 'true' | 'false'
+  withEdit: 'true' | 'false';
 }
 
 const TableWrapper = styled.div<TableWrapperProps>`
@@ -34,23 +32,29 @@ const TableWrapper = styled.div<TableWrapperProps>`
   padding: 10px 40px;
   box-sizing: border-box;
   background: white;
-  
+
   & > ${TableRow} > ${TableCell} {
-    ${props => props.withEdit === 'true' ? `
+    ${(props) =>
+    props.withEdit === 'true' ?
+      `
       width: calc((100% - 200px)/${props.columnsCount});
       
       &:last-child {
         width: 200px
       }
-    `: `
+    ` :
+      `
       width: calc(100% / ${props.columnsCount})px
     `}
   }
-  
+
   & > ${TableRow} > ${HeaderCell} {
-    ${props => props.withEdit === 'true' ? `
+    ${(props) =>
+    props.withEdit === 'true' ?
+      `
       width: calc((100% - 200px)/${props.columnsCount});
-    `: `
+    ` :
+      `
       width: calc(100% / ${props.columnsCount});
     `}
   }
@@ -62,35 +66,33 @@ interface ResultsTableProps {
   editRoute?: string;
 }
 
-export const Table = ({headers, searchResultsItems, editRoute}: ResultsTableProps) => (
-  <TableWrapper withEdit={editRoute ? 'true' : 'false'} columnsCount={headers.length}>
+export const Table = ({
+  headers,
+  searchResultsItems,
+  editRoute,
+}: ResultsTableProps) => (
+  <TableWrapper
+    withEdit={editRoute ? 'true' : 'false'}
+    columnsCount={headers.length}
+  >
     <TableRow>
-      {
-        headers.map((headerCellText, headerCellKey) => (
-          <HeaderCell key={headerCellKey}>
-            {headerCellText}
-          </HeaderCell>
-        ))
-      }
+      {headers.map((headerCellText, headerCellKey) => (
+        <HeaderCell key={headerCellKey}>{headerCellText}</HeaderCell>
+      ))}
     </TableRow>
-    {
-      searchResultsItems.map((rowCells, key) => (
-        <TableRow key={key}>
-          {
-            rowCells.map((cellData, cellKey) => (
-              <TableCell key={cellKey}>{cellData}</TableCell>
-            ))
-          }
-          {
-            editRoute &&
-            <TableCell>
-              <BlueButton as={NavLink} to={`${editRoute}/${rowCells[0]}`}>
-                  Редактировать
-              </BlueButton>
-            </TableCell>
-          }
-        </TableRow>
-      ))
-    }
+    {searchResultsItems.map((rowCells, key) => (
+      <TableRow key={key}>
+        {rowCells.map((cellData, cellKey) => (
+          <TableCell key={cellKey}>{cellData}</TableCell>
+        ))}
+        {editRoute && (
+          <TableCell>
+            <BlueButton as={NavLink} to={`${editRoute}/${rowCells[0]}`}>
+              Редактировать
+            </BlueButton>
+          </TableCell>
+        )}
+      </TableRow>
+    ))}
   </TableWrapper>
 );

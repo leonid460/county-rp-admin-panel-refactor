@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {invertColor} from 'AdminPanel/utils/invertColor';
 import {fromRGBtoHEX} from 'AdminPanel/utils/fromRGBtoHEX';
 
-
 const Container = styled.div`
   border: 1px solid #a0a0a0;
   border-radius: 4px;
@@ -18,10 +17,10 @@ const ColorBlock = styled.button<{ hexColor: string }>`
   border: none;
 
   &:focus {
-    outline: 2px solid ${props => invertColor(props.hexColor)};
+    outline: 2px solid ${(props) => invertColor(props.hexColor)};
   }
 
-  background: ${props => props.hexColor};
+  background: ${(props) => props.hexColor};
   cursor: pointer;
 `;
 
@@ -29,8 +28,13 @@ const Column = styled.div`
   display: inline-block;
 `;
 
-
-export default ({setColor, className}: { setColor: Function; className?: string }) => {
+export default ({
+  setColor,
+  className,
+}: {
+  setColor: Function;
+  className?: string;
+}) => {
   const baseColors = [
     [0, 0, 0],
     [255, 0, 0],
@@ -59,30 +63,23 @@ export default ({setColor, className}: { setColor: Function; className?: string 
     return gradations;
   };
 
-
   const handleClick = (R: number, G: number, B: number) => {
     setColor(fromRGBtoHEX(R, G, B));
   };
 
-
   return (
     <Container className={className}>
-      {
-        baseColors.map((item, columnKey) => (
-          <Column key={columnKey}>
-            {
-              getGradation(item[0], item[1], item[2]).map((color, key) => (
-                <ColorBlock
-                  key={key}
-                  hexColor={fromRGBtoHEX(color.R, color.G, color.B)}
-                  onClick={() => handleClick(color.R, color.G, color.B)}
-                />
-              ))
-            }
-          </Column>
-        ))
-      }
+      {baseColors.map((item, columnKey) => (
+        <Column key={columnKey}>
+          {getGradation(item[0], item[1], item[2]).map((color, key) => (
+            <ColorBlock
+              key={key}
+              hexColor={fromRGBtoHEX(color.R, color.G, color.B)}
+              onClick={() => handleClick(color.R, color.G, color.B)}
+            />
+          ))}
+        </Column>
+      ))}
     </Container>
   );
 };
-

@@ -1,14 +1,16 @@
 import {Player} from 'AdminPanel/types';
 
-
 type SearchPlayersResult = {
   items: Player[];
   allAmount: number;
   page: number;
   maxPage: number;
-}
+};
 
-export async function getPlayersFilterBy(page: number = 1, name: string = ''): Promise<SearchPlayersResult> {
+export async function getPlayersFilterBy(
+  page: number = 1,
+  name: string = ''
+): Promise<SearchPlayersResult> {
   const apiUrl = process.env.REACT_APP_API_URL;
   let url = `${apiUrl}Player?page=${page}`;
   url += name ? `&name=${name}` : '';

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -10,6 +9,5 @@ const ButtonsContainer = styled.div`
   padding-right: 29px;
   color: blue;
 `;
-
 
 export default ButtonsContainer;

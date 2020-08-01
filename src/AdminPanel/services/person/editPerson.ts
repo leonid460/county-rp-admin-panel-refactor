@@ -1,6 +1,5 @@
 import {Person} from 'AdminPanel/types';
 
-
 export async function editPerson(person: Person) {
   const apiUrl = process.env.REACT_APP_API_URL;
   const url = `${apiUrl}api/Admin/Person/${person.id}`;

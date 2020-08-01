@@ -1,6 +1,5 @@
 import {invertColor} from 'AdminPanel/utils/invertColor';
 
-
 describe('utils: test "invertColor"', () => {
   it('inverts HEX color successfully', () => {
     expect(invertColor('#000000')).toBe('#ffffff');

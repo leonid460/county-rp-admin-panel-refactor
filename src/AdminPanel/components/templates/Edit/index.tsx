@@ -6,7 +6,6 @@ import FormRow from 'AdminPanel/components/atoms/FormRow';
 import Header3 from 'AdminPanel/components/atoms/Header3';
 import Base from 'AdminPanel/components/templates/Base';
 
-
 const Container = styled.div`
   margin-top: 50px;
   padding: 1px 50px 20px 20px;
@@ -23,15 +22,14 @@ const ButtonsWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-
 type EditPageProps = {
-  pageName: string
+  pageName: string;
   inputRows: {
-    name: string
-    innerElement: React.ReactNode
-  }[]
-  buttons: React.ReactNode
-}
+    name: string;
+    innerElement: React.ReactNode;
+  }[];
+  buttons: React.ReactNode;
+};
 
 export default ({pageName, inputRows, buttons}: EditPageProps) => {
   return (
@@ -40,18 +38,14 @@ export default ({pageName, inputRows, buttons}: EditPageProps) => {
         <Header3>{pageName}</Header3>
 
         <FormContainer>
-          {
-            inputRows.map((row, key) => (
-              <FormRow name={row.name} key={key}>
-                {row.innerElement}
-              </FormRow>
-            ))
-          }
+          {inputRows.map((row, key) => (
+            <FormRow name={row.name} key={key}>
+              {row.innerElement}
+            </FormRow>
+          ))}
         </FormContainer>
 
-        <ButtonsWrapper>
-          {buttons}
-        </ButtonsWrapper>
+        <ButtonsWrapper>{buttons}</ButtonsWrapper>
       </Container>
     </Base>
   );

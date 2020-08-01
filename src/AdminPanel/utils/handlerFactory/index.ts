@@ -1,7 +1,9 @@
 import {callNotification} from 'AdminPanel/utils/callNotification';
 
-
-export function handlerFactory(service: () => Promise<number>, successCallback: () => void) {
+export function handlerFactory(
+  service: () => Promise<number>,
+  successCallback: () => void
+) {
   return async () => {
     try {
       const fetchResult = await service();

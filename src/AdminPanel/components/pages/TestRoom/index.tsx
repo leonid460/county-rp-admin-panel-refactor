@@ -3,7 +3,6 @@ import BlueButton from 'AdminPanel/components/atoms/BlueButton';
 import Base from 'AdminPanel/components/templates/Base';
 import {callNotification} from 'AdminPanel/utils/callNotification';
 
-
 export default () => {
   const [count, setCount] = useState(1);
 

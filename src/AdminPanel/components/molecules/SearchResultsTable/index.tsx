@@ -5,43 +5,42 @@ import TableRow from 'AdminPanel/components/molecules/SearchResultsTable/_TableR
 import TableHeader from 'AdminPanel/components/molecules/SearchResultsTable/_TableHeader';
 import BlueButton from 'AdminPanel/components/atoms/BlueButton';
 
-
 type ResultsTableProps = {
-  headers: string[]
-  searchResultsItems: string[][]
-  editRoute: string
-}
+  headers: string[];
+  searchResultsItems: string[][];
+  editRoute: string;
+};
 
-export default ({headers, searchResultsItems, editRoute}: ResultsTableProps) => (
+export default ({
+  headers,
+  searchResultsItems,
+  editRoute,
+}: ResultsTableProps) => (
   <TableWrapper>
     <table>
       <thead>
         <TableRow>
-          {
-            headers.map((header, key) => (
-              <TableHeader key={key} width="120px">
-                {header}
-              </TableHeader>
-            ))
-          }
+          {headers.map((header, key) => (
+            <TableHeader key={key} width="120px">
+              {header}
+            </TableHeader>
+          ))}
         </TableRow>
       </thead>
       <tbody>
-        {
-          searchResultsItems.map((item, key) => (
-            <TableRow key={key}>
-              {
-                item.map((itemProp, key) => <td key={key}>{itemProp}</td>)
-              }
+        {searchResultsItems.map((item, key) => (
+          <TableRow key={key}>
+            {item.map((itemProp, key) => (
+              <td key={key}>{itemProp}</td>
+            ))}
 
-              <td style={{textAlign: 'right'}}>
-                <BlueButton as={NavLink} to={`${editRoute}/${item[0]}`}>
-                  Редактировать
-                </BlueButton>
-              </td>
-            </TableRow>
-          ))
-        }
+            <td style={{textAlign: 'right'}}>
+              <BlueButton as={NavLink} to={`${editRoute}/${item[0]}`}>
+                Редактировать
+              </BlueButton>
+            </td>
+          </TableRow>
+        ))}
       </tbody>
     </table>
   </TableWrapper>
