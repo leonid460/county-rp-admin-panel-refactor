@@ -15,6 +15,20 @@
       }
     } ],
     "@babel/preset-react",
-    "@babel/preset-typescript"
+    [
+      "@babel/preset-typescript",
+      {
+        "onlyRemoveTypeImports": true
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": false,
+        "displayName": true
+      }
+    ]
   ]
 }
