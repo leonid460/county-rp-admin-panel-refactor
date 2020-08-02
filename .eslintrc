@@ -20,23 +20,40 @@
     "react"
   ],
   "rules": {
+    "prettier/prettier": "error",
     "indent": ["error", 2],
-    "max-len": "warn",
-    "prettier/prettier": "off",
-    "require-jsdoc": 0,
-    "arrow-parens": "off",
+    "max-len": ["warn", 120],
+    "arrow-parens": "error",
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
-    "react/display-name": "off",
-    "no-prototype-builtins": "off",
-    "react/prop-types": "off"
+    "react/display-name": "error",
+    "react/prop-types": "off",
+    "no-prototype-builtins": "error",
+    "no-await-in-loop": "error",
+    "no-console": "warn",
+    "no-empty-function": "error",
+    "no-multiple-empty-lines": "warn",
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": false
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "error",
+    "no-unsafe-assignment": "off",
+    "@typescript-eslint/no-extra-non-null-assertion": ["error"],
+    "@typescript-eslint/comma-spacing": ["error"],
+    "no-extra-semi": "off",
+    "@typescript-eslint/no-extra-semi": ["error"],
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
-    "google"
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
   ],
   "settings": {
     "react": {
