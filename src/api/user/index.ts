@@ -1,10 +1,10 @@
-import { get } from '../requests';
-import { IUserProfile } from './types';
+import * as prod from './user';
+import * as dev from './fake';
 
-const apiRoot = process.env.REACT_APP_API_URL;
-
-export async function getUserProfile(username: string): Promise<IUserProfile> {
-  const url = apiRoot + 'api/Profile?login=' + username;
-
-  return get(url);
-}
+export const getUserProfile = (() => {
+  if (process.env.REACT_APP_DEV_MODE === 'true') {
+    return dev.getUserProfile;
+  } else {
+    return prod.getUserProfile;
+  }
+})();

@@ -1,11 +1,11 @@
 import { observable, action, decorate } from 'mobx';
-import { auth } from 'api';
+import { auth, deAuth } from 'api';
 
 export const createAuthStore = () => {
   const store = {
     username: '',
     password: '',
-    inProgress: false,
+    isLoading: false,
     isAuthorized: false,
 
     setUsername: (username: string) => {
@@ -26,7 +26,7 @@ export const createAuthStore = () => {
     },
 
     login: async () => {
-      store.inProgress = true;
+      store.isLoading = true;
       store.setIsAuthorized(false);
 
       try {
@@ -37,21 +37,31 @@ export const createAuthStore = () => {
         console.log(error);
         store.setPassword('');
       } finally {
-        store.inProgress = false;
+        store.isLoading = false;
       }
+    },
+
+    logout: async () => {
+      store.isLoading = true;
+
+      await deAuth();
+
+      store.setIsAuthorized(false);
+      store.isLoading = false;
     }
   };
 
   return decorate(store, {
     username: observable,
     password: observable,
-    inProgress: observable,
+    isLoading: observable,
     isAuthorized: observable,
     setUsername: action,
     setPassword: action,
     reset: action,
     setIsAuthorized: action,
-    login: action
+    login: action,
+    logout: action
   });
 };
 

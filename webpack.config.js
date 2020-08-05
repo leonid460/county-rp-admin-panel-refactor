@@ -6,6 +6,7 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const clearConsole = require('react-dev-utils/clearConsole');
+const Dotenv = require('dotenv-webpack');
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
@@ -108,6 +109,9 @@ module.exports = {
           to: path.resolve(__dirname, 'build/'),
         },
       ],
+    }),
+    new Dotenv({
+      path: `./.env.${isProd ? "production" : "local"}`,
     })
   ]
 }

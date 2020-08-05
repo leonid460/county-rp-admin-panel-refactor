@@ -29,6 +29,17 @@ export interface IPerson {
   rank: number;
 }
 
+export interface IUserPerson {
+  person: IPerson;
+
+  faction: IFaction;
+
+  vehicles: {
+    id: number;
+    personId: number;
+  }[];
+}
+
 export interface IPlayer {
   id: number;
   login: string;
@@ -45,6 +56,7 @@ export interface ISearchStore<T> {
   search(): Promise<void>;
 }
 
+//TODO: add "interactive" color field
 export interface ITheme {
   colors: {
     gradient: string;
@@ -52,8 +64,8 @@ export interface ITheme {
     container: string;
     border: string;
 
-    primaryButton: IButtonParams;
-    secondaryButton: IButtonParams;
+    primaryButton: IButtonThemeParams;
+    secondaryButton: IButtonThemeParams;
 
     header: string;
     primaryText: string;
@@ -63,6 +75,15 @@ export interface ITheme {
       border: string;
       text: string;
       background: string;
+    };
+
+    leftPanel: {
+      background: string;
+      text: string;
+      rowActiveBackground: string;
+      rowActiveBorder: string;
+      rowHoverBackground: string;
+      rowActiveHoverBackground: string;
     };
   };
 
@@ -78,7 +99,7 @@ export interface ITheme {
   };
 }
 
-interface IButtonParams {
+interface IButtonThemeParams {
   background: string;
   color: string;
   borderColor?: string;

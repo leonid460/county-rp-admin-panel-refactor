@@ -14,9 +14,13 @@ const sizes = {
 export const defaultTheme: ITheme = {
   colors: {
     gradient: colors.gradients.blue,
-    background: colors.gray,
+    background: '#E8E9EF',
     container: 'white',
     border: colors.gray,
+
+    header: colors.blue,
+    primaryText: '#111111',
+    secondaryText: '#111111',
 
     primaryButton: {
       background: colors.blue,
@@ -40,9 +44,14 @@ export const defaultTheme: ITheme = {
       background: 'white'
     },
 
-    header: colors.blue,
-    primaryText: '#111111',
-    secondaryText: '#111111'
+    leftPanel: {
+      background: colors.gradients.blue,
+      text: 'white',
+      rowActiveBorder: 'white',
+      rowActiveBackground: 'rgb(73, 92, 172)',
+      rowHoverBackground: '#2A3799',
+      rowActiveHoverBackground: '#41539e'
+    }
   },
 
   device: {

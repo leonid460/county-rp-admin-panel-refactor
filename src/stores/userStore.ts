@@ -1,5 +1,5 @@
 import { observable, action, decorate } from 'mobx';
-import { IPerson } from 'types';
+import { IUserPerson } from 'types';
 import { getUserProfile } from 'api';
 
 export const createUserStore = () => {
@@ -8,33 +8,31 @@ export const createUserStore = () => {
       id: NaN,
       username: ''
     },
-    persons: [] as IPerson[],
-    loadingUser: false,
-    updatingUser: false,
-    updatingUserError: undefined as Error | undefined,
+    persons: [] as IUserPerson[],
+    isLoading: false,
 
-    async getUserInfo(username: string) {
-      this.loadingUser = true;
+    getUserInfo: async (username: string) => {
+      store.isLoading = true;
       const profile = await getUserProfile(username);
 
-      this.currentUser.id = profile.player.id;
-      this.currentUser.username = profile.player.login;
+      store.currentUser.id = profile.player.id;
+      store.currentUser.username = profile.player.login;
 
       profile.persons.map((personItem) =>
-        this.persons.push({
+        store.persons.push({
           person: personItem.person,
           faction: personItem.faction,
           vehicles: personItem.vehicles
         })
       );
+
+      store.isLoading = false;
     }
   };
 
   return decorate(store, {
     currentUser: observable,
-    loadingUser: observable,
-    updatingUser: observable,
-    updatingUserError: observable,
+    isLoading: observable,
     getUserInfo: action
   });
 };

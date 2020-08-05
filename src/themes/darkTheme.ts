@@ -9,7 +9,7 @@ export const darkTheme: ITheme = {
     gradient: colors.gradients.deepSpace,
     container: colors.darkGray,
     border: colors.lightViolet,
-    background: colors.gray,
+    background: colors.softBlack,
 
     primaryButton: {
       background: colors.lightViolet,
@@ -35,6 +35,15 @@ export const darkTheme: ITheme = {
 
     header: colors.lightViolet,
     primaryText: colors.softWhite,
-    secondaryText: '#7f7f7f'
+    secondaryText: '#7f7f7f',
+
+    leftPanel: {
+      background: colors.gradients.deepSpace,
+      text: colors.softWhite,
+      rowActiveBorder: colors.lightViolet,
+      rowActiveBackground: colors.softBlack,
+      rowHoverBackground: colors.darkGray,
+      rowActiveHoverBackground: colors.darkGray
+    }
   }
 };

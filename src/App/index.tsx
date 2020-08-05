@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { GlobalStylesProvider } from './GlobalStylesWrapper';
-import { LoginPage } from 'pages';
-import { defaultTheme } from 'themes';
+import { LoginPage, Home } from 'pages';
+import { darkTheme as theme } from 'themes';
 import * as routes from 'routes';
 import { storeWrapper, useStore } from 'stores';
 import { observer } from 'mobx-react';
@@ -12,11 +12,16 @@ export const AdminPanel: React.FC = storeWrapper(
     useAuthCheck();
 
     return (
-      <GlobalStylesProvider theme={defaultTheme}>
+      <GlobalStylesProvider theme={theme}>
         <Switch>
-          <Route path={routes.auth} component={LoginPage} />
+          <Route exact path={routes.auth}>
+            <LoginPage />
+          </Route>
+          <Route exact path={routes.root}>
+            <Home />
+          </Route>
 
-          <Redirect to={routes.auth} />
+          <Redirect to={routes.root} />
         </Switch>
       </GlobalStylesProvider>
     );
@@ -29,7 +34,7 @@ function useAuthCheck() {
   const isAuthorized = authStore.isAuthorized;
 
   useEffect(() => {
-    if (!isAuthorized && process.env.REACT_APP_DEV_MODE === 'false') {
+    if (!isAuthorized && process.env.REACT_APP_AUTH_ON === 'true') {
       history.push(routes.auth);
     }
   }, [history, isAuthorized]);
