@@ -4,11 +4,12 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { AdminPanel } from './App';
 import * as serviceWorker from './serviceWorker';
 import 'mobx-react/batchingForReactDom';
+import { root } from 'routes';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Route path="/admin">
+      <Route path={root}>
         <AdminPanel />
       </Route>
     </BrowserRouter>

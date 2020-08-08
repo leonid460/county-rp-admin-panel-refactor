@@ -1,5 +1,6 @@
 import { observable, action, decorate } from 'mobx';
 import { auth, deAuth } from 'api';
+import { callNotification } from 'utils';
 
 export const createAuthStore = () => {
   const store = {
@@ -32,10 +33,18 @@ export const createAuthStore = () => {
       try {
         await auth(store.username, store.password);
         store.setIsAuthorized(true);
+        callNotification({
+          header: 'Добро пожаловать',
+          content: 'Хеллоу =^.^=',
+          type: 'info'
+        });
       } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log(error);
         store.setPassword('');
+        callNotification({
+          header: 'Ошибка',
+          content: error.message,
+          type: 'error'
+        });
       } finally {
         store.isLoading = false;
       }

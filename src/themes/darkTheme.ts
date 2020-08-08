@@ -7,7 +7,7 @@ export const darkTheme: ITheme = {
 
   colors: {
     gradient: colors.gradients.deepSpace,
-    container: colors.darkGray,
+    container: colors.darkerGray,
     border: colors.lightViolet,
     background: colors.softBlack,
 
@@ -42,21 +42,23 @@ export const darkTheme: ITheme = {
       text: colors.softWhite,
       rowActiveBorder: colors.lightViolet,
       rowActiveBackground: colors.softBlack,
-      rowHoverBackground: colors.darkGray,
-      rowActiveHoverBackground: colors.darkGray
+      rowHoverBackground: colors.darkerGray,
+      rowActiveHoverBackground: colors.darkerGray
     },
 
     notification: {
       info: {
-        background: colors.gradients.blue,
+        background: colors.darkGray,
         headerText: 'white',
         bodyText: 'white'
       },
       error: {
-        background: colors.gradients.red,
+        background: colors.owlPink,
         headerText: 'white',
         bodyText: 'white'
       }
     }
-  }
+  },
+
+  notificationPosition: 'bottom-left'
 };

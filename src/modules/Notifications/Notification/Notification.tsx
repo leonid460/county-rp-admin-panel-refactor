@@ -5,8 +5,8 @@ import { NotificationContainer } from './styled';
 export const Notification = ({ header, content, onClick, type }: INotificationProps) => {
   return (
     <NotificationContainer onClick={() => onClick()} type={type}>
-      <h3>{header}</h3>
-      {content}
+      <h1>{header}</h1>
+      <span>{content}</span>
     </NotificationContainer>
   );
 };

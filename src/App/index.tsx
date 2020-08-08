@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
+import { observer } from 'mobx-react';
 import { GlobalStylesProvider } from './GlobalStylesWrapper';
 import { LoginPage, Home } from 'pages';
 import { darkTheme as theme } from 'themes';
 import * as routes from 'routes';
 import { storeWrapper, useStore } from 'stores';
-import { observer } from 'mobx-react';
+import { Notifications } from 'modules';
 
 export const AdminPanel: React.FC = storeWrapper(
   observer(() => {
@@ -23,6 +24,7 @@ export const AdminPanel: React.FC = storeWrapper(
 
           <Redirect to={routes.root} />
         </Switch>
+        <Notifications timeout={700000} />
       </GlobalStylesProvider>
     );
   })

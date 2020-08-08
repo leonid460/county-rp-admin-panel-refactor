@@ -1,11 +1,14 @@
 export const softBlack = '#131313';
+
 export const softWhite = '#dddddd';
-export const darkGray = '#202020';
+export const darkGray = '#252525';
+export const darkerGray = '#202020';
 export const gray = '#8a8a8a';
 export const blue = '#0653c0';
 export const darkBlue = '#043483';
 export const lightViolet = '#bb85fc';
 export const darkViolet = '#75579f';
+export const owlPink = '#ff0266';
 
 export const gradients = {
   moonlitAsteroidGradient: 'linear-gradient(90deg, #0f2027 0%, #203a43 48%, #2c5364 100%);',

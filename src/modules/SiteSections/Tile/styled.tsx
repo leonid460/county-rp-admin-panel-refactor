@@ -12,7 +12,7 @@ export const TileContainer = styled.div<{ theme: ITheme }>`
   padding: 20px;
   margin-left: 25px;
   margin-top: 25px;
-  border-radius: 18px;
+  border-radius: 9px;
 
   color: ${({ theme }) => theme.colors.header};
   background: ${({ theme }) => theme.colors.container};

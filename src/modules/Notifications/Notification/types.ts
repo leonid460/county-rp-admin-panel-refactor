@@ -1,7 +1,5 @@
 import { ITheme } from 'types';
-import { INotificationMessage } from 'types';
-
-export type TNotificationType = 'info' | 'error';
+import { INotificationMessage, TNotificationType } from 'types';
 
 export interface INotificationContainerProps {
   type?: TNotificationType;

@@ -17,6 +17,7 @@ export const defaultTheme: ITheme = {
     background: '#E8E9EF',
     container: 'white',
     border: colors.gray,
+    shadow: 'rgba(0,0,0,0.19)',
 
     header: colors.blue,
     primaryText: '#111111',
@@ -76,5 +77,7 @@ export const defaultTheme: ITheme = {
     laptopL: `(min-width: ${sizes.laptopL})`,
     desktop: `(min-width: ${sizes.desktop})`,
     desktopL: `(min-width: ${sizes.desktop})`
-  }
+  },
+
+  notificationPosition: 'bottom-center'
 };

@@ -1,4 +1,4 @@
-export const root = '/admin';
+export const root = '';
 export const auth = `${root}/Auth`;
 export const profile = `${root}/profile/:login`;
 export const forum = `${root}/forum`;

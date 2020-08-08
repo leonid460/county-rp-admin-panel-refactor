@@ -1,5 +1,3 @@
-import { TNotificationType } from '../modules/Notifications/Notification/types';
-
 export interface IAdminLevel {
   id: string;
   name: string;
@@ -65,6 +63,7 @@ export interface ITheme {
     background: string;
     container: string;
     border: string;
+    shadow?: string;
 
     primaryButton: IButtonThemeParams;
     secondaryButton: IButtonThemeParams;
@@ -104,6 +103,8 @@ export interface ITheme {
     desktop: string;
     desktopL: string;
   };
+
+  notificationPosition: TNotificationsPosition;
 }
 
 interface IButtonThemeParams {
@@ -121,8 +122,18 @@ interface INotificationThemeParams {
   bodyText: string;
 }
 
+export type TNotificationType = 'info' | 'error';
+
 export interface INotificationMessage {
   header: string;
   content: string;
   type?: TNotificationType;
 }
+
+export type TNotificationsPosition =
+  | 'bottom-left'
+  | 'bottom-right'
+  | 'bottom-center'
+  | 'top-left'
+  | 'top-right'
+  | 'top-center';

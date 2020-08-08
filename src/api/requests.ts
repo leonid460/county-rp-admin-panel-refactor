@@ -18,7 +18,7 @@ function requestFactory(method: TRequestMethod, headers?: HeadersInit) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(errorText);
+      throw new Error(JSON.parse(errorText).message || errorText);
     }
 
     return await response.json();
