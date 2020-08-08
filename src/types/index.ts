@@ -1,3 +1,5 @@
+import { TNotificationType } from '../modules/Notifications/Notification/types';
+
 export interface IAdminLevel {
   id: string;
   name: string;
@@ -85,6 +87,11 @@ export interface ITheme {
       rowHoverBackground: string;
       rowActiveHoverBackground: string;
     };
+
+    notification: {
+      info: INotificationThemeParams;
+      error: INotificationThemeParams;
+    };
   };
 
   device: {
@@ -106,4 +113,16 @@ interface IButtonThemeParams {
   hoverBackground: string;
   hoverColor: string;
   hoverBorderColor?: string;
+}
+
+interface INotificationThemeParams {
+  background: string;
+  headerText: string;
+  bodyText: string;
+}
+
+export interface INotificationMessage {
+  header: string;
+  content: string;
+  type?: TNotificationType;
 }

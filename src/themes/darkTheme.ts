@@ -44,6 +44,19 @@ export const darkTheme: ITheme = {
       rowActiveBackground: colors.softBlack,
       rowHoverBackground: colors.darkGray,
       rowActiveHoverBackground: colors.darkGray
+    },
+
+    notification: {
+      info: {
+        background: colors.gradients.blue,
+        headerText: 'white',
+        bodyText: 'white'
+      },
+      error: {
+        background: colors.gradients.red,
+        headerText: 'white',
+        bodyText: 'white'
+      }
     }
   }
 };

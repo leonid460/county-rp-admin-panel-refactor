@@ -51,6 +51,19 @@ export const defaultTheme: ITheme = {
       rowActiveBackground: 'rgb(73, 92, 172)',
       rowHoverBackground: '#2A3799',
       rowActiveHoverBackground: '#41539e'
+    },
+
+    notification: {
+      info: {
+        background: colors.gradients.blue,
+        headerText: 'white',
+        bodyText: 'white'
+      },
+      error: {
+        background: colors.gradients.red,
+        headerText: 'white',
+        bodyText: 'white'
+      }
     }
   },
 

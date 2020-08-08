@@ -4,6 +4,7 @@ type Location = {
   description: string;
   name: string;
   route: string;
+  subLocations?: Location[];
 };
 
 export const locations: Location[] = [
