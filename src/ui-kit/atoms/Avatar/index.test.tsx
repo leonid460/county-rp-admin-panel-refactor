@@ -24,4 +24,9 @@ describe('testing <Avatar />', () => {
     expect(component).toHaveStyleRule('background', backgroundColor);
     expect(component).toHaveStyleRule('color', textColor);
   });
+
+  it('displays inner text correctly', () => {
+    const wrapper = shallow(<Avatar>leonid460</Avatar>);
+    expect(wrapper.text()).toMatch('LE');
+  });
 });

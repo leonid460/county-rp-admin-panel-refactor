@@ -8,7 +8,6 @@ import { MiniProfile } from './MiniProfile';
 
 function getLocationTagText() {
   const currentLocation = useLocation().pathname;
-
   let tagText = '';
 
   locations.forEach((location) => {
@@ -16,7 +15,9 @@ function getLocationTagText() {
       path: location.route
     });
 
-    if (match) tagText = location.name;
+    if (match) {
+      tagText = location.name;
+    }
   });
 
   return tagText;

@@ -5,6 +5,7 @@ type InputProps = {
   type?: 'text' | 'password';
   value: string | number;
   setValue: React.Dispatch<React.SetStateAction<string | number>>;
+  placeholder: string;
 };
 
 export const Input = ({ setValue, type = 'text', value, ...props }: InputProps) => (
