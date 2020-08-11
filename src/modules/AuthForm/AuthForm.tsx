@@ -13,13 +13,10 @@ export const AuthForm = observer(() => {
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    try {
-      await authStore.login();
+    await authStore.login();
 
-      if (authStore.isAuthorized) history.push(root);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error);
+    if (authStore.isAuthorized) {
+      history.push(root);
     }
   };
 

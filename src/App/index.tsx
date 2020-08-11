@@ -3,7 +3,7 @@ import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { GlobalStylesProvider } from './GlobalStylesWrapper';
 import { LoginPage, Home } from 'pages';
-import { darkTheme as theme } from 'themes';
+import { defaultTheme as theme } from 'themes';
 import * as routes from 'routes';
 import { storeWrapper, useStore } from 'stores';
 import { Notifications } from 'modules';
