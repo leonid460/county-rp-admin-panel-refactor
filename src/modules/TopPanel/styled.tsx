@@ -7,6 +7,7 @@ export const TopPanelContainer = styled.div<{ theme: ITheme }>`
   align-items: center;
 
   width: 100%;
+  min-height: 80px;
   height: 80px;
   padding-right: 40px;
   box-sizing: border-box;
@@ -26,5 +27,4 @@ export const TextRow = styled.div<{ theme: ITheme }>`
 
 export const LocationTag = styled(TextRow)`
   margin-right: auto;
-  margin-left: 50px;
 `;

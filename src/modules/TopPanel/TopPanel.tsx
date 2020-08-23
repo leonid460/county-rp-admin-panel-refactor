@@ -5,6 +5,7 @@ import { locations } from 'locations';
 import { useLocation, matchPath } from 'react-router-dom';
 import { TopPanelContainer, LocationTag, TextRow } from './styled';
 import { MiniProfile } from './MiniProfile';
+import { LeftPanelOpener } from 'modules/LeftPanelOpener';
 
 function getLocationTagText() {
   const currentLocation = useLocation().pathname;
@@ -31,6 +32,7 @@ export const TopPanel = observer(() => {
 
   return (
     <TopPanelContainer>
+      <LeftPanelOpener />
       <LocationTag>{locationTagText}</LocationTag>
       {authStore.isLoading ? (
         <TextRow>loading...</TextRow>

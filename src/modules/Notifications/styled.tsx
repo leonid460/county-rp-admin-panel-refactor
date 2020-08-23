@@ -33,7 +33,7 @@ function defineNotificationsPosition(position: TNotificationsPosition) {
 }
 
 export const TrayContainer = styled.div<{ theme: ITheme }>`
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   overflow: hidden;

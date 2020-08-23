@@ -4,6 +4,6 @@ export const TilesGrid = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
-  padding: 25px;
+  justify-content: space-between;
+  padding: 12px;
 `;

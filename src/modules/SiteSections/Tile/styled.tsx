@@ -5,13 +5,18 @@ import { ITheme } from 'types';
 export const TileContainer = styled.div<{ theme: ITheme }>`
   display: flex;
   flex-direction: column;
+  flex: 1 1 415px;
 
-  width: 435px;
+  width: 415px;
   height: 221px;
 
   padding: 20px;
-  margin-left: 25px;
-  margin-top: 25px;
+
+  //margin-left: 25px;
+  //margin-right: auto;
+  //margin-top: 25px;
+  margin: 12px;
+
   border-radius: 9px;
 
   color: ${({ theme }) => theme.colors.header};
