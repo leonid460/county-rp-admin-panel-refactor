@@ -8,7 +8,6 @@ export const OpenerContainer = styled.label`
   height: 50px;
   max-width: 50px;
   width: 50px;
-  margin-right: 50px;
   margin-left: 10px;
   border: none;
 

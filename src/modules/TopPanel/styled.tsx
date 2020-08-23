@@ -27,4 +27,5 @@ export const TextRow = styled.div<{ theme: ITheme }>`
 
 export const LocationTag = styled(TextRow)`
   margin-right: auto;
+  margin-left: 50px;
 `;
