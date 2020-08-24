@@ -69,8 +69,10 @@ export interface ITheme {
     secondaryButton: IButtonThemeParams;
 
     header: string;
+    highlight: string;
     primaryText: string;
     secondaryText: string;
+    contrastText: string;
 
     input: {
       border: string;

@@ -34,8 +34,10 @@ export const darkTheme: ITheme = {
     },
 
     header: colors.lightViolet,
+    highlight: colors.lightViolet,
     primaryText: colors.softWhite,
     secondaryText: '#7f7f7f',
+    contrastText: colors.softBlack,
 
     leftPanel: {
       background: colors.gradients.deepSpace,

@@ -1,6 +1,6 @@
 export const root = '';
 export const auth = `${root}/Auth`;
-export const profile = `${root}/profile/:login`;
+export const profile = `${root}/profile`;
 export const forum = `${root}/forum`;
 export const group = `${root}/group`;
 export const createGroup = `${group}/create`;

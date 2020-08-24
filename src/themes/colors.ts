@@ -4,6 +4,7 @@ export const softWhite = '#dddddd';
 export const darkGray = '#252525';
 export const darkerGray = '#202020';
 export const gray = '#8a8a8a';
+export const lightGray = '#c7c7c7';
 export const blue = '#0653c0';
 export const darkBlue = '#043483';
 export const lightViolet = '#bb85fc';

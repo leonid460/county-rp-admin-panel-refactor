@@ -16,12 +16,14 @@ export const defaultTheme: ITheme = {
     gradient: colors.gradients.blue,
     background: '#E8E9EF',
     container: 'white',
-    border: colors.gray,
+    border: colors.lightGray,
     shadow: 'rgba(0,0,0,0.19)',
 
     header: colors.blue,
+    highlight: colors.blue,
     primaryText: '#111111',
-    secondaryText: '#111111',
+    secondaryText: colors.gray,
+    contrastText: colors.softWhite,
 
     primaryButton: {
       background: colors.blue,
