@@ -20,7 +20,7 @@ export const createUserStore = () => {
 
       profile.persons.map((personItem) =>
         store.persons.push({
-          person: personItem.person,
+          personInfo: personItem.personInfo,
           faction: personItem.faction,
           vehicles: personItem.vehicles
         })

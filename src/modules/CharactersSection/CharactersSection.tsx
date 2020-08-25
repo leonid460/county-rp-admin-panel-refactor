@@ -1,8 +1,8 @@
 import React from 'react';
 import * as Styled from './styled';
-import { TPerson } from './types';
+import { IUserPerson } from 'types';
 
-export const CharactersSection = ({ persons }: { persons: TPerson[] }) => (
+export const CharactersSection = ({ persons }: { persons: IUserPerson[] }) => (
   <Styled.CharactersSectionWrapper>
     <Styled.CharactersSectionDescription>Персонажи</Styled.CharactersSectionDescription>
     <Styled.CharactersSectionRow>
@@ -12,7 +12,7 @@ export const CharactersSection = ({ persons }: { persons: TPerson[] }) => (
     </Styled.CharactersSectionRow>
     {persons.map((person, key) => (
       <Styled.CharactersSectionRow key={key}>
-        <Styled.CharactersSectionCell>{person.name}</Styled.CharactersSectionCell>
+        <Styled.CharactersSectionCell>{person.personInfo.name}</Styled.CharactersSectionCell>
         <Styled.CharactersSectionCell>
           {person.faction.id + ':' + person.faction.name}
         </Styled.CharactersSectionCell>

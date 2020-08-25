@@ -30,7 +30,7 @@ export interface IPerson {
 }
 
 export interface IUserPerson {
-  person: IPerson;
+  personInfo: IPerson;
 
   faction: IFaction;
 
