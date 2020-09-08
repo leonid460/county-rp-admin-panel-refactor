@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { ILoginAction, TAsyncCallStatus } from './types';
+import { ILoginAction } from './types';
 import { auth, deAuth } from 'api';
+import { TAsyncCallStatus } from 'types';
 
 const initialState = {
   data: {

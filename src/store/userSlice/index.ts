@@ -1,18 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getUserProfile } from 'api';
 import { IUserPerson, TAsyncCallStatus } from 'types';
-
-interface IUserData {
-  id: number;
-  username: string;
-  persons: IUserPerson[];
-}
-
-interface IGetUserInfoAction {
-  type: string;
-  payload: IUserData;
-  error?: Error;
-}
+import { IGetUserInfoAction, IUserData } from './types';
 
 const initialState = {
   data: {
