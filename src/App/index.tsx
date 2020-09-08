@@ -18,7 +18,7 @@ export const AdminPanel: React.FC = storeWrapper(() => {
         <Route exact path={routes.auth}>
           <LoginPage />
         </Route>
-        <Route path={`${routes.profile}`}>
+        <Route path={`${routes.profile}/:login`}>
           <ProfilePage />
         </Route>
         <Route exact path={routes.root}>

@@ -9,7 +9,7 @@ import { profile } from 'routes';
 export const MiniProfile: React.FC<iMiniProfileProps> = ({ username, logout }) => (
   <PopUp openerContent={<Avatar>{username}</Avatar>}>
     <MiniProfileWrapper>
-      <MiniProfileMenuItem as={NavLink} to={`${profile}`}>
+      <MiniProfileMenuItem as={NavLink} to={`${profile}/${username}`}>
         Профиль
       </MiniProfileMenuItem>
 

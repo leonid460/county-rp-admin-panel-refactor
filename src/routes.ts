@@ -22,5 +22,5 @@ export const adminLevel = `${root}adminLevel`;
 export const createAdminLevel = `${adminLevel}/create`;
 export const editAdminLevel = `${adminLevel}/edit`;
 
-export const log = `${root}/log`;
-export const testRoom = `${root}/testRoom`;
+export const log = `${root}log`;
+export const testRoom = `${root}testRoom`;
