@@ -1,11 +1,11 @@
 import React from 'react';
-import { observer } from 'mobx-react';
-import { useStore } from 'stores';
 import { locations } from 'locations';
 import { useLocation, matchPath } from 'react-router-dom';
 import { TopPanelContainer, LocationTag, TextRow } from './styled';
 import { MiniProfile } from './MiniProfile';
 import { LeftPanelOpener } from 'modules/LeftPanelOpener';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectIsLoading, selectUsername } from 'store/authSlice';
 
 function getLocationTagText() {
   const currentLocation = useLocation().pathname;
@@ -24,8 +24,10 @@ function getLocationTagText() {
   return tagText;
 }
 
-export const TopPanel = observer(() => {
-  const { authStore } = useStore();
+export const TopPanel = () => {
+  const dispatch = useDispatch();
+  const username = useSelector(selectUsername);
+  const isLoading = useSelector(selectIsLoading);
   const locationTagText = getLocationTagText();
 
   // TODO: replace locations tag with breadcrumbs
@@ -34,11 +36,11 @@ export const TopPanel = observer(() => {
     <TopPanelContainer>
       <LeftPanelOpener />
       <LocationTag>{locationTagText}</LocationTag>
-      {authStore.isLoading ? (
+      {isLoading ? (
         <TextRow>loading...</TextRow>
       ) : (
-        <MiniProfile username={authStore.username} logout={authStore.logout} />
+        <MiniProfile username={username} logout={() => dispatch(logout())} />
       )}
     </TopPanelContainer>
   );
-});
+};

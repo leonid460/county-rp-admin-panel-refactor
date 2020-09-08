@@ -1,22 +1,21 @@
 import React from 'react';
 import { OpenerContainer } from './styled';
-import { useStore } from 'stores';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsOpen, toggle } from 'store/leftPanelSlice';
 
 interface ILeftPanelOpenerProps {
   className?: string;
 }
 
 export const LeftPanelOpener = ({ className }: ILeftPanelOpenerProps) => {
-  const { leftPanelStore } = useStore();
+  const dispatch = useDispatch();
+  const toggleLeftPanel = () => dispatch(toggle());
+  const isOpen = useSelector(selectIsOpen);
 
   return (
     <OpenerContainer className={className}>
-      <span className="material-icons">{leftPanelStore.isOpen ? 'close' : 'menu'}</span>
-      <input
-        type="checkbox"
-        checked={leftPanelStore.isOpen}
-        onChange={() => leftPanelStore.toggle()}
-      />
+      <span className="material-icons">{isOpen ? 'close' : 'menu'}</span>
+      <input type="checkbox" checked={isOpen} onChange={() => toggleLeftPanel()} />
     </OpenerContainer>
   );
 };

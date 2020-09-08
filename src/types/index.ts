@@ -139,3 +139,5 @@ export type TNotificationsPosition =
   | 'top-left'
   | 'top-right'
   | 'top-center';
+
+export type TAsyncCallStatus = 'idle' | 'loading' | 'succeeded' | 'failed';

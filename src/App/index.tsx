@@ -1,41 +1,39 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, useHistory } from 'react-router-dom';
-import { observer } from 'mobx-react';
+import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { GlobalStylesProvider } from './GlobalStylesWrapper';
 import { LoginPage, Home, ProfilePage } from 'pages';
 import { defaultTheme as theme } from 'themes';
 import * as routes from 'routes';
-import { storeWrapper, useStore } from 'stores';
+import { storeWrapper } from 'store';
 import { Notifications } from 'modules';
+import { useSelector } from 'react-redux';
+import { selectIsAuthorized } from 'store/authSlice';
 
-export const AdminPanel: React.FC = storeWrapper(
-  observer(() => {
-    //useAuthCheck();
+export const AdminPanel: React.FC = storeWrapper(() => {
+  useAuthCheck();
 
-    return (
-      <GlobalStylesProvider theme={theme}>
-        <Switch>
-          <Route exact path={routes.auth}>
-            <LoginPage />
-          </Route>
-          <Route path={`${routes.profile}`}>
-            <ProfilePage />
-          </Route>
-          <Route exact path={routes.root}>
-            <Home />
-          </Route>
-        </Switch>
-        <Notifications timeout={7000} />
-      </GlobalStylesProvider>
-    );
-  })
-);
+  return (
+    <GlobalStylesProvider theme={theme}>
+      <Switch>
+        <Route exact path={routes.auth}>
+          <LoginPage />
+        </Route>
+        <Route path={`${routes.profile}`}>
+          <ProfilePage />
+        </Route>
+        <Route exact path={routes.root}>
+          <Home />
+        </Route>
+        <Redirect to={routes.root} />
+      </Switch>
+      <Notifications timeout={7000} />
+    </GlobalStylesProvider>
+  );
+});
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function useAuthCheck() {
-  const { authStore } = useStore();
   const history = useHistory();
-  const isAuthorized = authStore.isAuthorized;
+  const isAuthorized = useSelector(selectIsAuthorized);
 
   useEffect(() => {
     if (!isAuthorized && process.env.REACT_APP_AUTH_ON === 'true') {
