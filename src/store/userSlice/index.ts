@@ -42,6 +42,7 @@ const userSlice = createSlice({
     builder.addCase(getUserInfo.fulfilled.toString(), (state, action: IGetUserInfoAction) => {
       state.status = 'succeeded';
       state.data = action.payload;
+      state.error = null;
     });
 
     builder.addCase(getUserInfo.rejected.toString(), (state, action: IGetUserInfoAction) => {

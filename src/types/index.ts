@@ -30,9 +30,18 @@ export interface IPerson {
 }
 
 export interface IUserPerson {
-  personInfo: IPerson;
+  personInfo: {
+    id: number;
+    name: string;
+    playerId: number;
+    factionId: string;
+  };
 
-  faction: IFaction;
+  faction: {
+    id: string;
+    name: string;
+    ranks: string[];
+  };
 
   vehicles: {
     id: number;
