@@ -1,4 +1,4 @@
-import { IUserPerson } from 'types';
+import { IUserPerson, IPerson, IFaction } from 'types';
 
 export interface IUserProfile {
   player: {
@@ -7,4 +7,22 @@ export interface IUserProfile {
   };
 
   persons: IUserPerson[];
+}
+
+export interface IUserProfileFromApi {
+  player: {
+    id: number;
+    login: string;
+  };
+
+  persons: {
+    person: IPerson;
+
+    faction: IFaction;
+
+    vehicles: {
+      id: number;
+      personId: number;
+    }[];
+  }[];
 }
