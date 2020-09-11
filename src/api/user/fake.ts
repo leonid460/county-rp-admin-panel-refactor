@@ -20,20 +20,11 @@ export async function getUserProfile(username: string): Promise<IUserProfile> {
     },
 
     persons: unpackedProfile.persons.map((personItem) => ({
-      personInfo: {
-        id: personItem.person.id || NaN,
-        name: personItem.person.name || '',
-        playerId: personItem.person.playerId || NaN,
-        factionId: personItem.person.factionId || ''
-      },
+      personInfo: personItem.person,
 
-      faction: {
-        id: personItem.faction.id || '',
-        name: personItem.faction.name || '',
-        ranks: personItem.faction.ranks || []
-      },
+      faction: personItem.faction,
 
-      vehicles: personItem.vehicles || []
+      vehicles: personItem.vehicles
     }))
   };
 }
