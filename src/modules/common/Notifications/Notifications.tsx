@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { INotificationMessage } from 'types';
 import { Notification } from './Notification';
 import { eventEmitter } from 'eventEmitter';
-import { Portal } from 'modules';
+import { Portal } from 'modules/common';
 import { TrayContainer } from './styled';
 
 export const notificationEvent = 'event-notification';

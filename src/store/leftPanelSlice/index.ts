@@ -1,17 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { leftPanelSlice } from './leftPanelSlice';
 
-const leftPanelSlice = createSlice({
-  name: 'leftPanelIsOpen',
-  initialState: false,
-  reducers: {
-    toggle: (state) => {
-      return !state;
-    }
-  }
-});
-
-export const selectIsOpen = (state: { leftPanelIsOpen: boolean }) => state.leftPanelIsOpen;
-
-export const { toggle } = leftPanelSlice.actions;
-
+export * from './actions';
+export * from './selectors';
 export default leftPanelSlice.reducer;

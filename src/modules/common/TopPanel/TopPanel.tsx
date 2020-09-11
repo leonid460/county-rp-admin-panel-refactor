@@ -3,7 +3,7 @@ import { locations } from 'locations';
 import { useLocation, matchPath } from 'react-router-dom';
 import { TopPanelContainer, LocationTag, TextRow } from './styled';
 import { MiniProfile } from './MiniProfile';
-import { LeftPanelOpener } from 'modules/LeftPanelOpener';
+import { LeftPanelOpener } from 'modules/common/LeftPanelOpener';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectIsLoading, selectUsername } from 'store/authSlice';
 

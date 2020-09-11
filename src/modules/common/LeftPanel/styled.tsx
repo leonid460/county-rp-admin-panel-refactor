@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { ITheme } from 'types';
-import { LeftPanelOpener } from 'modules/LeftPanelOpener';
+import { LeftPanelOpener } from 'modules/common/LeftPanelOpener';
 
 export const Header = styled(NavLink)<{ theme: ITheme }>`
   display: block;

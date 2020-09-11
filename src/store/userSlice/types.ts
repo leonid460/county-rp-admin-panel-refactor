@@ -1,4 +1,5 @@
 import { IUserPerson } from 'types';
+import { initialState } from './initialState';
 
 export interface IUserData {
   id: number;
@@ -11,3 +12,5 @@ export interface IGetUserInfoAction {
   payload: IUserData;
   error?: Error;
 }
+
+export type IUserSliceState = typeof initialState;

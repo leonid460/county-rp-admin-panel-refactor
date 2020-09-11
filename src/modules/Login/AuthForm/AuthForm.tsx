@@ -5,7 +5,7 @@ import { FormContainer } from './styled';
 import { H1, Input, PrimaryButton } from 'ui-kit/atoms';
 import { useHistory } from 'react-router-dom';
 import { root } from 'routes';
-import { callNotification } from '../../utils/callNotification';
+import { callNotification } from 'utils/callNotification';
 
 export const AuthForm = () => {
   const [username, setUsername] = useState('');

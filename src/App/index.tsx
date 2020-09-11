@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { GlobalStylesProvider } from './GlobalStylesWrapper';
-import { LoginPage, Home, ProfilePage } from 'pages';
+import { Login, Home, Profile } from 'pages';
 import { defaultTheme as theme } from 'themes';
 import * as routes from 'routes';
 import { storeWrapper } from 'store';
-import { Notifications } from 'modules';
+import { Notifications } from 'modules/common';
 import { useSelector } from 'react-redux';
 import { selectIsAuthorized } from 'store/authSlice';
 
@@ -16,10 +16,10 @@ export const AdminPanel: React.FC = storeWrapper(() => {
     <GlobalStylesProvider theme={theme}>
       <Switch>
         <Route exact path={routes.auth}>
-          <LoginPage />
+          <Login />
         </Route>
         <Route path={`${routes.profile}/:login`}>
-          <ProfilePage />
+          <Profile />
         </Route>
         <Route exact path={routes.root}>
           <Home />
