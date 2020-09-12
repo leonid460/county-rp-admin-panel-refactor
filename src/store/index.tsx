@@ -3,13 +3,11 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './authSlice';
 import leftPanelSlice from './leftPanelSlice';
-import useSlice from './userSlice';
 
 const store = configureStore({
   reducer: {
     auth: authSlice,
-    leftPanelIsOpen: leftPanelSlice,
-    user: useSlice
+    leftPanelIsOpen: leftPanelSlice
   }
 });
 
