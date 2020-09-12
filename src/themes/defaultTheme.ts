@@ -17,6 +17,7 @@ export const defaultTheme: ITheme = {
     background: '#E8E9EF',
     container: 'white',
     border: colors.lightGray,
+    hover: colors.lighterGray,
     shadow: 'rgba(0,0,0,0.19)',
 
     header: colors.blue,

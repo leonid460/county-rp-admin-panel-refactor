@@ -8,7 +8,8 @@ export const darkTheme: ITheme = {
   colors: {
     gradient: colors.gradients.deepSpace,
     container: colors.darkerGray,
-    border: colors.lightViolet,
+    hover: colors.darkGray,
+    border: colors.darkViolet,
     background: colors.softBlack,
 
     primaryButton: {

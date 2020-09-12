@@ -1,13 +1,12 @@
 import { TNotificationsPosition } from './notification';
 
-//TODO: add "interactive" color field
-
 export interface ITheme {
   colors: {
     gradient: string;
     background: string;
     container: string;
     border: string;
+    hover: string;
     shadow?: string;
 
     primaryButton: IButtonThemeParams;

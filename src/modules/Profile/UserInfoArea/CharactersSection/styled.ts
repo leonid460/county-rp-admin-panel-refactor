@@ -17,9 +17,10 @@ export const CharactersSectionDescription = styled.h2<{ theme: ITheme }>`
   color: ${({ theme }) => theme.colors.secondaryText};
 `;
 
-export const CharactersSectionRow = styled.div`
+export const CharactersSectionRow = styled.div<{ theme: ITheme }>`
   display: flex;
   flex-direction: row;
+  color: ${({ theme }) => theme.colors.primaryText};
 `;
 
 export const CharactersSectionCell = styled.div<{ theme: ITheme }>`

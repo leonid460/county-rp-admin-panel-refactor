@@ -11,15 +11,11 @@ export const TileContainer = styled.div<{ theme: ITheme }>`
   height: 221px;
 
   padding: 20px;
-
-  //margin-left: 25px;
-  //margin-right: auto;
-  //margin-top: 25px;
   margin: 12px;
 
   border-radius: 9px;
 
-  color: ${({ theme }) => theme.colors.header};
+  color: ${({ theme }) => theme.colors.highlight};
   background: ${({ theme }) => theme.colors.container};
   font-weight: bold;
 
@@ -36,5 +32,5 @@ export const TileButton = styled(NavLink)<{ theme: ITheme }>`
   margin-top: auto;
   margin-left: auto;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.header};
+  color: ${({ theme }) => theme.colors.highlight};
 `;
