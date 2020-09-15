@@ -1,5 +1,6 @@
 import { ITheme } from 'types';
 import * as colors from './colors';
+import { makeTypographyItem } from './helpers';
 
 const sizes = {
   mobileS: '320px',
@@ -43,7 +44,7 @@ export const defaultTheme: ITheme = {
     },
 
     input: {
-      border: colors.gray,
+      border: colors.lightGray,
       text: '#111111',
       background: 'white'
     },
@@ -68,7 +69,26 @@ export const defaultTheme: ITheme = {
         headerText: 'white',
         bodyText: 'white'
       }
+    },
+
+    table: {
+      rowBackground: 'white',
+      rowEvenBackground: colors.lighterGray,
+      headerBackground: 'white'
     }
+  },
+
+  typography: {
+    h1: makeTypographyItem({
+      fontSize: '24px'
+    }),
+    subtitle1: makeTypographyItem({
+      fontSize: '18px'
+    }),
+    button: makeTypographyItem({
+      fontSize: '15px',
+      fontWeight: 'bold'
+    })
   },
 
   device: {

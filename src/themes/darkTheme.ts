@@ -60,6 +60,12 @@ export const darkTheme: ITheme = {
         headerText: 'white',
         bodyText: 'white'
       }
+    },
+
+    table: {
+      rowBackground: 'white',
+      rowEvenBackground: colors.lighterGray,
+      headerBackground: 'white'
     }
   },
 

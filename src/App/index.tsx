@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { GlobalStylesProvider } from './GlobalStylesWrapper';
-import { Login, Home, Profile } from 'pages';
+import { Login, Home, Profile, Players } from 'pages';
 import { defaultTheme as theme } from 'themes';
 import * as routes from 'routes';
-import { storeWrapper } from 'store';
+import { withStore } from 'store';
 import { Notifications } from 'modules/common';
 import { useSelector } from 'react-redux';
 import { selectIsAuthorized } from 'store/authSlice';
 
-export const AdminPanel: React.FC = storeWrapper(() => {
+export const AdminPanel: React.FC = withStore(() => {
   useAuthCheck();
 
   return (
@@ -23,6 +23,9 @@ export const AdminPanel: React.FC = storeWrapper(() => {
         </Route>
         <Route exact path={routes.root}>
           <Home />
+        </Route>
+        <Route path={routes.players}>
+          <Players />
         </Route>
         <Redirect to={routes.root} />
       </Switch>

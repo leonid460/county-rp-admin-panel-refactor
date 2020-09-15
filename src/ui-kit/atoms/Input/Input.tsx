@@ -1,14 +1,8 @@
 import React from 'react';
 import { StyledInput } from './styled';
+import { IInputProps } from './types';
 
-type InputProps = {
-  type?: 'text' | 'password';
-  value: string | number;
-  setValue: React.Dispatch<React.SetStateAction<string | number>>;
-  placeholder: string;
-};
-
-export const Input = ({ setValue, type = 'text', value, ...props }: InputProps) => (
+export const Input = ({ setValue, type = 'text', value, ...props }: IInputProps) => (
   <StyledInput
     {...props}
     value={value}

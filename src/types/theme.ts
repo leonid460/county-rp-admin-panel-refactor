@@ -37,6 +37,18 @@ export interface ITheme {
       info: INotificationThemeParams;
       error: INotificationThemeParams;
     };
+
+    table: {
+      rowBackground: string;
+      rowEvenBackground: string;
+      headerBackground: string;
+    };
+  };
+
+  typography: {
+    h1: string;
+    subtitle1: string;
+    button: string;
   };
 
   device: {

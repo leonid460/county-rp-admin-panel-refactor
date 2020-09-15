@@ -11,7 +11,7 @@ const store = configureStore({
   }
 });
 
-export const storeWrapper = (WrappedComponent: React.ComponentType): React.FC => () => (
+export const withStore = (WrappedComponent: React.ComponentType): React.FC => () => (
   <Provider store={store}>
     <WrappedComponent />
   </Provider>
