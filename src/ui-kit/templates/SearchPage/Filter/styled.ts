@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ITheme } from 'types';
 
 export const Container = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ export const Container = styled.div`
   margin: 20px 0;
 `;
 
-export const FilterItem = styled.label`
+export const FilterItem = styled.label<{ theme: ITheme }>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,6 +19,7 @@ export const FilterItem = styled.label`
 
   & > span {
     margin-right: 20px;
+    color: ${({ theme }) => theme.colors.secondaryText};
   }
 
   &:last-child {

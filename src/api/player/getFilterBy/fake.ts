@@ -4,18 +4,19 @@ import { IPlayer } from 'types';
 const apiRoot = process.env.REACT_APP_API_URL;
 
 function dataToString(data: { [key: string]: string }) {
-  const params = [];
+  let params = '';
 
   for (const key in data) {
-    params.push(`${key}=${data[key]}`);
+    if (data[key]) {
+      params += `&${key}=${data[key]}`;
+    }
   }
 
-  return params.join('&');
+  return params;
 }
 
 export async function getPlayerFilterBy(page: number, data?: { [key: string]: string }) {
-  let url = apiRoot + `Player?page=${page}`;
-  url += data ? dataToString(data) : '';
+  const url = apiRoot + `Player?page=${page}` + dataToString(data);
 
   const response: IPlayer[] = await get(url);
 

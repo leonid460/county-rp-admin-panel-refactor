@@ -63,9 +63,9 @@ export const darkTheme: ITheme = {
     },
 
     table: {
-      rowBackground: 'white',
-      rowEvenBackground: colors.lighterGray,
-      headerBackground: 'white'
+      rowBackground: colors.darkerGray,
+      rowEvenBackground: colors.darkGray,
+      headerBackground: colors.darkerGray
     }
   },
 

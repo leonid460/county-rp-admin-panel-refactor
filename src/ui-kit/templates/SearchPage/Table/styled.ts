@@ -31,6 +31,7 @@ export const Row = styled.tr<{ theme: ITheme }>`
   background: ${({ theme }) => theme.colors.table.rowBackground};
 
   tbody > &:nth-child(2n-1) {
+    animation: 0.4s slide-down ease;
     background: ${({ theme }) => theme.colors.table.rowEvenBackground};
   }
 

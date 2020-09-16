@@ -14,10 +14,6 @@ export const Players = () => {
     {
       name: 'Логин',
       propKey: 'login'
-    },
-    {
-      name: 'Фракция',
-      propKey: 'faction'
     }
   ];
 
