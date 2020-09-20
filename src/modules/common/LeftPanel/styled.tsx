@@ -42,6 +42,7 @@ export const PanelContainer = styled.div<IPanelContainerProps>`
 
   ${({ theme }) => `
     @media ${theme.device.laptop} {
+      position: fixed;
       display: flex;
       min-width: 350px;
       width: 350px;

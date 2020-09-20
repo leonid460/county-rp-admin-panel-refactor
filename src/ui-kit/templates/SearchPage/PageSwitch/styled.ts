@@ -3,7 +3,7 @@ import { ITheme } from 'types';
 
 export const PageButton = styled.div<{ theme: ITheme; active?: 1 | 0 }>`
   padding: 5px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid;
   border-radius: 3px;
   font-size: 13px;
   cursor: pointer;
@@ -13,10 +13,12 @@ export const PageButton = styled.div<{ theme: ITheme; active?: 1 | 0 }>`
       ? `
     background: ${theme.colors.highlight};
     color: ${theme.colors.container};
+    border-color: ${theme.colors.highlight};
   `
       : `
     background: ${theme.colors.container};
     color: ${theme.colors.highlight};
+    border-color: ${theme.colors.border};
   `}
 `;
 

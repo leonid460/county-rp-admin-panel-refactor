@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { GlobalStylesProvider } from './GlobalStylesWrapper';
 import { Login, Home, Profile, Players } from 'pages';
-import { darkTheme as theme } from 'themes';
+import { defaultTheme as theme } from 'themes';
 import * as routes from 'routes';
 import { withStore } from 'store';
 import { Notifications } from 'modules/common';

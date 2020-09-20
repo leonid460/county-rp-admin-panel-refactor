@@ -13,6 +13,14 @@ export const TopPanelContainer = styled.div<{ theme: ITheme }>`
   box-sizing: border-box;
 
   background-color: ${({ theme }) => theme.colors.container};
+
+  ${({ theme }) => `
+    @media ${theme.device.laptop} {
+      position: fixed;
+      top: 0;
+      width: calc(100vw - 350px);
+    }
+  `}
 `;
 
 export const TextRow = styled.div<{ theme: ITheme }>`

@@ -2,7 +2,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { ITheme } from 'types';
 import React from 'react';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
   * {
     margin:  0;
     padding: 0;
@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     overflow-x: hidden;
+    background: ${({ theme }) => theme.colors.background};
   }
 
   @keyframes slide-up {
@@ -73,8 +74,8 @@ interface TGlobalStylesProviderProps {
 }
 
 export const GlobalStylesProvider = ({ children, theme }: TGlobalStylesProviderProps) => (
-  <>
+  <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <ThemeProvider theme={theme}>{children}</ThemeProvider>
-  </>
+    <>{children}</>
+  </ThemeProvider>
 );

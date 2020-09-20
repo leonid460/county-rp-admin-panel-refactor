@@ -7,6 +7,13 @@ export const PageMainPart = styled.div`
 
   width: 100%;
   min-height: 100vh;
+
+  ${({ theme }) => `
+    @media ${theme.device.laptop} {
+      padding-left: 350px;
+      padding-top: 80px;
+    }
+  `}
 `;
 
 export const ContentWrapper = styled.div<{ theme: ITheme }>`
