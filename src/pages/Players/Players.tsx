@@ -17,7 +17,7 @@ export const Players = () => {
     }
   ];
 
-  const tableColumnNames = ['ID', 'Логин', 'Группа'];
+  const tableColumnNames = ['ID', 'Логин', 'Пароль', 'Группа'];
 
   return (
     <SearchPage

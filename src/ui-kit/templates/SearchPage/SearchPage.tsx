@@ -8,8 +8,7 @@ import { TTableRow } from './Table/types';
 import { ISearchPageProps } from './types';
 import { PrimaryButton } from 'ui-kit/atoms';
 import { callNotification } from 'utils/callNotification';
-
-// TODO: сделать стор для обращений к api (преобращовывать респонс данные в селекторах)
+import { PageSwitch } from './PageSwitch';
 
 function makeInitialFilterState(keys: string[]) {
   const state: { [key: string]: string } = {};
@@ -50,14 +49,22 @@ export const SearchPage = ({
     setValue: (value: string) => setFilterState(field.propKey, value)
   }));
   const [tableRows, setTableRows] = useState<TTableRow[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(1);
 
-  const handleSearch = async () => {
+  const handleSearch = async (page: number) => {
     try {
-      const response = await apiCall(1, filterState);
-      setTableRows(response.map((row) => Object.values(row)));
+      const response = await apiCall(page, filterState);
+      setTableRows(response.items.map((row) => Object.values(row)));
+      setMaxPage(response.maxPage);
+      setCurrentPage(response.page);
     } catch (error) {
       callNotification({ type: 'error', header: 'Ошибка', content: error.message });
     }
+  };
+
+  const handlePageSwitch = (newPageNumber: number) => {
+    handleSearch(newPageNumber);
   };
 
   return (
@@ -67,10 +74,17 @@ export const SearchPage = ({
         <Styled.Subtitle>Фильтр</Styled.Subtitle>
         <Filter fields={modifiedFilterFields} />
         <Styled.ContainerForFindButton>
-          <PrimaryButton onClick={handleSearch}>Найти</PrimaryButton>
+          <PrimaryButton onClick={() => handleSearch(currentPage)}>Найти</PrimaryButton>
         </Styled.ContainerForFindButton>
         <Styled.Separator />
         <Table rows={tableRows} columnNames={tableColumnNames} />
+        {maxPage > 1 && (
+          <PageSwitch
+            maxPage={maxPage}
+            currentPage={currentPage}
+            setCurrentPage={handlePageSwitch}
+          />
+        )}
       </Styled.Container>
     </Base>
   );

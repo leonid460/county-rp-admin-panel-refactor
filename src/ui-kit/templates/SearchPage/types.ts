@@ -1,3 +1,5 @@
+import { IFilterByResponse } from 'types';
+
 export interface ISearchPageProps {
   actions: {
     name: string;
@@ -9,7 +11,10 @@ export interface ISearchPageProps {
     propKey: string;
   }[];
 
-  apiCall: (page: number, data: { [key: string]: string }) => Promise<{ [key: string]: string }[]>;
+  apiCall: (
+    page: number,
+    data: { [key: string]: string }
+  ) => Promise<IFilterByResponse<{ [key: string]: string | number }>>;
 
   tableColumnNames: string[];
   editRoute?: string;
