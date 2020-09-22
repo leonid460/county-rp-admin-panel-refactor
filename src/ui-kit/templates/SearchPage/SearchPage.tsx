@@ -6,7 +6,7 @@ import { Filter } from './Filter';
 import { Table } from './Table';
 import { TTableRow } from './Table/types';
 import { ISearchPageProps } from './types';
-import { PrimaryButton } from 'ui-kit/atoms';
+import { PrimaryButton, PageContentContainer } from 'ui-kit/atoms';
 import { callNotification } from 'utils/callNotification';
 import { PageSwitch } from './PageSwitch';
 
@@ -69,7 +69,7 @@ export const SearchPage = ({
 
   return (
     <Base>
-      <Styled.Container>
+      <PageContentContainer>
         <ActionButtons actions={actions} />
         <Styled.Subtitle>Фильтр</Styled.Subtitle>
         <Filter fields={modifiedFilterFields} />
@@ -85,7 +85,7 @@ export const SearchPage = ({
             setCurrentPage={handlePageSwitch}
           />
         )}
-      </Styled.Container>
+      </PageContentContainer>
     </Base>
   );
 };

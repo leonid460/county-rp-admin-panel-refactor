@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ITheme } from 'types';
+import { InputWithLabel } from 'ui-kit/atoms';
 
 export const Container = styled.div`
   display: flex;
@@ -9,18 +10,8 @@ export const Container = styled.div`
   margin: 20px 0;
 `;
 
-export const FilterItem = styled.label<{ theme: ITheme }>`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-
+export const FilterItem = styled(InputWithLabel)<{ theme: ITheme }>`
   margin-bottom: 15px;
-
-  & > span {
-    margin-right: 20px;
-    color: ${({ theme }) => theme.colors.secondaryText};
-  }
 
   &:last-child {
     margin-bottom: 0;

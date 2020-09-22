@@ -127,6 +127,22 @@
    	thunks.ts
    	types.ts
    ```
+   
+6. Pages' sub-folders represent categories. Therefore, these folders can export more than one page
+
+    ```
+    pages/
+      Players/
+        Create.tsx
+        Edit.tsx
+        index.ts
+        Search.tsx
+    ```
+    ```typescript
+    export * from './Create';
+    export * from './Edit';
+    export * from './Search';
+    ```
 
 ### Code Organisation
 

@@ -1,18 +1,6 @@
 import styled from 'styled-components';
 import { ITheme } from 'types';
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  width: 100%;
-  height: 100%;
-
-  box-sizing: border-box;
-  padding: 35px;
-`;
-
 export const Subtitle = styled.h2<{ theme: ITheme }>`
   margin-top: 30px;
   padding-left: 30px;

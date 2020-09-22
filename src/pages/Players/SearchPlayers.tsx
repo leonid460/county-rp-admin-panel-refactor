@@ -1,12 +1,13 @@
 import React from 'react';
 import { SearchPage } from 'ui-kit/templates';
 import { getPlayerFilterBy } from 'api';
+import { createPlayer, editPlayer } from 'routes';
 
-export const Players = () => {
+export const SearchPlayers = () => {
   const actions = [
     {
       name: 'Создать',
-      route: '/create'
+      route: createPlayer
     }
   ];
 
@@ -25,6 +26,7 @@ export const Players = () => {
       filterFields={filterFields}
       apiCall={getPlayerFilterBy}
       tableColumnNames={tableColumnNames}
+      editRoute={editPlayer}
     />
   );
 };
