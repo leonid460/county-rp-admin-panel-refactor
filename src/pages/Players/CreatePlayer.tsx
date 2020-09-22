@@ -18,7 +18,11 @@ export const CreatePlayer = () => {
         {
           name: 'Группа',
           key: 'group',
-          type: 'text'
+          type: 'select',
+          options: [
+            { name: 'Groove Str.', key: 'groove' },
+            { name: 'Ballas', key: 'balls' }
+          ]
         }
       ]}
     />

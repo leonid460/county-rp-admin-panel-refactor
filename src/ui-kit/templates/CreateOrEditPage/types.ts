@@ -5,5 +5,6 @@ export interface ICreateOrEditPageProps {
     name: string;
     key: string;
     type: TFormFieldType;
+    options?: { name: string; key: string }[];
   }[];
 }

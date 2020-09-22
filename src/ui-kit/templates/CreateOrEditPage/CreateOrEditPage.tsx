@@ -12,6 +12,7 @@ export const CreateOrEditPage = ({ fields }: ICreateOrEditPageProps) => {
   const fieldsWithState: IFormField<string | boolean>[] = fields.map((field) => ({
     name: field.name,
     type: field.type,
+    options: field.options,
     value: formState[field.key],
     setValue: (value: string | boolean) => setFormState(field.key, value)
   }));

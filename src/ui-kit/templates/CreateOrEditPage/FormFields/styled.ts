@@ -6,7 +6,7 @@ export const FormFieldsWrapper = styled.div`
   align-items: stretch;
   align-self: flex-start;
 
-  * + * {
-    margin-bottom: 10px;
+  label + label {
+    margin-top: 10px;
   }
 `;

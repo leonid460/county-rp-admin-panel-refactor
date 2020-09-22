@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export type TFormFieldType = 'text' | 'color' | 'checkbox';
+export type TFormFieldType = 'text' | 'color' | 'checkbox' | 'select';
 
 function makeInitialFilterState(
   fields: {
@@ -11,7 +11,7 @@ function makeInitialFilterState(
   const state: { [key: string]: string | boolean } = {};
 
   fields.forEach(({ key, type }) => {
-    state[key] = type === 'text' ? '' : false;
+    state[key] = type === 'checkbox' ? false : '';
   });
 
   return state;

@@ -5,6 +5,7 @@ export interface IFormField<T> {
   type: TFormFieldType;
   value: T;
   setValue: (value: T) => void;
+  options?: { key: string; name: string }[];
 }
 
 export interface IFormFieldsProps {

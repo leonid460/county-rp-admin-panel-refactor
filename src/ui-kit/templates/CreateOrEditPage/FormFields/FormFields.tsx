@@ -1,22 +1,33 @@
 import React from 'react';
 import { InputWithLabel } from 'ui-kit/atoms';
+import { SelectWithLabel } from 'ui-kit/molecules';
 import * as Styled from './styled';
 import { IFormFieldsProps, IFormField } from './types';
 
 export const FormFields = ({ fields }: IFormFieldsProps) => {
   const renderField = (field: IFormField<unknown>) => {
-    if (field.type === 'text') {
-      return (
-        <InputWithLabel
-          label={field.name}
-          key={field.name}
-          value={field.value as string}
-          setValue={field.setValue}
-        />
-      );
+    switch (field.type) {
+      case 'text':
+        return (
+          <InputWithLabel
+            label={field.name}
+            key={field.name}
+            value={field.value as string}
+            setValue={field.setValue}
+          />
+        );
+      case 'select':
+        return (
+          <SelectWithLabel
+            label={field.name}
+            options={field.options}
+            value={field.value as string}
+            setValue={field.setValue}
+          />
+        );
+      default:
+        return <></>;
     }
-
-    return <></>;
   };
 
   return (
