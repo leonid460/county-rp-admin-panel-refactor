@@ -11,3 +11,10 @@ export const Wrapper = styled.label`
     color: ${({ theme }) => theme.colors.secondaryText};
   }
 `;
+
+export const InnerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 220px;
+`;

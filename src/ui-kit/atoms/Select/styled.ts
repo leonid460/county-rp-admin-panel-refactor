@@ -10,15 +10,3 @@ export const Select = styled.select`
   color: ${({ theme }) => theme.colors.input.text} !important;
   background: ${({ theme }) => theme.colors.input.background} !important;
 `;
-
-export const SelectWithLabelWrapper = styled.label`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  & > span {
-    margin-right: 20px;
-    color: ${({ theme }) => theme.colors.secondaryText};
-  }
-`;

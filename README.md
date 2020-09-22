@@ -147,3 +147,12 @@
 ### Code Organisation
 
 1. Async requests of pages: request is made in page component and then results of request are passed to modules.
+
+2. Props' type of FC should be written this and only way: 
+
+   ```tsx
+   const Component: React.FC<IComponentProps> = (props) => (...)
+   ```
+
+   Otherwise there will be no way to pass there components to HOC.
+

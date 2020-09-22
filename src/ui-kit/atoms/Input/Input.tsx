@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledInput } from './styled';
 import { IInputProps } from './types';
 
-export const Input = ({ setValue, type = 'text', value, ...props }: IInputProps) => (
+export const Input: React.FC<IInputProps> = ({ setValue, type = 'text', value, ...props }) => (
   <StyledInput
     {...props}
     value={value}

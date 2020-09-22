@@ -3,7 +3,3 @@ export interface ISelectProps {
   value: string;
   setValue: (value: string) => void;
 }
-
-export interface ISelectWithLabelProps extends ISelectProps {
-  label: string;
-}

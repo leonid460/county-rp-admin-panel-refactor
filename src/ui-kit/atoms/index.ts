@@ -5,4 +5,6 @@ export * from './Input';
 export * from './PrimaryButton';
 export * from './Avatar';
 export * from './SectionContainer';
-export * from './InputWithLabel';
+export * from './Checkbox';
+export * from './withLabel';
+export * from './Select';

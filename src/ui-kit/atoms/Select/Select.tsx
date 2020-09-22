@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import * as Styled from './styled';
-import { ISelectProps, ISelectWithLabelProps } from './types';
+import { ISelectProps } from './types';
 
-export const Select = ({ options, value, setValue }: ISelectProps) => {
+export const Select: React.FC<ISelectProps> = ({ options, value, setValue }) => {
   const onChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
       setValue(event.target.value);
@@ -20,10 +20,3 @@ export const Select = ({ options, value, setValue }: ISelectProps) => {
     </Styled.Select>
   );
 };
-
-export const SelectWithLabel = ({ label, ...props }: ISelectWithLabelProps) => (
-  <Styled.SelectWithLabelWrapper>
-    <span>{label}</span>
-    <Select {...props} />
-  </Styled.SelectWithLabelWrapper>
-);

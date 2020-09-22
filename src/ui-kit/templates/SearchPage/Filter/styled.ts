@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ITheme } from 'types';
-import { InputWithLabel } from 'ui-kit/atoms';
+import { InputWithLabel } from 'ui-kit/molecules';
 
 export const Container = styled.div`
   display: flex;

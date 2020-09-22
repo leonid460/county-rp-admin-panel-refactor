@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputWithLabel } from 'ui-kit/atoms';
+import { InputWithLabel } from 'ui-kit/molecules';
 import { SelectWithLabel } from 'ui-kit/molecules';
 import * as Styled from './styled';
 import { IFormFieldsProps, IFormField } from './types';
