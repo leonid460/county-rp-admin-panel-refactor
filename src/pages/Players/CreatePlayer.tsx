@@ -21,7 +21,7 @@ export const CreatePlayer = () => {
           type: 'select',
           options: [
             { name: 'Groove Str.', key: 'groove' },
-            { name: 'Ballas', key: 'balls' }
+            { name: 'Ballas', key: 'ballas' }
           ]
         }
       ]}

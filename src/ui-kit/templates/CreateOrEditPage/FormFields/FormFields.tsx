@@ -20,6 +20,7 @@ export const FormFields = ({ fields }: IFormFieldsProps) => {
         return (
           <SelectWithLabel
             label={field.name}
+            key={field.name}
             options={field.options}
             value={field.value as string}
             setValue={field.setValue}

@@ -9,7 +9,6 @@ function makeInitialFilterState(
   }[]
 ) {
   const state: { [key: string]: string | boolean } = {};
-
   fields.forEach(({ key, type }) => {
     state[key] = type === 'checkbox' ? false : '';
   });
