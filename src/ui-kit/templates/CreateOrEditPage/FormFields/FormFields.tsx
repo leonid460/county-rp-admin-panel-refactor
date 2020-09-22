@@ -1,6 +1,5 @@
 import React from 'react';
-import { InputWithLabel } from 'ui-kit/molecules';
-import { SelectWithLabel } from 'ui-kit/molecules';
+import { InputWithLabel, SelectWithLabel, CheckboxWithLabel } from 'ui-kit/molecules';
 import * as Styled from './styled';
 import { IFormFieldsProps, IFormField } from './types';
 
@@ -23,6 +22,15 @@ export const FormFields = ({ fields }: IFormFieldsProps) => {
             key={field.name}
             options={field.options}
             value={field.value as string}
+            setValue={field.setValue}
+          />
+        );
+      case 'checkbox':
+        return (
+          <CheckboxWithLabel
+            label={field.name}
+            key={field.name}
+            value={field.value as boolean}
             setValue={field.setValue}
           />
         );

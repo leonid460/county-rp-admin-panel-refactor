@@ -12,11 +12,7 @@ export const TestRoom = () => {
 
   return (
     <Base>
-      <CheckboxWithLabel
-        label="Checkbox"
-        checked={checked}
-        handleCheck={() => setChecked(!checked)}
-      />
+      <CheckboxWithLabel label="Checkbox" value={checked} setValue={setChecked} />
       <InputWithLabel label="Test" value={input} setValue={setInput} />
     </Base>
   );

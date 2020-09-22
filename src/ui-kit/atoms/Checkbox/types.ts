@@ -1,7 +1,5 @@
-import React from 'react';
-
 export interface ICheckboxProps {
   className?: string;
-  checked: boolean;
-  handleCheck: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value: boolean;
+  setValue: (value: boolean) => void;
 }
