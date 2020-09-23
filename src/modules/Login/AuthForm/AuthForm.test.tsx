@@ -6,10 +6,10 @@ import { mocked } from 'ts-jest/utils';
 import { mount } from 'enzyme';
 import { auth } from 'api';
 import * as routes from 'routes';
+import { withStore } from 'store';
 import { GlobalStylesProvider } from 'App/GlobalStylesWrapper';
 import { darkTheme as theme } from 'themes';
 import { AuthForm } from './AuthForm';
-import { storeWrapper } from 'store';
 
 jest.mock('api', () => {
   return {
@@ -31,7 +31,7 @@ describe('AuthForm', () => {
       return Promise.resolve({});
     });
 
-    const tree = storeWrapper(() => (
+    const tree = withStore(() => (
       <Router history={history}>
         <GlobalStylesProvider theme={theme}>
           <AuthForm />

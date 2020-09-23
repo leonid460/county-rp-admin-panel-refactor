@@ -8,3 +8,4 @@ export * from './SectionContainer';
 export * from './Checkbox';
 export * from './withLabel';
 export * from './Select';
+export * from './Range';
