@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Base } from 'ui-kit/templates';
 import { Input, withLabel } from 'ui-kit/atoms';
 import { IInputProps } from 'ui-kit/atoms/Input/types';
-import { CheckboxWithLabel } from 'ui-kit/molecules';
+import { CheckboxWithLabel, ColorPalette } from 'ui-kit/molecules';
 import { Range } from 'ui-kit/atoms';
 
 const InputWithLabel = withLabel<IInputProps>(Input);
@@ -18,6 +18,7 @@ export const TestRoom = () => {
       <CheckboxWithLabel label="Checkbox" value={checked} setValue={setChecked} />
       <InputWithLabel label="Test" value={input} setValue={setInput} />
       <Range min={min} max={max} value={range} setValue={setRange} />
+      <ColorPalette />
     </Base>
   );
 };
