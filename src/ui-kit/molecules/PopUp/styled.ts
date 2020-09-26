@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { ITheme } from 'types';
+import { TAlign } from './types';
 
-export const PopUpContainer = styled.div<{ theme: ITheme }>`
+export const PopUpContainer = styled.div<{ align?: TAlign }>`
   position: absolute;
   top: calc(100% + 5px);
-  right: 0;
+  ${({ align }) => (align === 'left' ? `left: 0;` : `right: 0;`)};
 
   overflow: hidden;
   border-radius: 10px;
@@ -16,7 +16,7 @@ export const PopUpContainer = styled.div<{ theme: ITheme }>`
   animation: fade-in 0.4s ease;
 `;
 
-export const PopUpOpenerWrapper = styled.button`
+export const PopUpOpenerWrapper = styled.div`
   background: none;
   border: none;
   outline: none;
@@ -26,4 +26,7 @@ export const PopUpOpenerWrapper = styled.button`
 
 export const PopUpWrapper = styled.div`
   position: relative;
+  display: table;
+  width: 0;
+  background: red;
 `;

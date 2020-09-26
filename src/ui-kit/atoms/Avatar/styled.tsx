@@ -12,7 +12,7 @@ export const AvatarContainer = styled.div<IAvatarContainerProps>`
     max-width: ${size}px;
     max-height: ${size}px;
     border-radius: 50%;
-    margin: 0 15px;
+    margin: 0;
     font-weight: bold;
     font-size: ${size / 2}px;
   `}

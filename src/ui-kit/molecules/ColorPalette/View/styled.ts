@@ -10,7 +10,7 @@ export const View = styled.div.attrs<IViewProps>(({ hslColor }) => ({
   }
 }))<{ hslColor: string }>`
   width: 100%;
-  height: 200px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  height: 115px;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
 `;

@@ -1,57 +1,48 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Range } from 'ui-kit/atoms';
 import { View } from './View';
 import * as Styled from './styled';
+import { fromHSLToHex } from 'utils';
 
-function makeColorSliderBackground() {
+function makeBackgroundParamsString(colorsAmount: number, create: (i: number) => string) {
   const colorsList: string[] = [];
 
-  for (let i = 0; i < 360; i++) {
-    colorsList.push(`hsl(${i + 1}, 100%, 50%)`);
+  for (let i = 0; i < colorsAmount; i++) {
+    colorsList.push(`hsl(${create(i)})`);
   }
 
+  return makeGradientParamString(colorsList);
+}
+
+function makeGradientParamString(colorsList: string[]) {
   return `linear-gradient(to right, ${colorsList.join(', ')})`;
 }
 
-function makeSaturationSliderBackground(colorValue: number) {
-  const colorsList: string[] = [];
+const makeHueSliderBackground = () => makeBackgroundParamsString(360, (i) => `${i + 1}, 100%, 50%`);
 
-  for (let i = 0; i < 100; i++) {
-    colorsList.push(`hsl(${colorValue}, ${i}%, 50%)`);
-  }
+const makeSaturationSliderBackground = (colorValue: number) =>
+  makeBackgroundParamsString(100, (i) => `${colorValue}, ${i}%, 50%`);
 
-  return `linear-gradient(to right, ${colorsList.join(', ')})`;
-}
+const makeBrightnessSliderBackground = (colorValue: number) =>
+  makeBackgroundParamsString(100, (i) => `${colorValue}, 100%, ${i}%`);
 
-function makeBrightnessSliderBackground(colorValue: number) {
-  const colorsList: string[] = [];
-
-  for (let i = 0; i < 100; i++) {
-    colorsList.push(`hsl(${colorValue}, 100%, ${i}%)`);
-  }
-
-  return `linear-gradient(to right, ${colorsList.join(', ')})`;
-}
-
-export const ColorPalette = () => {
-  const [color, setColor] = useState(331);
+export const ColorPalette: React.FC<{ onChange: (color: string) => void }> = ({ onChange }) => {
+  const [hue, setColor] = useState(331);
   const [saturation, setSaturation] = useState(100);
-  const [brightness, setBrightness] = useState(50);
+  const [lightness, setBrightness] = useState(50);
 
-  const colorSliderTrackColor = makeColorSliderBackground();
-  const saturationSliderTrackColor = makeSaturationSliderBackground(color);
-  const brightnessSliderTrackColor = makeBrightnessSliderBackground(color);
+  const colorSliderTrackColor = makeHueSliderBackground();
+  const saturationSliderTrackColor = makeSaturationSliderBackground(hue);
+  const brightnessSliderTrackColor = makeBrightnessSliderBackground(hue);
+
+  useEffect(() => {
+    onChange(fromHSLToHex(hue, saturation, lightness));
+  }, [hue, saturation, lightness]);
 
   return (
     <Styled.Container>
-      <View color={color} saturation={saturation} brightness={brightness} />
-      <Range
-        min={0}
-        max={360}
-        value={color}
-        setValue={setColor}
-        trackColor={colorSliderTrackColor}
-      />
+      <View color={hue} saturation={saturation} brightness={lightness} />
+      <Range min={0} max={360} value={hue} setValue={setColor} trackColor={colorSliderTrackColor} />
       <Range
         min={0}
         max={100}
@@ -62,7 +53,7 @@ export const ColorPalette = () => {
       <Range
         min={0}
         max={100}
-        value={brightness}
+        value={lightness}
         setValue={setBrightness}
         trackColor={brightnessSliderTrackColor}
       />

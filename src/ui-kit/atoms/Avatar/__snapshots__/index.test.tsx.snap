@@ -19,7 +19,7 @@ exports[`testing <Avatar /> matches snapshot 1`] = `
   max-width: 50px;
   max-height: 50px;
   border-radius: 50%;
-  margin: 0 15px;
+  margin: 0;
   font-weight: bold;
   font-size: 25px;
   background: #27b8b2;

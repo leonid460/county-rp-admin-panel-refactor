@@ -3,9 +3,9 @@ import { ITheme } from 'types';
 import { SectionContainer } from 'ui-kit/atoms';
 
 export const Container = styled(SectionContainer)<{ theme: ITheme }>`
+  flex-grow: 1;
   width: 100%;
   min-height: calc(100vh * 0.3);
-  height: 100%;
   padding: 6px 0;
   border-radius: 6px;
 `;

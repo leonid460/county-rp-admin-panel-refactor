@@ -17,6 +17,8 @@ export const PageMainPart = styled.div`
 `;
 
 export const ContentWrapper = styled.div<{ theme: ITheme }>`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
 
