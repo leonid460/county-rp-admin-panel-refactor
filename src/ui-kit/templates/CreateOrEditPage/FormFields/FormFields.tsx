@@ -1,5 +1,6 @@
 import React from 'react';
 import { InputWithLabel, SelectWithLabel, CheckboxWithLabel } from 'ui-kit/molecules';
+import { PopUpColorPickerWithLabel } from 'ui-kit/organisms';
 import * as Styled from './styled';
 import { IFormFieldsProps, IFormField } from './types';
 
@@ -31,6 +32,15 @@ export const FormFields = ({ fields }: IFormFieldsProps) => {
             label={field.name}
             key={field.name}
             value={field.value as boolean}
+            setValue={field.setValue}
+          />
+        );
+      case 'color':
+        return (
+          <PopUpColorPickerWithLabel
+            label={field.name}
+            key={field.name}
+            value={(field.value as string) || '#b7eaeb'}
             setValue={field.setValue}
           />
         );

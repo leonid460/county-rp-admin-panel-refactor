@@ -24,7 +24,7 @@ export const PopUpOpenerWrapper = styled.div`
   cursor: pointer;
 `;
 
-export const PopUpWrapper = styled.div`
+export const PopUpWrapper = styled.label`
   position: relative;
   display: table;
   width: 0;

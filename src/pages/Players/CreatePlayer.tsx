@@ -28,6 +28,11 @@ export const CreatePlayer = () => {
           name: 'Модератор',
           key: 'isModer',
           type: 'checkbox'
+        },
+        {
+          name: 'Цвет',
+          key: 'color',
+          type: 'color'
         }
       ]}
     />
