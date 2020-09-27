@@ -28,5 +28,4 @@ export const PopUpWrapper = styled.div`
   position: relative;
   display: table;
   width: 0;
-  background: red;
 `;

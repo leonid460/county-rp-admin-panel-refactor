@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Range } from 'ui-kit/atoms';
 import { View } from './View';
 import * as Styled from './styled';
-import { fromHSLToHex } from 'utils';
+import { fromHSLToHex, fromHEXtoHSL } from 'utils';
+import { IColorPickerProps } from './types';
 
 function makeBackgroundParamsString(colorsAmount: number, create: (i: number) => string) {
   const colorsList: string[] = [];
@@ -26,10 +27,16 @@ const makeSaturationSliderBackground = (colorValue: number) =>
 const makeBrightnessSliderBackground = (colorValue: number) =>
   makeBackgroundParamsString(100, (i) => `${colorValue}, 100%, ${i}%`);
 
-export const ColorPalette: React.FC<{ onChange: (color: string) => void }> = ({ onChange }) => {
-  const [hue, setColor] = useState(331);
-  const [saturation, setSaturation] = useState(100);
-  const [lightness, setBrightness] = useState(50);
+export const ColorPalette: React.FC<IColorPickerProps> = ({ initValue, onChange }) => {
+  const [initHue, initSaturation, initBrightness] = fromHEXtoHSL(initValue);
+
+  const [hue, setColor] = useState(initHue);
+  const [saturation, setSaturation] = useState(initSaturation);
+  const [lightness, setBrightness] = useState(initBrightness);
+
+  useEffect(() => {
+    onChange(fromHSLToHex(hue, saturation, lightness));
+  }, [hue, saturation, lightness]);
 
   const colorSliderTrackColor = makeHueSliderBackground();
   const saturationSliderTrackColor = makeSaturationSliderBackground(hue);

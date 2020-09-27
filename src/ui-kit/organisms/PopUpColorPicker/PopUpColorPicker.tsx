@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PopUp, ColorPalette } from 'ui-kit/molecules';
-import { Input } from 'ui-kit/atoms';
+import * as Styled from './styled';
+import { IPopUpColorPickerProps } from './types';
 
-export const PopUpColorPicker = () => {
-  const [color, setColor] = useState('');
+const ColorPaletteButton = () => (
+  <Styled.ColorPaletteButton>
+    <span className="material-icons">palette</span>
+  </Styled.ColorPaletteButton>
+);
 
+export const PopUpColorPicker: React.FC<IPopUpColorPickerProps> = ({ value, setValue }) => {
   return (
-    <PopUp
-      align="left"
-      openerContent={
-        <Input
-          value={color}
-          setValue={() => {
-            // eslint-disable-next-line no-empty-function
-          }}
-        />
-      }
-    >
-      <ColorPalette onChange={setColor} />
-    </PopUp>
+    <Styled.Container>
+      <Styled.Input value={value} setValue={setValue} />
+      <PopUp align="right" openerContent={<ColorPaletteButton />}>
+        <ColorPalette initValue={value} onChange={setValue} />
+      </PopUp>
+    </Styled.Container>
   );
 };

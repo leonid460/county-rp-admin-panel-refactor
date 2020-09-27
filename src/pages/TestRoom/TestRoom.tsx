@@ -14,6 +14,7 @@ export const TestRoom = () => {
   const [input, setInput] = useState('');
   const [range, setRange] = useState(100);
   const [min, max] = [0, 100];
+  const [color, setColor] = useState('#d3adeb');
 
   return (
     <Base>
@@ -21,7 +22,7 @@ export const TestRoom = () => {
         <CheckboxWithLabel label="Checkbox" value={checked} setValue={setChecked} />
         <InputWithLabel label="Test" value={input} setValue={setInput} />
         <Range min={min} max={max} value={range} setValue={setRange} />
-        <PopUpColorPicker />
+        <PopUpColorPicker value={color} setValue={setColor} />
       </Styled.Container>
     </Base>
   );

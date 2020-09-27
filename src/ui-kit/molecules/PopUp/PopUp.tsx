@@ -3,6 +3,7 @@ import * as Styled from './styled';
 import { IPopUpProps } from './types';
 
 // TODO: убрать передачу компоненты кнопки напрямую и сделать поп-ап контролируемым объектом
+// TODO: сделать нормальный попап в портале
 export const PopUp: React.FC<IPopUpProps> = ({ openerContent, children, align }) => {
   const [isOpen, open] = useState(false);
 
