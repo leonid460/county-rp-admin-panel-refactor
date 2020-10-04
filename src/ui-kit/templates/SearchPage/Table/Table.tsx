@@ -1,8 +1,6 @@
 import React from 'react';
 import * as Styled from './styled';
 import { ITableProps } from './types';
-import { PrimaryButton } from 'ui-kit/atoms';
-import { NavLink } from 'react-router-dom';
 
 export const Table = ({ columnNames, rows, editRoute }: ITableProps) => {
   const widthButton = !!editRoute;
@@ -15,6 +13,7 @@ export const Table = ({ columnNames, rows, editRoute }: ITableProps) => {
             {columnNames.map((name) => (
               <Styled.HeaderCell key={name}>{name}</Styled.HeaderCell>
             ))}
+            {widthButton && <Styled.HeaderCell />}
           </Styled.Row>
         </thead>
         <tbody>
@@ -25,9 +24,7 @@ export const Table = ({ columnNames, rows, editRoute }: ITableProps) => {
               ))}
               {widthButton && (
                 <Styled.Cell>
-                  <PrimaryButton as={NavLink} to={editRoute}>
-                    Редактировать
-                  </PrimaryButton>
+                  <Styled.EditButton to={editRoute} />
                 </Styled.Cell>
               )}
             </Styled.Row>

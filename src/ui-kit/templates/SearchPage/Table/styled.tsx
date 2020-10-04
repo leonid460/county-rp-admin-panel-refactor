@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { ITheme } from 'types';
 import { SectionContainer } from 'ui-kit/atoms';
+import { NavLink } from 'react-router-dom';
+import React from 'react';
 
 export const Container = styled(SectionContainer)<{ theme: ITheme }>`
   flex-grow: 1;
@@ -22,16 +24,21 @@ export const Cell = styled.td<{ theme: ITheme }>`
 `;
 
 export const HeaderCell = styled.th<{ theme: ITheme }>`
+  padding: 0 5px;
   color: ${({ theme }) => theme.colors.secondaryText};
+  text-align: left !important;
 `;
 
 export const Row = styled.tr<{ theme: ITheme }>`
   height: 48px;
   background: ${({ theme }) => theme.colors.table.rowBackground};
 
-  tbody > &:nth-child(2n-1) {
+  tbody > & {
     animation: 0.4s slide-down ease;
-    background: ${({ theme }) => theme.colors.table.rowEvenBackground};
+
+    &:nth-child(2n-1) {
+      background: ${({ theme }) => theme.colors.table.rowEvenBackground};
+    }
   }
 
   & > ${Cell}, & > ${HeaderCell} {
@@ -41,6 +48,27 @@ export const Row = styled.tr<{ theme: ITheme }>`
 
     &:last-child {
       padding-right: 24px;
+    }
+  }
+`;
+
+export const EditButton = styled(NavLink).attrs(() => ({
+  children: <span className="material-icons">edit</span>
+}))`
+  display: flex;
+  text-decoration: none;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  & .material-icons {
+    color: ${({ theme }) => theme.colors.primaryButton.color};
+    background: ${({ theme }) => theme.colors.primaryButton.background};
+    border-radius: 3px;
+    padding: 2px;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.primaryButton.hoverColor};
+      background: ${({ theme }) => theme.colors.primaryButton.hoverBackground};
     }
   }
 `;

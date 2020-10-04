@@ -11,14 +11,25 @@ export const PageButton = styled.div<{ theme: ITheme; active?: 1 | 0 }>`
   ${({ theme, active }) =>
     active
       ? `
-    background: ${theme.colors.highlight};
-    color: ${theme.colors.container};
-    border-color: ${theme.colors.highlight};
+    background: ${theme.colors.primaryButton.background};
+    color: ${theme.colors.primaryButton.color};
+    border-color: ${theme.colors.primaryButton.background};
+    
+    &:hover {
+      background: ${theme.colors.primaryButton.hoverBackground};
+      color: ${theme.colors.primaryButton.hoverColor};
+    }
   `
       : `
-    background: ${theme.colors.container};
-    color: ${theme.colors.highlight};
-    border-color: ${theme.colors.border};
+    background: ${theme.colors.secondaryButton.background};
+    color: ${theme.colors.secondaryButton.color};
+    border-color: ${theme.colors.secondaryButton.borderColor};
+    
+    &:hover {
+      background: ${theme.colors.secondaryButton.hoverBackground};
+      color: ${theme.colors.secondaryButton.hoverColor};
+      border-color: ${theme.colors.secondaryButton.hoverBorderColor};
+    }
   `}
 `;
 

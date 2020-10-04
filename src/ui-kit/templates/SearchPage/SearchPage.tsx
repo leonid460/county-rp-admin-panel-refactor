@@ -14,7 +14,8 @@ export const SearchPage = ({
   actions,
   filterFields,
   apiCall,
-  tableColumnNames
+  tableColumnNames,
+  editRoute
 }: ISearchPageProps) => {
   const [modifiedFilterFields, filterState] = useSmartFormFields(filterFields);
 
@@ -47,7 +48,7 @@ export const SearchPage = ({
           <PrimaryButton onClick={() => handleSearch(currentPage)}>Найти</PrimaryButton>
         </Styled.ContainerForFindButton>
         <Styled.Separator />
-        <Table rows={tableRows} columnNames={tableColumnNames} />
+        <Table rows={tableRows} columnNames={tableColumnNames} editRoute={editRoute} />
         {maxPage > 1 && (
           <PageSwitch
             maxPage={maxPage}

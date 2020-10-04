@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { GlobalStylesProvider } from './GlobalStylesWrapper';
-import { Login, Home, Profile, SearchPlayers, CreatePlayer, TestRoom } from 'pages';
+import { Login, Home, Profile, SearchPlayers, CreatePlayer, TestRoom, EditPlayer } from 'pages';
 import { defaultTheme as theme } from 'themes';
 import * as routes from 'routes';
 import { withStore } from 'store';
@@ -33,6 +33,9 @@ export const AdminPanel: React.FC = withStore(() => {
         </Route>
         <Route path={`${routes.createPlayer}`}>
           <CreatePlayer />
+        </Route>
+        <Route path={`${routes.editPlayer}`}>
+          <EditPlayer />
         </Route>
 
         <Redirect to={routes.root} />

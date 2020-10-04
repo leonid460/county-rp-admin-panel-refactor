@@ -25,10 +25,14 @@ function requestFactory(method: TRequestMethod, headers?: HeadersInit) {
   };
 }
 
-export const post = requestFactory('POST', {
+const defaultHeaders = {
   'Content-Type': 'application/json'
-});
+};
+
+export const post = requestFactory('POST', defaultHeaders);
 
 export const get = requestFactory('GET');
 
 export const del = requestFactory('DELETE');
+
+export const put = requestFactory('PUT', defaultHeaders);

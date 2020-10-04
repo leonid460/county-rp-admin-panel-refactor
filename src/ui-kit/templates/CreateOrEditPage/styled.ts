@@ -4,7 +4,6 @@ import { SectionContainer } from 'ui-kit/atoms';
 export const FormContainer = styled(SectionContainer)`
   display: flex;
   flex-direction: column;
-  min-height: 400px;
   padding: 24px;
 `;
 

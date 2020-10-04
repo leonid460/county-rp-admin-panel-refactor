@@ -42,3 +42,5 @@ export const CreateOrEditPage = <T extends object>({
     </Base>
   );
 };
+
+// TODO: сделать возврат назад

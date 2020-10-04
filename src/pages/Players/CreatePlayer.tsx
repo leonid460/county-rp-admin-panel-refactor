@@ -27,16 +27,6 @@ export const CreatePlayer = () => {
             { name: 'Groove Str.', key: 'groove' },
             { name: 'Ballas', key: 'ballas' }
           ]
-        },
-        {
-          name: 'Модератор',
-          key: 'isModer',
-          type: 'checkbox'
-        },
-        {
-          name: 'Цвет',
-          key: 'color',
-          type: 'color'
         }
       ]}
     />
