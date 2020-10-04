@@ -1,6 +1,12 @@
 import { useState } from 'react';
+import { IFormField, TFormFieldType } from './types';
 
-export type TFormFieldType = 'text' | 'color' | 'checkbox' | 'select';
+type TSmartFormField = {
+  name: string;
+  key: string;
+  type: TFormFieldType;
+  options?: { name: string; key: string }[];
+};
 
 function makeInitialFilterState(
   fields: {
@@ -16,7 +22,7 @@ function makeInitialFilterState(
   return state;
 }
 
-export function useFormComputedState(
+function useFormComputedState(
   fields: {
     type: TFormFieldType;
     key: string;
@@ -32,4 +38,20 @@ export function useFormComputedState(
   };
 
   return [state, modifiedSetState];
+}
+
+export function useSmartFormFields(
+  fields: TSmartFormField[]
+): [IFormField<string | boolean>[], { [p: string]: string | boolean }] {
+  const [formState, setFormState] = useFormComputedState(fields);
+
+  const formFields = fields.map((field) => ({
+    name: field.name,
+    type: field.type,
+    options: field.options,
+    value: formState[field.key],
+    setValue: (value: string | boolean) => setFormState(field.key, value)
+  }));
+
+  return [formFields, formState];
 }

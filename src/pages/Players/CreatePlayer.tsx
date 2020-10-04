@@ -1,9 +1,13 @@
 import React from 'react';
 import { CreateOrEditPage } from 'ui-kit/templates';
+import { IPlayer } from 'types';
+import { createPlayer } from 'api';
 
 export const CreatePlayer = () => {
   return (
-    <CreateOrEditPage
+    <CreateOrEditPage<IPlayer>
+      type="create"
+      apiCall={(data) => createPlayer(data)}
       fields={[
         {
           name: 'Логин',

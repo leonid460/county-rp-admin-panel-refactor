@@ -1,4 +1,4 @@
-import { TFormFieldType } from 'utils';
+export type TFormFieldType = 'text' | 'color' | 'checkbox' | 'select';
 
 export interface IFormField<T> {
   name: string;
@@ -8,6 +8,6 @@ export interface IFormField<T> {
   options?: { key: string; name: string }[];
 }
 
-export interface IFormFieldsProps {
+export interface ISmartFormProps {
   fields: (IFormField<string> | IFormField<boolean>)[];
 }

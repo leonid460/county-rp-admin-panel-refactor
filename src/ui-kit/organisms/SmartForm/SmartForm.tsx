@@ -1,10 +1,10 @@
 import React from 'react';
 import { InputWithLabel, SelectWithLabel, CheckboxWithLabel } from 'ui-kit/molecules';
-import { PopUpColorPickerWithLabel } from 'ui-kit/organisms';
+import { PopUpColorPickerWithLabel } from 'ui-kit/organisms/index';
 import * as Styled from './styled';
-import { IFormFieldsProps, IFormField } from './types';
+import { ISmartFormProps, IFormField } from './types';
 
-export const FormFields = ({ fields }: IFormFieldsProps) => {
+export const SmartForm = ({ fields }: ISmartFormProps) => {
   const renderField = (field: IFormField<unknown>) => {
     switch (field.type) {
       case 'text':
@@ -50,6 +50,8 @@ export const FormFields = ({ fields }: IFormFieldsProps) => {
   };
 
   return (
-    <Styled.FormFieldsWrapper>{fields.map((field) => renderField(field))}</Styled.FormFieldsWrapper>
+    <Styled.SmartFormContainer>
+      {fields.map((field) => renderField(field))}
+    </Styled.SmartFormContainer>
   );
 };

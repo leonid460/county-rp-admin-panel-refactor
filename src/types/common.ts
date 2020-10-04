@@ -12,3 +12,5 @@ export interface IUserPerson {
 }
 
 export type TAsyncCallStatus = 'idle' | 'loading' | 'succeeded' | 'failed';
+
+export type TVariousObject = { [key: string]: string | boolean };

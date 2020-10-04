@@ -13,7 +13,7 @@ function requestFactory(method: TRequestMethod, headers?: HeadersInit) {
     const response = await fetch(requestUrl, {
       method,
       headers,
-      body
+      body: JSON.stringify(body)
     });
 
     if (!response.ok) {
