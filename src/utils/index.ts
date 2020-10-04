@@ -9,5 +9,4 @@ export * from './makeColorFromString';
 export * from './callNotification';
 export * from './makeArray';
 export * from './convertObjectToUrlParams';
-export * from '../ui-kit/organisms/SmartForm/useFormComputedState';
 export * from './getDisplayName';

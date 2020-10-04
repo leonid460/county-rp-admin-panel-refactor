@@ -2,38 +2,13 @@ import React, { useState } from 'react';
 import { Base } from '../Base';
 import * as Styled from './styled';
 import { ActionButtons } from './ActionButtons';
-import { Filter } from './Filter';
 import { Table } from './Table';
 import { TTableRow } from './Table/types';
 import { ISearchPageProps } from './types';
 import { PrimaryButton, PageContentContainer } from 'ui-kit/atoms';
 import { callNotification } from 'utils/callNotification';
 import { PageSwitch } from './PageSwitch';
-
-function makeInitialFilterState(keys: string[]) {
-  const state: { [key: string]: string } = {};
-
-  keys.forEach((key) => {
-    state[key] = '';
-  });
-
-  return state;
-}
-
-function useFilterState(
-  keys: string[]
-): [{ [p: string]: string }, (key: string, value: string) => void] {
-  const [state, setState] = useState(makeInitialFilterState(keys));
-
-  const modifiedSetState = (key: string, value: string) => {
-    setState({
-      ...state,
-      [key]: value
-    });
-  };
-
-  return [state, modifiedSetState];
-}
+import { SmartForm, useSmartFormFields } from 'ui-kit/organisms/SmartForm';
 
 export const SearchPage = ({
   actions,
@@ -41,18 +16,13 @@ export const SearchPage = ({
   apiCall,
   tableColumnNames
 }: ISearchPageProps) => {
-  const filterFieldsKeys = filterFields.map((field) => field.propKey);
-  const [filterState, setFilterState] = useFilterState(filterFieldsKeys);
-  const modifiedFilterFields = filterFields.map((field) => ({
-    name: field.name,
-    value: filterState[field.propKey],
-    setValue: (value: string) => setFilterState(field.propKey, value)
-  }));
+  const [modifiedFilterFields, filterState] = useSmartFormFields(filterFields);
+
   const [tableRows, setTableRows] = useState<TTableRow[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [maxPage, setMaxPage] = useState(1);
 
-  const handleSearch = async (page: number) => {
+  const handleSearch = async (page: number): Promise<void> => {
     try {
       const response = await apiCall(page, filterState);
       setTableRows(response.items.map((row) => Object.values(row)));
@@ -72,7 +42,7 @@ export const SearchPage = ({
       <PageContentContainer>
         <ActionButtons actions={actions} />
         <Styled.Subtitle>Фильтр</Styled.Subtitle>
-        <Filter fields={modifiedFilterFields} />
+        <SmartForm fields={modifiedFilterFields} />
         <Styled.ContainerForFindButton>
           <PrimaryButton onClick={() => handleSearch(currentPage)}>Найти</PrimaryButton>
         </Styled.ContainerForFindButton>

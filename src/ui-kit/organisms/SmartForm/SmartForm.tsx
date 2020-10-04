@@ -2,10 +2,10 @@ import React from 'react';
 import { InputWithLabel, SelectWithLabel, CheckboxWithLabel } from 'ui-kit/molecules';
 import { PopUpColorPickerWithLabel } from 'ui-kit/organisms/index';
 import * as Styled from './styled';
-import { ISmartFormProps, IFormField } from './types';
+import { ISmartFormProps, ISmartFormStateField } from './types';
 
 export const SmartForm = ({ fields }: ISmartFormProps) => {
-  const renderField = (field: IFormField<unknown>) => {
+  const renderField = (field: ISmartFormStateField<unknown>) => {
     switch (field.type) {
       case 'text':
         return (

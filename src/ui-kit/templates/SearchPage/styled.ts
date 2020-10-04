@@ -3,6 +3,7 @@ import { ITheme } from 'types';
 
 export const Subtitle = styled.h2<{ theme: ITheme }>`
   margin-top: 30px;
+  margin-bottom: 15px;
   padding-left: 30px;
 
   color: ${({ theme }) => theme.colors.secondaryText};

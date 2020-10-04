@@ -1,2 +1,3 @@
 export * from './SmartForm';
-export * from './useFormComputedState';
+export * from './useSmartFormFields';
+export type { ISmartFormRawInputField } from './types';
