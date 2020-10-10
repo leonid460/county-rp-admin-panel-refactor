@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { PageContentContainer, PrimaryButton } from 'ui-kit/atoms';
 import { Base } from 'ui-kit/templates';
 import * as Styled from './styled';
@@ -26,10 +27,25 @@ export const CreateOrEditPage = <T extends object>({
     }
   };
 
-  const renderSubmitButton = () => (
-    <PrimaryButton onClick={handleSubmit}>
-      {type === 'create' ? 'Создать' : 'Сохранить'}
-    </PrimaryButton>
+  const useGoBack = () => {
+    const history = useHistory();
+    const pathName = history.location.pathname;
+    const rests = pathName.split('/');
+    rests.pop();
+    const newPathName = rests.join('/');
+
+    return () => history.push(newPathName);
+  };
+
+  const goBack = useGoBack();
+
+  const renderButtons = () => (
+    <>
+      <PrimaryButton onClick={goBack}>Отмена</PrimaryButton>
+      <PrimaryButton onClick={handleSubmit}>
+        {type === 'create' ? 'Создать' : 'Сохранить'}
+      </PrimaryButton>
+    </>
   );
 
   return (
@@ -37,11 +53,9 @@ export const CreateOrEditPage = <T extends object>({
       <PageContentContainer>
         <Styled.FormContainer>
           <SmartForm fields={formFields} />
-          <Styled.ButtonsContainer>{renderSubmitButton()}</Styled.ButtonsContainer>
+          <Styled.ButtonsContainer>{renderButtons()}</Styled.ButtonsContainer>
         </Styled.FormContainer>
       </PageContentContainer>
     </Base>
   );
 };
-
-// TODO: сделать возврат назад

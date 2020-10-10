@@ -11,4 +11,8 @@ export const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+
+  & > * {
+    margin-left: 12px;
+  }
 `;
