@@ -2,7 +2,8 @@ import React from 'react';
 import { PageContentContainer, PrimaryButton } from 'ui-kit/atoms';
 import { Base } from 'ui-kit/templates';
 import * as Styled from './styled';
-import { SmartForm, useSmartFormFields } from 'ui-kit/organisms';
+import { useSmartFormFields } from 'ui-kit/organisms';
+import { SmartForm } from 'ui-kit/organisms/SmartForm';
 import { ICreateOrEditPageProps } from './types';
 import { callNotification } from 'utils/callNotification';
 
