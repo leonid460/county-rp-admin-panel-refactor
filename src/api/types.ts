@@ -1,5 +1,5 @@
 export type TRequestBody = {
-  [key: string]: string | number | boolean;
+  [key: string]: unknown;
 };
 
 export type TRequestMethod = 'POST' | 'GET' | 'PUT' | 'DELETE';

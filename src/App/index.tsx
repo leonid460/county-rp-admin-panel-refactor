@@ -1,7 +1,27 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { GlobalStylesProvider } from './GlobalStylesWrapper';
-import { Login, Home, Profile, SearchPlayers, CreatePlayer, TestRoom, EditPlayer } from 'pages';
+import {
+  Login,
+  Home,
+  Profile,
+  TestRoom,
+  SearchPlayers,
+  CreatePlayer,
+  EditPlayer,
+  SearchGroups,
+  CreateGroup,
+  EditGroup,
+  SearchPerson,
+  EditPerson,
+  SearchFaction,
+  EditFaction,
+  CreateFaction,
+  SearchAdminLevel,
+  CreateAdminLevel,
+  EditAdminLevel,
+  SearchLog
+} from 'pages';
 import { defaultTheme as theme } from 'themes';
 import * as routes from 'routes';
 import { withStore } from 'store';
@@ -36,6 +56,47 @@ export const AdminPanel: React.FC = withStore(() => {
         </Route>
         <Route path={`${routes.editPlayer}`}>
           <EditPlayer />
+        </Route>
+
+        <Route exact path={routes.group}>
+          <SearchGroups />
+        </Route>
+        <Route path={`${routes.createGroup}`}>
+          <CreateGroup />
+        </Route>
+        <Route path={`${routes.editGroup}`}>
+          <EditGroup />
+        </Route>
+
+        <Route exact path={routes.person}>
+          <SearchPerson />
+        </Route>
+        <Route path={`${routes.editPerson}`}>
+          <EditPerson />
+        </Route>
+
+        <Route exact path={routes.faction}>
+          <SearchFaction />
+        </Route>
+        <Route path={`${routes.createFaction}`}>
+          <CreateFaction />
+        </Route>
+        <Route path={`${routes.editFaction}`}>
+          <EditFaction />
+        </Route>
+
+        <Route exact path={routes.adminLevel}>
+          <SearchAdminLevel />
+        </Route>
+        <Route path={`${routes.createAdminLevel}`}>
+          <CreateAdminLevel />
+        </Route>
+        <Route path={`${routes.editAdminLevel}`}>
+          <EditAdminLevel />
+        </Route>
+
+        <Route exact path={routes.log}>
+          <SearchLog />
         </Route>
 
         <Redirect to={routes.root} />

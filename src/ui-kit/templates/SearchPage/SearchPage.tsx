@@ -7,14 +7,14 @@ import { TTableRow } from './Table/types';
 import { ISearchPageProps } from './types';
 import { PrimaryButton, PageContentContainer } from 'ui-kit/atoms';
 import { callNotification } from 'utils/callNotification';
-import { PageSwitch } from './PageSwitch';
+import { PageSwitch } from 'ui-kit/molecules';
 import { SmartForm, useSmartFormFields } from 'ui-kit/organisms/SmartForm';
 
 export const SearchPage = ({
   actions,
   filterFields,
   apiCall,
-  tableColumnNames,
+  tableColumnsHeads,
   editRoute
 }: ISearchPageProps) => {
   const [modifiedFilterFields, filterState] = useSmartFormFields(filterFields);
@@ -26,7 +26,7 @@ export const SearchPage = ({
   const handleSearch = async (page: number): Promise<void> => {
     try {
       const response = await apiCall(page, filterState);
-      setTableRows(response.items.map((row) => Object.values(row)));
+      setTableRows(response.items);
       setMaxPage(response.maxPage);
       setCurrentPage(response.page);
     } catch (error) {
@@ -48,7 +48,7 @@ export const SearchPage = ({
           <PrimaryButton onClick={() => handleSearch(currentPage)}>Найти</PrimaryButton>
         </Styled.ContainerForFindButton>
         <Styled.Separator />
-        <Table rows={tableRows} columnNames={tableColumnNames} editRoute={editRoute} />
+        <Table rows={tableRows} columnsHeads={tableColumnsHeads} editRoute={editRoute} />
         {maxPage > 1 && (
           <PageSwitch
             maxPage={maxPage}

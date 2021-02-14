@@ -6,21 +6,14 @@ import { createPlayer, editPlayer } from 'routes';
 export const SearchPlayers = () => {
   return (
     <SearchPage
-      actions={[
-        {
-          name: 'Создать',
-          route: createPlayer
-        }
-      ]}
-      filterFields={[
-        {
-          name: 'Логин',
-          key: 'login',
-          type: 'text'
-        }
-      ]}
+      actions={[{ name: 'Создать', route: createPlayer }]}
+      filterFields={[{ key: 'login', name: 'логин', type: 'text' }]}
       apiCall={getPlayerFilterBy}
-      tableColumnNames={['ID', 'Логин', 'Пароль', 'Группа']}
+      tableColumnsHeads={[
+        { key: 'id', name: 'ID' },
+        { key: 'login', name: 'Логин' },
+        { key: 'password', name: 'Пароль' }
+      ]}
       editRoute={editPlayer}
     />
   );

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PopUp, ColorPalette } from 'ui-kit/molecules';
 import * as Styled from './styled';
 import { IPopUpColorPickerProps } from './types';
+
+function isCorrectColor(color: string) {
+  return !(color.length < 7 && color.length > 0 && color[0] !== '#');
+}
 
 const ColorPaletteButton = () => (
   <Styled.ColorPaletteButton>
@@ -10,6 +14,12 @@ const ColorPaletteButton = () => (
 );
 
 export const PopUpColorPicker: React.FC<IPopUpColorPickerProps> = ({ value, setValue }) => {
+  useEffect(() => {
+    if (!isCorrectColor(value)) {
+      setValue('#' + value);
+    }
+  }, [value]);
+
   return (
     <Styled.Container>
       <Styled.Input value={value} setValue={setValue} />

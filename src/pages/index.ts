@@ -3,3 +3,8 @@ export * from './Home';
 export * from './Profile';
 export * from './Players';
 export * from './TestRoom';
+export * from './Groups';
+export * from './Person';
+export * from './Faction';
+export * from './AdminLevel';
+export * from './Log';

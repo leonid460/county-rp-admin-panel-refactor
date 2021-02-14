@@ -5,20 +5,23 @@ function requestFactory(method: TRequestMethod, headers?: HeadersInit) {
     throw new Error(`[${method}] No headers was passed in request factory`);
   }
 
-  return async (requestUrl: string, body?: TRequestBody) => {
+  return async (requestMethodUrl: string, body?: TRequestBody) => {
     if ((method === 'POST' || method === 'PUT') && !body) {
       throw new Error('No body was passed in request');
     }
 
-    const response = await fetch(requestUrl, {
+    const apiRoot = process.env.REACT_APP_API_URL;
+
+    const response = await fetch(apiRoot + requestMethodUrl, {
       method,
       headers,
       body: JSON.stringify(body)
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(JSON.parse(errorText).message || errorText);
+      const { status, statusText } = response;
+
+      throw new Error(`${status}: ${statusText}`);
     }
 
     return await response.json();

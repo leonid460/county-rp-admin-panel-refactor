@@ -1,9 +1,10 @@
 import React from 'react';
 
-export type TSmartFormFieldType = 'text' | 'color' | 'checkbox' | 'select';
+export type TSmartFormFieldType = 'text' | 'number' | 'color' | 'checkbox' | 'select';
 
 interface ISmartFormField<T> {
   name: string;
+  key: string;
   value: T;
   setValue: (value: T) => void;
   options?: { key: string; name: string }[];
@@ -21,6 +22,7 @@ export interface ISmartFormProps {
 
 export type ISmartFormRawInputField = {
   name: string;
+  initialValue?: string;
   key: string;
   type: TSmartFormFieldType;
   options?: { name: string; key: string }[];

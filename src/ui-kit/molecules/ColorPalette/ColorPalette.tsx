@@ -34,13 +34,13 @@ export const ColorPalette: React.FC<IColorPickerProps> = ({ initValue, onChange 
   const [saturation, setSaturation] = useState(initSaturation);
   const [lightness, setBrightness] = useState(initBrightness);
 
-  useEffect(() => {
-    onChange(fromHSLToHex(hue, saturation, lightness));
-  }, [hue, saturation, lightness]);
-
   const colorSliderTrackColor = makeHueSliderBackground();
   const saturationSliderTrackColor = makeSaturationSliderBackground(hue);
   const brightnessSliderTrackColor = makeBrightnessSliderBackground(hue);
+
+  useEffect(() => {
+    onChange(fromHSLToHex(hue, saturation, lightness));
+  }, [hue, saturation, lightness]);
 
   useEffect(() => {
     onChange(fromHSLToHex(hue, saturation, lightness));

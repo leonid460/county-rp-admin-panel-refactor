@@ -1,60 +1,65 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { PageContentContainer, PrimaryButton } from 'ui-kit/atoms';
+import React, { useEffect } from 'react';
 import { Base } from 'ui-kit/templates';
-import * as Styled from './styled';
-import { useSmartFormFields } from 'ui-kit/organisms';
-import { SmartForm } from 'ui-kit/organisms/SmartForm';
-import { ICreateOrEditPageProps } from './types';
-import { callNotification } from 'utils/callNotification';
+import { Form } from 'ui-kit/molecules';
+import { PageContentContainer, PrimaryButton } from 'ui-kit/atoms';
+import { useHistory } from 'react-router-dom';
+import { callNotification } from 'utils';
 
-export const CreateOrEditPage = <T extends object>({
-  fields,
-  type,
-  apiCall
-}: ICreateOrEditPageProps<T>) => {
-  const [formFields, formState] = useSmartFormFields(fields);
+interface ICreateOrEditPageProps {
+  type: 'create' | 'edit';
+  goBackRoute: string;
+  handleSubmit: () => Promise<void>;
+  asyncCallError?: string;
+  handleDelete?: () => Promise<void>;
+}
 
-  const handleSubmit = async () => {
-    try {
-      const response = await apiCall(formState as T);
+export const CreateOrEditPage: React.FC<ICreateOrEditPageProps> = ({
+  handleDelete,
+  children,
+  asyncCallError,
+  goBackRoute,
+  handleSubmit,
+  type
+}) => {
+  const history = useHistory();
 
-      if (response) {
-        callNotification({ header: 'Успех', content: 'Изменения успешно сохранены', type: 'info' });
-      }
-    } catch (error) {
-      callNotification({ header: 'Ошибка', content: error.message, type: 'error' });
+  const defineSubmitButtonText = () => {
+    switch (type) {
+      case 'create':
+        return 'Создать';
+      case 'edit':
+        return 'Сохранить';
     }
   };
 
-  const useGoBack = () => {
-    const history = useHistory();
-    const pathName = history.location.pathname;
-    const rests = pathName.split('/');
-    rests.pop();
-    const newPathName = rests.join('/');
-
-    return () => history.push(newPathName);
+  const handleGoBack = () => {
+    history.push(goBackRoute);
   };
-
-  const goBack = useGoBack();
 
   const renderButtons = () => (
     <>
-      <PrimaryButton onClick={goBack}>Отмена</PrimaryButton>
-      <PrimaryButton onClick={handleSubmit}>
-        {type === 'create' ? 'Создать' : 'Сохранить'}
+      <PrimaryButton onClick={handleGoBack}>Отмена</PrimaryButton>
+      {type === 'edit' && <PrimaryButton onClick={handleDelete}>Удалить</PrimaryButton>}
+      <PrimaryButton
+        onClick={() => {
+          handleSubmit().then(handleGoBack);
+        }}
+      >
+        {defineSubmitButtonText()}
       </PrimaryButton>
     </>
   );
 
+  useEffect(() => {
+    if (asyncCallError) {
+      callNotification({ header: 'Ошибка', content: asyncCallError, type: 'error' });
+    }
+  }, [asyncCallError]);
+
   return (
     <Base>
       <PageContentContainer>
-        <Styled.FormContainer>
-          <SmartForm fields={formFields} />
-          <Styled.ButtonsContainer>{renderButtons()}</Styled.ButtonsContainer>
-        </Styled.FormContainer>
+        <Form renderButtons={renderButtons}>{children}</Form>
       </PageContentContainer>
     </Base>
   );

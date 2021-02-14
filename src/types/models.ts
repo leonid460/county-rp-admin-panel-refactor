@@ -17,6 +17,7 @@ export interface IGroup {
   id: string;
   name: string;
   color?: string;
+  adminPanel: boolean;
 }
 
 export interface IPerson {
@@ -27,9 +28,10 @@ export interface IPerson {
   lastDate: string;
   adminLevelId: string;
   factionId: string;
-  groupId: string;
+  groupId: number;
   leader: boolean;
   rank: number;
+  position: number[];
 }
 
 export interface IPlayer {

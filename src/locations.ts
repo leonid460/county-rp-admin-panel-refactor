@@ -10,37 +10,40 @@ type Location = {
 export const locations: Location[] = [
   {
     name: 'Игроки',
-    description: 'Описание',
+    description: '',
     route: routes.players
   },
   {
     name: 'Группы',
-    description: 'Описание',
+    description: '',
     route: routes.group
   },
   {
     name: 'Персонажи',
-    description: 'Описание',
+    description: '',
     route: routes.person
   },
   {
     name: 'Фракции',
-    description: 'Описание',
+    description: '',
     route: routes.faction
   },
   {
-    name: 'Админ уровни',
-    description: 'Описание',
+    name: 'AdminLevel',
+    description: '',
     route: routes.adminLevel
   },
   {
     name: 'Логи',
-    description: 'Тут лежат логи',
+    description: '',
     route: routes.log
-  },
-  {
+  }
+];
+
+if (process.env.REACT_APP_DEV_MODE === 'true') {
+  locations.push({
     name: 'Тестовая комната',
     description: 'Ничего странного здесь не происходит',
     route: routes.testRoom
-  }
-];
+  });
+}

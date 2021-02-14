@@ -2,11 +2,21 @@ import React from 'react';
 import * as Styled from './styled';
 import { ISmartFormProps, TSmartFormFieldType, ISmartFormFieldFactory } from './types';
 import { InputWithLabel, SelectWithLabel, CheckboxWithLabel } from 'ui-kit/molecules';
-import { PopUpColorPickerWithLabel } from 'ui-kit/organisms/index';
+import { PopUpColorPickerWithLabel } from 'ui-kit/organisms';
 
-const TextFiledFactory: ISmartFormFieldFactory<string> = ({ field }) => (
+const TextFieldFactory: ISmartFormFieldFactory<string> = ({ field }) => (
   <InputWithLabel
     key={field.name}
+    label={field.name}
+    value={field.value}
+    setValue={field.setValue}
+  />
+);
+
+const NumberFieldFactory: ISmartFormFieldFactory<number> = ({ field }) => (
+  <InputWithLabel
+    key={field.name}
+    type="number"
     label={field.name}
     value={field.value}
     setValue={field.setValue}
@@ -41,18 +51,6 @@ const ColorPickerFactory: ISmartFormFieldFactory<string> = ({ field }) => (
   />
 );
 
-function formFieldStrategy(type: TSmartFormFieldType): ISmartFormFieldFactory<unknown> {
-  const fields: { [key in TSmartFormFieldType | 'default']: ISmartFormFieldFactory<unknown> } = {
-    text: TextFiledFactory,
-    select: SelectFactory,
-    checkbox: CheckboxFactory,
-    color: ColorPickerFactory,
-    default: TextFiledFactory
-  };
-
-  return fields[type] || fields.default;
-}
-
 export const SmartForm = ({ fields }: ISmartFormProps) => {
   return (
     <Styled.SmartFormContainer>
@@ -60,3 +58,16 @@ export const SmartForm = ({ fields }: ISmartFormProps) => {
     </Styled.SmartFormContainer>
   );
 };
+
+function formFieldStrategy(type: TSmartFormFieldType): ISmartFormFieldFactory<unknown> {
+  const fields: { [key in TSmartFormFieldType | 'default']: ISmartFormFieldFactory<unknown> } = {
+    text: TextFieldFactory,
+    number: NumberFieldFactory,
+    select: SelectFactory,
+    checkbox: CheckboxFactory,
+    color: ColorPickerFactory,
+    default: TextFieldFactory
+  };
+
+  return fields[type] || fields.default;
+}

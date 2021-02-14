@@ -7,8 +7,6 @@ interface IEditPlayerData {
   groupId: string;
 }
 
-const apiRoot = process.env.REACT_APP_API_URL;
-
 export async function editPlayer(data: IEditPlayerData): Promise<IPlayer> {
-  return put(`${apiRoot}Admin/Player`, { ...data });
+  return put(`Admin/Player`, { ...data });
 }

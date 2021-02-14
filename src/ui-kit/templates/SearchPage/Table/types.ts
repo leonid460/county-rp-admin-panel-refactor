@@ -1,7 +1,9 @@
-export type TTableRow = Array<string | number>;
+export type TTableRow = { [p: string]: string | number };
 
 export interface ITableProps {
-  columnNames: string[];
+  columnsHeads: TTableColumnHead[];
   rows: TTableRow[];
   editRoute?: string;
 }
+
+export type TTableColumnHead = { key: string; name: string };

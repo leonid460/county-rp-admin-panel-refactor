@@ -5,3 +5,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-self: flex-start;
 `;
+
+export const ColorBlock = styled.div<{ color: string }>`
+  width: 100%;
+  height: 600px;
+  background: ${({ color }) => color};
+`;

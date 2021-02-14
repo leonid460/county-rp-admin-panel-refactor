@@ -1,0 +1,1 @@
+export { getLogFilterBy } from './getLogFilterBy';

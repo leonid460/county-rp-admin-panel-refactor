@@ -1,5 +1,6 @@
 import { IFilterByResponse } from 'types';
 import { ISmartFormRawInputField } from 'ui-kit/organisms';
+import { TTableColumnHead } from './Table/types';
 
 export interface ISearchPageProps {
   actions: {
@@ -14,6 +15,6 @@ export interface ISearchPageProps {
     data: { [key: string]: string | boolean }
   ) => Promise<IFilterByResponse<{ [key: string]: string | number }>>;
 
-  tableColumnNames: string[];
+  tableColumnsHeads: TTableColumnHead[];
   editRoute?: string;
 }

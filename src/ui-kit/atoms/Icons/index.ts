@@ -1,0 +1,1 @@
+export { SvgCrossIcon } from './SvgCrossIcon';

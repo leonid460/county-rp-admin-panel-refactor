@@ -3,7 +3,7 @@ import * as Styled from './styled';
 import { makeArray } from 'utils';
 import { IPageSwitchProps } from './types';
 
-export const DotsFiller = () => <Styled.DotsFiller>...</Styled.DotsFiller>;
+const DotsFiller = () => <Styled.DotsFiller>...</Styled.DotsFiller>;
 
 export const PageSwitch = ({ maxPage, currentPage, setCurrentPage }: IPageSwitchProps) => {
   const renderButton = (pageNumber: number) => {
