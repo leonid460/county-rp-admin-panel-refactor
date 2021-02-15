@@ -5,4 +5,6 @@ export const selectIsAuthorized = (state: { auth: IAuthSliceState }) =>
   state.auth.data.isAuthorized;
 export const selectIsLoading = (state: { auth: IAuthSliceState }) =>
   state.auth.status === 'loading';
+export const selectIsApiCallCompleted = (state: { auth: IAuthSliceState }) =>
+  state.auth.status === 'succeeded' || state.auth.status === 'failed';
 export const selectError = (state: { auth: IAuthSliceState }) => state.auth.error;

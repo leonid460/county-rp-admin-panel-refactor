@@ -46,7 +46,7 @@ export const AuthForm = () => {
     <FormContainer>
       <H1>Добро пожаловать!</H1>
       <Input value={username} setValue={setUsername} placeholder="User Name" />
-      <Input type="password" value={password} setValue={setPassword} placeholder="Password" />
+      <Input value={password} setValue={setPassword} placeholder="Password" type="password" />
       <PrimaryButton as={'input'} type="submit" value="Войти" onClick={handleLogin} />
     </FormContainer>
   );

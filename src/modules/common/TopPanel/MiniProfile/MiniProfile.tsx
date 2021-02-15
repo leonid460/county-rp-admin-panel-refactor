@@ -1,5 +1,5 @@
 import React from 'react';
-import { MiniProfileWrapper, MiniProfileMenuItem } from './styled';
+import * as Styled from './styled';
 import { NavLink } from 'react-router-dom';
 import { iMiniProfileProps } from '../types';
 import { Avatar } from 'ui-kit/atoms';
@@ -8,14 +8,14 @@ import { profile } from 'routes';
 
 export const MiniProfile: React.FC<iMiniProfileProps> = ({ username, logout }) => (
   <PopUp openerContent={<Avatar>{username}</Avatar>}>
-    <MiniProfileWrapper>
-      <MiniProfileMenuItem as={NavLink} to={`${profile}/${username}`}>
+    <Styled.MiniProfileWrapper>
+      <Styled.MiniProfileMenuItem as={NavLink} to={`${profile}/${username}`}>
         Профиль
-      </MiniProfileMenuItem>
+      </Styled.MiniProfileMenuItem>
 
-      <MiniProfileMenuItem as={NavLink} to="/admin" onClick={() => logout()}>
+      <Styled.MiniProfileMenuItem as={NavLink} to="/admin" onClick={() => logout()}>
         Выйти
-      </MiniProfileMenuItem>
-    </MiniProfileWrapper>
+      </Styled.MiniProfileMenuItem>
+    </Styled.MiniProfileWrapper>
   </PopUp>
 );

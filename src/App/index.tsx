@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { GlobalStylesProvider } from './GlobalStylesWrapper';
 import {
   Login,
@@ -26,11 +26,14 @@ import { defaultTheme as theme } from 'themes';
 import * as routes from 'routes';
 import { withStore } from 'store';
 import { Notifications } from 'modules/common';
-import { useSelector } from 'react-redux';
-import { selectIsAuthorized } from 'store/authSlice';
+import { useAuthCheck } from './useAuthCheck';
 
 export const AdminPanel: React.FC = withStore(() => {
-  useAuthCheck();
+  const status = useAuthCheck();
+
+  if (status === 'loading') {
+    return <span>...loading</span>;
+  }
 
   return (
     <GlobalStylesProvider theme={theme}>
@@ -105,14 +108,3 @@ export const AdminPanel: React.FC = withStore(() => {
     </GlobalStylesProvider>
   );
 });
-
-function useAuthCheck() {
-  const history = useHistory();
-  const isAuthorized = useSelector(selectIsAuthorized);
-
-  useEffect(() => {
-    if (!isAuthorized && process.env.REACT_APP_AUTH_ON === 'true') {
-      history.push(routes.auth);
-    }
-  }, [history, isAuthorized]);
-}

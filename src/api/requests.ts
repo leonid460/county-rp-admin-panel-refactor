@@ -1,9 +1,9 @@
 import { TRequestBody, TRequestMethod } from './types';
 
 function requestFactory(method: TRequestMethod, headers?: HeadersInit) {
-  if ((method === 'POST' || method === 'PUT') && headers === undefined) {
-    throw new Error(`[${method}] No headers was passed in request factory`);
-  }
+  const defaultHeaders = {
+    'Content-Type': 'application/json'
+  };
 
   return async (requestMethodUrl: string, body?: TRequestBody) => {
     if ((method === 'POST' || method === 'PUT') && !body) {
@@ -11,10 +11,16 @@ function requestFactory(method: TRequestMethod, headers?: HeadersInit) {
     }
 
     const apiRoot = process.env.REACT_APP_API_URL;
+    const token = localStorage.getItem('county-rp-admin-token');
+    const mixedHeaders = {
+      ...defaultHeaders,
+      ...headers,
+      Authorization: `Bearer ${token}`
+    };
 
     const response = await fetch(apiRoot + requestMethodUrl, {
       method,
-      headers,
+      headers: mixedHeaders,
       body: JSON.stringify(body)
     });
 
@@ -28,14 +34,10 @@ function requestFactory(method: TRequestMethod, headers?: HeadersInit) {
   };
 }
 
-const defaultHeaders = {
-  'Content-Type': 'application/json'
-};
-
-export const post = requestFactory('POST', defaultHeaders);
+export const post = requestFactory('POST');
 
 export const get = requestFactory('GET');
 
 export const del = requestFactory('DELETE');
 
-export const put = requestFactory('PUT', defaultHeaders);
+export const put = requestFactory('PUT');

@@ -6,3 +6,4 @@ export * from './person';
 export * from './faction';
 export * from './adminLevel';
 export * from './log';
+export * from './playerProfile';

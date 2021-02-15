@@ -1,7 +1,7 @@
 import React from 'react';
 import { locations } from 'locations';
 import { useLocation, matchPath } from 'react-router-dom';
-import { TopPanelContainer, LocationTag, TextRow } from './styled';
+import * as Styled from './styled';
 import { MiniProfile } from './MiniProfile';
 import { LeftPanelOpener } from 'modules/common/LeftPanelOpener';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,14 +33,14 @@ export const TopPanel = () => {
   // TODO: replace locations tag with breadcrumbs
 
   return (
-    <TopPanelContainer>
+    <Styled.TopPanelContainer>
       <LeftPanelOpener />
-      <LocationTag>{locationTagText}</LocationTag>
+      <Styled.LocationTag>{locationTagText}</Styled.LocationTag>
       {isLoading ? (
-        <TextRow>loading...</TextRow>
+        <Styled.TextRow>loading...</Styled.TextRow>
       ) : (
         <MiniProfile username={username} logout={() => dispatch(logout())} />
       )}
-    </TopPanelContainer>
+    </Styled.TopPanelContainer>
   );
 };
