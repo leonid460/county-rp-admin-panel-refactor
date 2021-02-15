@@ -18,11 +18,9 @@ export const Profile = () => {
   };
 
   useEffect(() => {
-    try {
-      fetchData(login);
-    } catch (error) {
+    fetchData(login).catch((error) => {
       callNotification({ type: 'error', header: 'Ошибка', content: error.message });
-    }
+    });
   }, [login]);
 
   return (

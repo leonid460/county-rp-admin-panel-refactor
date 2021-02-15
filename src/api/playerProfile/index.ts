@@ -1,0 +1,1 @@
+export { getMiniInfo } from './getMiniInfo';
