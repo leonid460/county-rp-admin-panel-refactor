@@ -8,19 +8,24 @@ import { InputWithLabel } from 'ui-kit/molecules';
 import { SearchGroup } from 'modules/Search';
 
 function useDataProvider() {
+  const history = useHistory();
+  const pathName = history.location.pathname;
+  const id = Number(getEntityIdFromUrl(pathName));
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [group, setGroup] = useState<{ name: string; value: string } | null>(null);
   const [asyncCallError, setAsyncCallError] = useState('');
-  const history = useHistory();
-  const pathName = history.location.pathname;
-  const id = getEntityIdFromUrl(pathName);
 
   const handleSubmit = async () => {
-    const { error } = await of(editPlayer({ login, password, groupId: group.value }));
+    const newPlayer = { id, login, password, groupId: group.value };
+
+    const { error } = await of(editPlayer(id, newPlayer));
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
   };
 
@@ -29,7 +34,14 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
+  };
+
+  const handleGoBack = () => {
+    history.push(players);
   };
 
   useEffect(() => {
@@ -67,6 +79,7 @@ function useDataProvider() {
     setGroup,
     handleSubmit,
     handleDelete,
+    handleGoBack,
     asyncCallError
   };
 }
@@ -81,19 +94,20 @@ export const EditPlayer = () => {
     setGroup,
     handleSubmit,
     handleDelete,
+    handleGoBack,
     asyncCallError
   } = useDataProvider();
 
   return (
     <CreateOrEditPage
       type="edit"
-      goBackRoute={players}
       handleSubmit={handleSubmit}
       handleDelete={handleDelete}
+      handleGoBack={handleGoBack}
       asyncCallError={asyncCallError}
     >
       <InputWithLabel label="логин" value={login} setValue={setLogin} />
-      <InputWithLabel label="пароль" value={password} setValue={setPassword} type="password" />
+      <InputWithLabel label="пароль" value={password} setValue={setPassword} />
       <SearchGroup currentItem={group} setCurrentItem={setGroup} />
     </CreateOrEditPage>
   );

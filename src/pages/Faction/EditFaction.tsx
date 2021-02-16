@@ -22,6 +22,9 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
   };
 
@@ -30,7 +33,14 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
+  };
+
+  const handleGoBack = () => {
+    history.push(faction);
   };
 
   useEffect(() => {
@@ -62,6 +72,7 @@ function useDataProvider() {
     setType,
     handleSubmit,
     handleDelete,
+    handleGoBack,
     asyncCallError
   };
 }
@@ -76,6 +87,7 @@ export const EditFaction = () => {
     setType,
     handleSubmit,
     handleDelete,
+    handleGoBack,
     asyncCallError
   } = useDataProvider();
 
@@ -85,7 +97,7 @@ export const EditFaction = () => {
       handleSubmit={handleSubmit}
       handleDelete={handleDelete}
       asyncCallError={asyncCallError}
-      goBackRoute={faction}
+      handleGoBack={handleGoBack}
     >
       <InputWithLabel label="ID" value={id} setValue={setId} />
       <InputWithLabel label="имя фракции" value={name} setValue={setName} />

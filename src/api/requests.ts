@@ -2,7 +2,10 @@ import { TRequestBody, TRequestMethod } from './types';
 
 function requestFactory(method: TRequestMethod, headers?: HeadersInit) {
   const defaultHeaders = {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Accept: '*/*',
+    'Accept-Encoding': 'gzip, deflate, br',
+    Connection: 'keep-alive'
   };
 
   return async (requestMethodUrl: string, body?: TRequestBody) => {

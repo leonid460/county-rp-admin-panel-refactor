@@ -4,8 +4,10 @@ import { adminLevel } from 'routes';
 import { CreateOrEditPage } from 'ui-kit/templates';
 import { CheckboxWithLabel, InputWithLabel } from 'ui-kit/molecules';
 import { of } from 'utils';
+import { useHistory } from 'react-router-dom';
 
 function useDataProvider() {
+  const history = useHistory();
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [ban, setBan] = useState(false);
@@ -16,7 +18,14 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
+  };
+
+  const handleGoBack = () => {
+    history.push(adminLevel);
   };
 
   return {
@@ -27,17 +36,28 @@ function useDataProvider() {
     ban,
     setBan,
     handleSubmit,
+    handleGoBack,
     asyncCallError
   };
 }
 
 export const CreateAdminLevel = () => {
-  const { id, setId, name, setName, ban, setBan, handleSubmit, asyncCallError } = useDataProvider();
+  const {
+    id,
+    setId,
+    name,
+    setName,
+    ban,
+    setBan,
+    handleSubmit,
+    handleGoBack,
+    asyncCallError
+  } = useDataProvider();
 
   return (
     <CreateOrEditPage
       type="create"
-      goBackRoute={adminLevel}
+      handleGoBack={handleGoBack}
       handleSubmit={handleSubmit}
       asyncCallError={asyncCallError}
     >

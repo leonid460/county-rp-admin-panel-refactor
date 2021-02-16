@@ -4,8 +4,10 @@ import { createFaction } from 'api';
 import { faction } from 'routes';
 import { of } from 'utils';
 import { InputWithLabel } from 'ui-kit/molecules';
+import { useHistory } from 'react-router-dom';
 
 function useDataProvider() {
+  const history = useHistory();
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [ranks, setRanks] = useState<string[]>([]);
@@ -17,7 +19,14 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
+  };
+
+  const handleGoBack = () => {
+    history.push(faction);
   };
 
   return {
@@ -30,6 +39,7 @@ function useDataProvider() {
     type,
     setType,
     handleSubmit,
+    handleGoBack,
     asyncCallError
   };
 }
@@ -43,6 +53,7 @@ export const CreateFaction = () => {
     type,
     setType,
     handleSubmit,
+    handleGoBack,
     asyncCallError
   } = useDataProvider();
 
@@ -51,7 +62,7 @@ export const CreateFaction = () => {
       type="create"
       handleSubmit={handleSubmit}
       asyncCallError={asyncCallError}
-      goBackRoute={faction}
+      handleGoBack={handleGoBack}
     >
       <InputWithLabel label="ID" value={id} setValue={setId} />
       <InputWithLabel label="имя фракции" value={name} setValue={setName} />

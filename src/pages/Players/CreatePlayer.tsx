@@ -5,8 +5,10 @@ import { createPlayer } from 'api';
 import { players } from 'routes';
 import { of } from 'utils';
 import { SearchGroup } from 'modules/Search/SearchGroup';
+import { useHistory } from 'react-router-dom';
 
 function useDataProvider() {
+  const history = useHistory();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [group, setGroup] = useState<{ name: string; value: string } | null>(null);
@@ -18,7 +20,14 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      history.push(players);
     }
+  };
+
+  const handleGoBack = () => {
+    history.push(players);
   };
 
   return {
@@ -29,6 +38,7 @@ function useDataProvider() {
     group,
     setGroup,
     handleSubmit,
+    handleGoBack,
     asyncCallError
   };
 }
@@ -42,6 +52,7 @@ export const CreatePlayer = () => {
     group,
     setGroup,
     handleSubmit,
+    handleGoBack,
     asyncCallError
   } = useDataProvider();
 
@@ -50,10 +61,10 @@ export const CreatePlayer = () => {
       type="create"
       handleSubmit={handleSubmit}
       asyncCallError={asyncCallError}
-      goBackRoute={players}
+      handleGoBack={handleGoBack}
     >
       <InputWithLabel label="логин" value={login} setValue={setLogin} />
-      <InputWithLabel label="пароль" value={password} setValue={setPassword} type="password" />
+      <InputWithLabel label="пароль" value={password} setValue={setPassword} />
       <SearchGroup currentItem={group} setCurrentItem={setGroup} />
     </CreateOrEditPage>
   );

@@ -43,7 +43,14 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
+  };
+
+  const handleGoBack = () => {
+    history.push(person);
   };
 
   useEffect(() => {
@@ -81,6 +88,7 @@ function useDataProvider() {
     groupId,
     setGroupId,
     handleSubmit,
+    handleGoBack,
     asyncCallError
   };
 }
@@ -96,13 +104,14 @@ export const EditPerson = () => {
     groupId,
     setGroupId,
     handleSubmit,
+    handleGoBack,
     asyncCallError
   } = useDataProvider();
 
   return (
     <CreateOrEditPage
       type="edit"
-      goBackRoute={person}
+      handleGoBack={handleGoBack}
       handleSubmit={handleSubmit}
       asyncCallError={asyncCallError}
     >

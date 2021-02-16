@@ -21,6 +21,9 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
   };
 
@@ -29,7 +32,14 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
+  };
+
+  const handleGoBack = () => {
+    history.push(group);
   };
 
   useEffect(() => {
@@ -61,6 +71,7 @@ function useDataProvider() {
     setPermissions,
     handleSubmit,
     handleDelete,
+    handleGoBack,
     asyncCallError
   };
 }
@@ -77,6 +88,7 @@ export const EditGroup = () => {
     setPermissions,
     handleSubmit,
     handleDelete,
+    handleGoBack,
     asyncCallError
   } = useDataProvider();
 
@@ -86,7 +98,7 @@ export const EditGroup = () => {
       handleSubmit={handleSubmit}
       handleDelete={handleDelete}
       asyncCallError={asyncCallError}
-      goBackRoute={group}
+      handleGoBack={handleGoBack}
     >
       <InputWithLabel label="ID" value={id} setValue={setId} />
       <InputWithLabel label="имя группы" value={name} setValue={setName} />

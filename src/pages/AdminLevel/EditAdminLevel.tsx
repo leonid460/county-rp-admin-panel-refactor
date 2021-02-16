@@ -20,6 +20,9 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
   };
 
@@ -28,7 +31,14 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
+  };
+
+  const handleGoBack = () => {
+    history.push(adminLevel);
   };
 
   useEffect(() => {
@@ -57,6 +67,7 @@ function useDataProvider() {
     setBan,
     handleSubmit,
     handleDelete,
+    handleGoBack,
     asyncCallError
   };
 }
@@ -71,13 +82,14 @@ export const EditAdminLevel = () => {
     setBan,
     handleSubmit,
     handleDelete,
+    handleGoBack,
     asyncCallError
   } = useDataProvider();
 
   return (
     <CreateOrEditPage
       type="edit"
-      goBackRoute={adminLevel}
+      handleGoBack={handleGoBack}
       handleSubmit={handleSubmit}
       handleDelete={handleDelete}
       asyncCallError={asyncCallError}

@@ -5,8 +5,10 @@ import { group } from 'routes';
 import { of } from 'utils';
 import { InputWithLabel, CheckboxWithLabel } from 'ui-kit/molecules';
 import { PopUpColorPickerWithLabel } from 'ui-kit/organisms';
+import { useHistory } from 'react-router-dom';
 
 function useDataProvider() {
+  const history = useHistory();
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [color, setColor] = useState('');
@@ -18,7 +20,14 @@ function useDataProvider() {
 
     if (error) {
       setAsyncCallError(error.message);
+    } else {
+      setAsyncCallError('');
+      handleGoBack();
     }
+  };
+
+  const handleGoBack = () => {
+    history.push(group);
   };
 
   return {
@@ -31,6 +40,7 @@ function useDataProvider() {
     permissions,
     setPermissions,
     handleSubmit,
+    handleGoBack,
     asyncCallError
   };
 }
@@ -46,6 +56,7 @@ export const CreateGroup = () => {
     permissions,
     setPermissions,
     handleSubmit,
+    handleGoBack,
     asyncCallError
   } = useDataProvider();
 
@@ -54,7 +65,7 @@ export const CreateGroup = () => {
       type="create"
       handleSubmit={handleSubmit}
       asyncCallError={asyncCallError}
-      goBackRoute={group}
+      handleGoBack={handleGoBack}
     >
       <InputWithLabel label="ID" value={id} setValue={setId} />
       <InputWithLabel label="имя группы" value={name} setValue={setName} />
