@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { CreateOrEditPage } from 'ui-kit/templates';
 import { createFaction } from 'api';
 import { faction } from 'routes';
 import { of } from 'utils';
 import { InputWithLabel } from 'ui-kit/molecules';
+import { ListInputWithLabel } from 'ui-kit/organisms';
+import { CreateOrEditPage } from 'ui-kit/templates';
 import { useHistory } from 'react-router-dom';
 
 function useDataProvider() {
@@ -50,6 +51,8 @@ export const CreateFaction = () => {
     setId,
     name,
     setName,
+    ranks,
+    setRanks,
     type,
     setType,
     handleSubmit,
@@ -67,6 +70,7 @@ export const CreateFaction = () => {
       <InputWithLabel label="ID" value={id} setValue={setId} />
       <InputWithLabel label="имя фракции" value={name} setValue={setName} />
       <InputWithLabel label="тип" value={type} setValue={setType} type="number" />
+      <ListInputWithLabel label="ранги" items={ranks} setItems={setRanks} />
     </CreateOrEditPage>
   );
 };

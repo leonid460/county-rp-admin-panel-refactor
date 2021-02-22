@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { editFaction, getFaction, deleteFaction } from 'api';
-import { CreateOrEditPage } from 'ui-kit/templates';
 import { faction } from 'routes';
 import { getEntityIdFromUrl, of } from 'utils';
 import { useHistory } from 'react-router-dom';
 import { InputWithLabel } from 'ui-kit/molecules';
+import { ListInputWithLabel } from 'ui-kit/organisms';
+import { CreateOrEditPage } from 'ui-kit/templates';
+import { callNotification } from 'utils';
 
 function useDataProvider() {
   const history = useHistory();
   const pathName = history.location.pathname;
+  const id = getEntityIdFromUrl(pathName);
 
-  const [id, setId] = useState(getEntityIdFromUrl(pathName));
   const [name, setName] = useState('');
   const [ranks, setRanks] = useState<string[]>([]);
   const [type, setType] = useState(NaN);
@@ -18,10 +20,10 @@ function useDataProvider() {
   const [asyncCallError, setAsyncCallError] = useState('');
 
   const handleSubmit = async () => {
-    const { error } = await of(editFaction({ id, name, ranks, type }));
+    const { error } = await of(editFaction(id, { id, name, ranks, type }));
 
     if (error) {
-      setAsyncCallError(error.message);
+      callNotification({ header: 'Ошибка', content: error.message, type: 'error' });
     } else {
       setAsyncCallError('');
       handleGoBack();
@@ -32,7 +34,7 @@ function useDataProvider() {
     const { error } = await of(deleteFaction(id));
 
     if (error) {
-      setAsyncCallError(error.message);
+      callNotification({ header: 'Ошибка', content: error.message, type: 'error' });
     } else {
       setAsyncCallError('');
       handleGoBack();
@@ -59,11 +61,9 @@ function useDataProvider() {
       setRanks(data.ranks);
       setType(data.type);
     })();
-  }, [id]);
+  }, []);
 
   return {
-    id,
-    setId,
     name,
     setName,
     ranks,
@@ -79,12 +79,12 @@ function useDataProvider() {
 
 export const EditFaction = () => {
   const {
-    id,
-    setId,
     name,
     setName,
     type,
     setType,
+    ranks,
+    setRanks,
     handleSubmit,
     handleDelete,
     handleGoBack,
@@ -99,9 +99,9 @@ export const EditFaction = () => {
       asyncCallError={asyncCallError}
       handleGoBack={handleGoBack}
     >
-      <InputWithLabel label="ID" value={id} setValue={setId} />
       <InputWithLabel label="имя фракции" value={name} setValue={setName} />
       <InputWithLabel label="тип" value={type} setValue={setType} type="number" />
+      <ListInputWithLabel label="ранги" items={ranks} setItems={setRanks} />
     </CreateOrEditPage>
   );
 };

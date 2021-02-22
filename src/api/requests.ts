@@ -29,8 +29,11 @@ function requestFactory(method: TRequestMethod, headers?: HeadersInit) {
 
     if (!response.ok) {
       const { status, statusText } = response;
+      const message = await response.text();
 
-      throw new Error(`${status}: ${statusText}`);
+      const errorText = message || `${status}: ${statusText} | ${message}`;
+
+      throw new Error(errorText);
     }
 
     return await response.json();

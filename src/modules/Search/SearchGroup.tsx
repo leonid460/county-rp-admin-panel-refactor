@@ -17,7 +17,7 @@ export const SearchGroup = ({ currentItem, setCurrentItem }: ISearchEntityProps)
 
   return (
     <SearchWithLabel
-      label="Группа"
+      label="группа"
       getFilterBy={adaptedGetGroupsFilterBy}
       currentItem={currentItem}
       setCurrentItem={setCurrentItem}

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Base } from 'ui-kit/templates';
 import { Input, withLabel, PrimaryButton, CloseButton, Range } from 'ui-kit/atoms';
 import { IInputProps } from 'ui-kit/atoms/Input/types';
 import { CheckboxWithLabel } from 'ui-kit/molecules';
-import { PopUpColorPicker, ModalWindow, Search } from 'ui-kit/organisms';
+import { PopUpColorPicker, ModalWindow, Search, ListInputWithLabel } from 'ui-kit/organisms';
 import * as Styled from './styled';
 import { getGroupsFilterBy as originalGetGroupsFilterBy } from 'api';
 import { IFilterByResponse } from '../../types';
@@ -44,19 +44,6 @@ export const TestRoom = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const colors = ['red', 'green', 'blue', 'yellow', 'pink', 'orange'];
   const [group, setGroup] = useState<{ name: string; value: string } | null>(null);
-
-  // const getGroupsFilterBy = async (page: number, query: string) => {
-  //   const result = await originalGetGroupsFilterBy(page, { name: query });
-  //   const { maxPage, allAmount, page: currentPage, items } = result;
-  //
-  //   return {
-  //     items: items.map((item) => ({ name: item.name, value: item.id })),
-  //     maxPage,
-  //     allAmount,
-  //     page: currentPage
-  //   };
-  // };
-
   const getGroupsFilterBy = adaptFilterBy(originalGetGroupsFilterBy, {
     initData: {
       name: ''
@@ -65,6 +52,20 @@ export const TestRoom = () => {
     nameParamKey: 'name',
     valueParamKey: 'id'
   });
+
+  const [listItems, setListItems] = useState<string[]>([]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const items = ['item-1', 'item-2', 'item-3', 'item-4'];
+
+      setListItems(items);
+    }, 40);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <Base>
@@ -83,6 +84,7 @@ export const TestRoom = () => {
         </>
         <CloseButton />
         <Search getFilterBy={getGroupsFilterBy} currentItem={group} setCurrentItem={setGroup} />
+        <ListInputWithLabel label="list" items={listItems} setItems={setListItems} />
       </Styled.Container>
     </Base>
   );
