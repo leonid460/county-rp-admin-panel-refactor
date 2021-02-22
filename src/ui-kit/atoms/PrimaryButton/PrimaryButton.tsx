@@ -14,6 +14,7 @@ export const PrimaryButton = styled.button<{ theme: ITheme }>`
   text-decoration: none;
   cursor: pointer;
   outline: none;
+  text-align: center;
 
   &:hover {
     background: ${({ theme }) => theme.colors.primaryButton.hoverBackground};

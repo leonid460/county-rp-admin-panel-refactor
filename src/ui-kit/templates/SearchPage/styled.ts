@@ -5,18 +5,20 @@ export const Subtitle = styled.h2<{ theme: ITheme }>`
   margin-top: 30px;
   margin-bottom: 15px;
   padding-left: 30px;
-
   color: ${({ theme }) => theme.colors.secondaryText};
-
   ${({ theme }) => theme.typography.subtitle1}
 `;
 
 export const ContainerForFindButton = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-
+  flex-direction: column;
+  margin-top: 10px;
   width: 100%;
+
+  @media ${({ theme }) => theme.device.tablet} {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 `;
 
 export const Separator = styled.div<{ theme: ITheme }>`

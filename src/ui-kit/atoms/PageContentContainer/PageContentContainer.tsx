@@ -9,5 +9,9 @@ export const PageContentContainer = styled.div`
   height: 100%;
 
   box-sizing: border-box;
-  padding: 35px;
+  padding: 16px;
+
+  @media ${({ theme }) => theme.device.tablet} {
+    padding: 35px;
+  }
 `;
