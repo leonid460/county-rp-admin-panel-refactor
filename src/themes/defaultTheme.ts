@@ -9,7 +9,8 @@ const sizes = {
   tablet: '768px',
   laptop: '1024px',
   laptopL: '1440px',
-  desktop: '2560px'
+  desktop: '1920px',
+  desktopL: '2560px'
 };
 
 export const defaultTheme: ITheme = {
@@ -30,7 +31,7 @@ export const defaultTheme: ITheme = {
     primaryButton: {
       background: colors.blue,
       color: 'white',
-      hoverBackground: colors.gradients.blue,
+      hoverBackground: colors.darkBlue,
       hoverColor: 'white'
     },
 
@@ -99,7 +100,7 @@ export const defaultTheme: ITheme = {
     laptop: `(min-width: ${sizes.laptop})`,
     laptopL: `(min-width: ${sizes.laptopL})`,
     desktop: `(min-width: ${sizes.desktop})`,
-    desktopL: `(min-width: ${sizes.desktop})`
+    desktopL: `(min-width: ${sizes.desktopL})`
   },
 
   notificationPosition: 'bottom-center'

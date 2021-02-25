@@ -1,64 +1,25 @@
 import React from 'react';
 import * as Styled from './styled';
-import { ITableProps, TTableColumnHead, TTableRow } from './types';
+import { TableHead } from './TableHead';
+import { TableRow } from './TableRow';
+import { ITableProps } from './types';
 
 export const Table = ({ columnsHeads, rows, editRoute }: ITableProps) => {
-  const widthButton = !!editRoute;
-  const paramKey = widthButton ? getUrlParamKey(editRoute) : undefined;
+  const headNames = columnsHeads.map((head) => head.name);
+  const headKeys = columnsHeads.map((head) => head.key);
 
-  const renderRow = (row: TTableRow, index: number) => {
-    const rowItems = getRowItemsList(row, columnsHeads);
-    const editRouteWithValue = widthButton
-      ? replaceKeyWithValueInRoute(paramKey, String(row[paramKey]), editRoute)
-      : undefined;
+  const rowsWithOnlyVisibleColumns = rows.map((row) => {
+    const entries = headKeys.map((key) => [key, row[key]]);
 
-    return (
-      <Styled.Row key={index}>
-        {rowItems.map((item, index) => (
-          <Styled.Cell key={`${item}-${index}`}>{item}</Styled.Cell>
-        ))}
-        {widthButton && (
-          <Styled.Cell>
-            <Styled.EditButton to={editRouteWithValue} />
-          </Styled.Cell>
-        )}
-      </Styled.Row>
-    );
-  };
+    return Object.fromEntries(entries);
+  });
 
   return (
     <Styled.Container>
-      <Styled.Table>
-        <thead>
-          <Styled.Row>
-            {columnsHeads.map(({ name }) => (
-              <Styled.HeaderCell key={name}>{name}</Styled.HeaderCell>
-            ))}
-            {widthButton && <Styled.HeaderCell />}
-          </Styled.Row>
-        </thead>
-        <tbody>{rows.map(renderRow)}</tbody>
-      </Styled.Table>
+      <TableHead names={headNames} />
+      {rowsWithOnlyVisibleColumns.map((row, key) => (
+        <TableRow data={row} key={key} editRoute={editRoute} />
+      ))}
     </Styled.Container>
   );
 };
-
-function getRowItemsList(row: TTableRow, heads: TTableColumnHead[]): Array<string | number> {
-  return heads.map(({ key }) => row[key]);
-}
-
-function getUrlParamKey(route: string) {
-  const parts = route.split(':');
-
-  if (parts.length > 1) {
-    return parts[1];
-  }
-
-  return '';
-}
-
-function replaceKeyWithValueInRoute(key: string, value: string, route: string): string {
-  const label = `:${key}`;
-
-  return route.split(label).join(value);
-}

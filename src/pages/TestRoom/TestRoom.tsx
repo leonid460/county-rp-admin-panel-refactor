@@ -7,6 +7,7 @@ import { PopUpColorPicker, ModalWindow, Search, ListInputWithLabel } from 'ui-ki
 import * as Styled from './styled';
 import { getGroupsFilterBy as originalGetGroupsFilterBy } from 'api';
 import { IFilterByResponse } from '../../types';
+import { Table } from 'ui-kit/templates/SearchPage/Table';
 
 const InputWithLabel = withLabel<IInputProps>(Input);
 
@@ -86,6 +87,59 @@ export const TestRoom = () => {
         <Search getFilterBy={getGroupsFilterBy} currentItem={group} setCurrentItem={setGroup} />
         <ListInputWithLabel label="list" items={listItems} setItems={setListItems} />
       </Styled.Container>
+      <Table
+        editRoute="/haha/lol"
+        columnsHeads={[
+          { name: 'first item', key: 'first' },
+          { name: 'second item', key: 'second' },
+          { name: 'third item', key: 'third' },
+          { name: 'fourth item', key: 'fourth' },
+          { name: 'fifth item', key: 'fifth' },
+          { name: 'sixth item', key: 'sixth' }
+        ]}
+        rows={[
+          {
+            first: 'Test Value',
+            second: 'Test Value',
+            third: 'Test Value',
+            fourth: 'Test Value',
+            fifth: 'Test Value',
+            sixth: 'Test Value'
+          },
+          {
+            first: 'Test Value',
+            second: 'Test Value',
+            third: 'Test Value',
+            fourth: 'Test Value',
+            fifth: 'Test Value',
+            sixth: 'Test Value'
+          },
+          {
+            first: 'Test Value',
+            second: 'Test Value',
+            third: 'Test Value',
+            fourth: 'Test Value',
+            fifth: 'Test Value',
+            sixth: 'Test Value'
+          },
+          {
+            first: 'Test Value',
+            second: 'Test Value',
+            third: 'Test Value',
+            fourth: 'Test Value',
+            fifth: 'Test Value',
+            sixth: 'Test Value'
+          },
+          {
+            first: 'Test Value',
+            second: 'Test Value',
+            third: 'Test Value',
+            fourth: 'Test Value',
+            fifth: 'Test Value',
+            sixth: 'Test Value'
+          }
+        ]}
+      />
     </Base>
   );
 };

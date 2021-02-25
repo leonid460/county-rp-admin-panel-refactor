@@ -1,3 +1,5 @@
+export type TTableColumnHead = { key: string; name: string };
+
 export type TTableRow = { [p: string]: string | number };
 
 export interface ITableProps {
@@ -5,5 +7,3 @@ export interface ITableProps {
   rows: TTableRow[];
   editRoute?: string;
 }
-
-export type TTableColumnHead = { key: string; name: string };
