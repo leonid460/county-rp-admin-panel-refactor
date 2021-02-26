@@ -18,6 +18,7 @@ export const ModalWindowContainer = styled.div`
   flex-direction: column;
   max-height: calc(100vh - 16px * 2);
   border-radius: 5px;
+  outline: none;
   overflow: hidden;
   background: ${({ theme }) => theme.colors.container};
 
@@ -29,10 +30,10 @@ export const ModalWindowContainer = styled.div`
   }
 
   @media ${({ theme }) => theme.device.laptop} {
-    top: 120px;
+    top: 80px;
     left: calc(100vw / 4);
     right: calc(100vw / 4);
-    max-height: calc(100vh - 120px * 2);
+    max-height: calc(100vh - 80px * 2);
   }
 `;
 
@@ -40,9 +41,20 @@ export const ModalWindowHead = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   width: 100%;
   padding: 8px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+`;
+
+export const ModalWindowTitle = styled.h3`
+  width: 100%;
+  padding: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.primaryText};
 `;
 
 export const ModalWindowBody = styled.div`

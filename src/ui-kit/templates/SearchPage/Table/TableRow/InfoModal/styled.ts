@@ -7,29 +7,6 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.colors.container};
 `;
 
-// export const TitleContainer = styled.div`
-//   width: 100%;
-//   padding: 16px;
-//   color: ${({ theme }) => theme.colors.primaryText};
-// `;
-//
-// export const TitleText = styled.h3`
-//   font-weight: 700;
-//   font-size: 16px;
-//   line-height: 19px;
-//   text-align: center;
-// `;
-
-export const Title = styled.h3`
-  width: 100%;
-  padding: 16px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
-  color: ${({ theme }) => theme.colors.primaryText};
-`;
-
 export const RowsListContainer = styled.div`
   display: flex;
   flex-direction: column;

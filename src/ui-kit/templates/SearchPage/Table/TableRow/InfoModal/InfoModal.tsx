@@ -21,9 +21,8 @@ export const InfoModal = ({ heads, data, editRoute, hide }: IInfoModalProps) => 
   };
 
   return (
-    <ModalWindow shouldShow={shouldShow} hide={hide}>
+    <ModalWindow shouldShow={shouldShow} hide={hide} title={String(titleText)}>
       <Styled.Container>
-        <Styled.Title>{titleText}</Styled.Title>
         <Styled.RowsListContainer>
           {heads.map(({ key, name }) => (
             <Styled.Row key={key}>
