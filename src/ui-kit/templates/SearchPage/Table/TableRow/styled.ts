@@ -24,4 +24,12 @@ export const ColumnForButtons = styled(Column)`
   padding-right: 16px;
   padding-top: 16px;
   padding-bottom: 16px;
+
+  & > * {
+    margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 `;

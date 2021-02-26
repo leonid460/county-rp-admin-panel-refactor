@@ -13,3 +13,4 @@ export * from './getDisplayName';
 export * from './await-of';
 export * from './url';
 export * from './date';
+export * from './useDeviceType';
