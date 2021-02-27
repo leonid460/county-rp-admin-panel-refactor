@@ -4,7 +4,6 @@ import { faction } from 'routes';
 import { getEntityIdFromUrl, of } from 'utils';
 import { useHistory } from 'react-router-dom';
 import { InputWithLabel } from 'ui-kit/molecules';
-import { ListInputWithLabel } from 'ui-kit/organisms';
 import { CreateOrEditPage } from 'ui-kit/templates';
 import { callNotification } from 'utils';
 
@@ -14,7 +13,7 @@ function useDataProvider() {
   const id = getEntityIdFromUrl(pathName);
 
   const [name, setName] = useState('');
-  const [ranks, setRanks] = useState<string[]>([]);
+  const [ranks, setRanks] = useState<string[]>(new Array(15).fill(''));
   const [type, setType] = useState(NaN);
 
   const [asyncCallError, setAsyncCallError] = useState('');
@@ -45,6 +44,17 @@ function useDataProvider() {
     history.push(faction);
   };
 
+  const setRankFactory = (index: number) => {
+    return function setRank(value: string) {
+      setRanks((ranks) => {
+        const newRanksList = [...ranks];
+        newRanksList[index] = value;
+
+        return newRanksList;
+      });
+    };
+  };
+
   useEffect(() => {
     (async () => {
       const result = await of(getFaction(id));
@@ -56,9 +66,12 @@ function useDataProvider() {
       }
 
       const { data } = result;
+      const emptyRanksList = new Array(15).fill('');
+
+      const ranksList = [...data.ranks, ...emptyRanksList.slice(data.ranks.length)];
 
       setName(data.name);
-      setRanks(data.ranks);
+      setRanks(ranksList);
       setType(data.type);
     })();
   }, []);
@@ -67,7 +80,7 @@ function useDataProvider() {
     name,
     setName,
     ranks,
-    setRanks,
+    setRankFactory,
     type,
     setType,
     handleSubmit,
@@ -84,7 +97,7 @@ export const EditFaction = () => {
     type,
     setType,
     ranks,
-    setRanks,
+    setRankFactory,
     handleSubmit,
     handleDelete,
     handleGoBack,
@@ -101,7 +114,14 @@ export const EditFaction = () => {
     >
       <InputWithLabel label="имя фракции" value={name} setValue={setName} />
       <InputWithLabel label="тип" value={type} setValue={setType} type="number" />
-      <ListInputWithLabel label="ранги" items={ranks} setItems={setRanks} />
+      {ranks.map((rankValue, index) => (
+        <InputWithLabel
+          key={`rank-${index}`}
+          label={`ранг ${index}`}
+          value={rankValue}
+          setValue={setRankFactory(index)}
+        />
+      ))}
     </CreateOrEditPage>
   );
 };
